@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="3.1 Beeline命令 Beeline是 Hive 0.11版本引入的新命令行客户端工具,基于SQLLine CLI的JDBC客户端。  Beeline支持内嵌模式(embedded mode)和远程模式(remote mode)。在嵌入式模式下，运行嵌入式的Hive(类似Hive CLI)，而远程模式可以通过Thrift连接到独立的HiveServer2进程上。从Hive 0.14版本开始，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="钉子君">
+<meta property="og:url" content="http://example.com/2021/03/05/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="钉子君">
+<meta property="og:description" content="3.1 Beeline命令 Beeline是 Hive 0.11版本引入的新命令行客户端工具,基于SQLLine CLI的JDBC客户端。  Beeline支持内嵌模式(embedded mode)和远程模式(remote mode)。在嵌入式模式下，运行嵌入式的Hive(类似Hive CLI)，而远程模式可以通过Thrift连接到独立的HiveServer2进程上。从Hive 0.14版本开始，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/03/05/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.assets/QQ%E6%88%AA%E5%9B%BE20201214203723.png">
+<meta property="og:image" content="http://example.com/2021/03/05/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.assets/QQ%E6%88%AA%E5%9B%BE20201214205505.png">
+<meta property="article:published_time" content="2021-03-05T09:19:59.912Z">
+<meta property="article:modified_time" content="2020-12-18T15:29:56.000Z">
+<meta property="article:author" content="钉子君">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/03/05/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.assets/QQ%E6%88%AA%E5%9B%BE20201214203723.png">
+
+
+<link rel="canonical" href="http://example.com/2021/03/05/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title> | 钉子君</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">钉子君</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Beeline%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">3.1 Beeline命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-hive-e"><span class="nav-number">2.</span> <span class="nav-text">3.2 hive  -e</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-hive-f"><span class="nav-number">3.</span> <span class="nav-text">3.3 hive -f</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">3.4 其他命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-HQL"><span class="nav-number">5.</span> <span class="nav-text">3.5 HQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-Hive%E4%B9%8BDDL"><span class="nav-number">6.</span> <span class="nav-text">3.6 Hive之DDL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-number">6.1.</span> <span class="nav-text">数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">6.1.1.</span> <span class="nav-text">3.6.1 创建数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-2-%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">6.1.2.</span> <span class="nav-text">3.6.2 查看数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-3-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">6.1.3.</span> <span class="nav-text">3.6.3 修改数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-4-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">6.1.4.</span> <span class="nav-text">3.6.4 删除数据库</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">6.2.</span> <span class="nav-text">表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-3-%E5%88%9B%E5%BB%BA%E5%86%85%E9%83%A8%E8%A1%A8"><span class="nav-number">6.2.1.</span> <span class="nav-text">3.6.3 创建内部表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-4-%E5%88%9B%E5%BB%BA%E5%A4%96%E9%83%A8%E8%A1%A8"><span class="nav-number">6.2.2.</span> <span class="nav-text">3.6.4 创建外部表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-5-%E5%88%9B%E5%BB%BA%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="nav-number">6.2.3.</span> <span class="nav-text">3.6.5 创建分区表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-6-%E4%BF%AE%E6%94%B9%E8%A1%A8"><span class="nav-number">6.2.4.</span> <span class="nav-text">3.6.6 修改表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-Hive%E4%B9%8BDML"><span class="nav-number">7.</span> <span class="nav-text">3.7 Hive之DML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-1-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5"><span class="nav-number">7.1.</span> <span class="nav-text">3.7.1 数据导入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7-1-1-%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%88Load%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">7.1.1.</span> <span class="nav-text">3.7.1.1 导入数据（Load模式）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7-2-%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE-insert%E6%A8%A1%E5%BC%8F"><span class="nav-number">7.1.2.</span> <span class="nav-text">3.7.2 导入数据(insert模式)</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">钉子君</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="钉子君">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="钉子君">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-05 17:19:59" itemprop="dateCreated datePublished" datetime="2021-03-05T17:19:59+08:00">2021-03-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-12-18 23:29:56" itemprop="dateModified" datetime="2020-12-18T23:29:56+08:00">2020-12-18</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="3-1-Beeline命令"><a href="#3-1-Beeline命令" class="headerlink" title="3.1 Beeline命令"></a>3.1 Beeline命令</h3><hr>
+Beeline是 Hive 0.11版本引入的新命令行客户端工具,基于SQLLine CLI的JDBC客户端。
+
+<p>Beeline支持内嵌模式(embedded mode)和远程模式(remote mode)。在嵌入式模式下，运行嵌入式的Hive(类似Hive CLI)，而远程模式可以通过Thrift连接到独立的HiveServer2进程上。从Hive 0.14版本开始，Beeline使用HiveServer2工作时，它也会从HiveServer2输出日志信息到STDERR。</p>
+<ul>
+<li><strong>Hive的三种安装方式</strong></li>
+</ul>
+<blockquote>
+<p>内嵌模式：不需要额外安装元数据库，采用的是Hive默认的Derby数据库，但这种模式有极大的缺陷就在于只允许一个 Hive 会话连接。</p>
+<p>独立模式：在安装 Hive 的节点上安装一个 MySQL 服务端，并且将 <code>hive.metastore.local</code> 设置为 <code>true</code></p>
+<p>远程模式：将 Hive 服务端与元数据的存储地址分开，元数据直接存储在远程的数据库服务器上即可。因此这里我们采用的是 node01 安装 Hive 服务端，而node03 安装 MySQL，以此来实现 Hive 与元数据的解耦操作。</p>
+</blockquote>
+<p>Beeline和其他工具有一些不同，执行查询都是正常的SQL输入。</p>
+<ul>
+<li><p>create databases;【创建数据库】</p>
+</li>
+<li><p>select * from table_name;【查询表】</p>
+</li>
+</ul>
+<p>但是如果是一些管理的命令，比如进行连接，中断，退出，执行Beeline命令需要带上“!”，不需要终止符。</p>
+<ul>
+<li><strong>!connect url</strong> 【连接不同的Hive2服务器】</li>
+<li><strong>!exit</strong> 【退出shell】</li>
+<li><strong>!help</strong> 【显示全部命令列表】</li>
+<li><strong>!verbose</strong> 【显示查询追加的明细】</li>
+</ul>
+<h3 id="3-2-hive-e"><a href="#3-2-hive-e" class="headerlink" title="3.2 hive  -e"></a>3.2 hive  -e</h3><hr>
+
+<p>不用进入交互窗口就能执行数据库相关命令</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@node02</span> <span class="operator">~</span>]# hive <span class="operator">-</span>e &quot;show databases&quot;;</span><br><span class="line">## 以下是结果</span><br><span class="line">which: <span class="keyword">no</span> hbase <span class="keyword">in</span> (<span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>sbin:<span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>bin:<span class="operator">/</span>usr<span class="operator">/</span>sbin:<span class="operator">/</span>usr<span class="operator">/</span>bin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>jdk1<span class="number">.8</span><span class="number">.0</span>_261<span class="operator">/</span>bin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>jdk1<span class="number">.8</span><span class="number">.0</span>_261<span class="operator">/</span>jre<span class="operator">/</span>bin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hadoop<span class="number">-3.1</span><span class="number">.4</span><span class="operator">/</span>bin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hadoop<span class="number">-3.1</span><span class="number">.4</span><span class="operator">/</span>sbin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hive<span class="number">-3.1</span><span class="number">.2</span><span class="operator">/</span>bin:<span class="operator">/</span>root<span class="operator">/</span>bin)</span><br><span class="line">SLF4J: Class path <span class="keyword">contains</span> multiple SLF4J bindings.</span><br><span class="line">SLF4J: Found binding <span class="keyword">in</span> [jar:file:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hive<span class="number">-3.1</span><span class="number">.2</span><span class="operator">/</span>lib<span class="operator">/</span>log4j<span class="operator">-</span>slf4j<span class="operator">-</span>impl<span class="number">-2.10</span><span class="number">.0</span>.jar<span class="operator">!</span><span class="operator">/</span>org<span class="operator">/</span>slf4j<span class="operator">/</span>impl<span class="operator">/</span>StaticLoggerBinder.class]</span><br><span class="line">SLF4J: Found binding <span class="keyword">in</span> [jar:file:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hadoop<span class="number">-3.1</span><span class="number">.4</span><span class="operator">/</span>share<span class="operator">/</span>hadoop<span class="operator">/</span>common<span class="operator">/</span>lib<span class="operator">/</span>slf4j<span class="operator">-</span>log4j12<span class="number">-1.7</span><span class="number">.25</span>.jar<span class="operator">!</span><span class="operator">/</span>org<span class="operator">/</span>slf4j<span class="operator">/</span>impl<span class="operator">/</span>StaticLoggerBinder.class]</span><br><span class="line">SLF4J: See http:<span class="operator">/</span><span class="operator">/</span>www.slf4j.org<span class="operator">/</span>codes.html#multiple_bindings <span class="keyword">for</span> an explanation.</span><br><span class="line">SLF4J: Actual binding <span class="keyword">is</span> <span class="keyword">of</span> type [org.apache.logging.slf4j.Log4jLoggerFactory]</span><br><span class="line">Hive Session ID <span class="operator">=</span> e308f3e6<span class="number">-6</span>cac<span class="number">-4e85</span><span class="operator">-</span>b4a1<span class="number">-2</span>f53376dc53c</span><br><span class="line"></span><br><span class="line">Logging initialized <span class="keyword">using</span> configuration <span class="keyword">in</span> file:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hive<span class="number">-3.1</span><span class="number">.2</span><span class="operator">/</span>conf<span class="operator">/</span>hive<span class="operator">-</span>log4j2.properties Async: <span class="literal">true</span></span><br><span class="line">Hive Session ID <span class="operator">=</span> <span class="number">2</span>b23427f<span class="number">-3062</span><span class="number">-4</span>ad0<span class="operator">-</span>a6e4<span class="number">-5</span>c51159af89d</span><br><span class="line">OK</span><br><span class="line">database_name</span><br><span class="line"><span class="keyword">default</span></span><br><span class="line">student</span><br><span class="line">teaceher</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">3.745</span> seconds, Fetched: <span class="number">3</span> <span class="type">row</span>(s)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-3-hive-f"><a href="#3-3-hive-f" class="headerlink" title="3.3 hive -f"></a>3.3 hive -f</h3><hr>
+
+<p>不用进入交互窗口，用<code>vim</code>或<code>vi</code>创建一个文件，写入一些sql命令，通过hive -f 即可执行。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@node02</span> apps]# vim hive.sql</span><br><span class="line">## 文件中的内容</span><br><span class="line"><span class="keyword">show</span> databases;</span><br><span class="line">## 以下是执行结果</span><br><span class="line">[root<span class="variable">@node02</span> apps]# hive <span class="operator">-</span>f hive.sql</span><br><span class="line">which: <span class="keyword">no</span> hbase <span class="keyword">in</span> (<span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>sbin:<span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>bin:<span class="operator">/</span>usr<span class="operator">/</span>sbin:<span class="operator">/</span>usr<span class="operator">/</span>bin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>jdk1<span class="number">.8</span><span class="number">.0</span>_261<span class="operator">/</span>bin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>jdk1<span class="number">.8</span><span class="number">.0</span>_261<span class="operator">/</span>jre<span class="operator">/</span>bin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hadoop<span class="number">-3.1</span><span class="number">.4</span><span class="operator">/</span>bin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hadoop<span class="number">-3.1</span><span class="number">.4</span><span class="operator">/</span>sbin:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hive<span class="number">-3.1</span><span class="number">.2</span><span class="operator">/</span>bin:<span class="operator">/</span>root<span class="operator">/</span>bin)</span><br><span class="line">SLF4J: Class path <span class="keyword">contains</span> multiple SLF4J bindings.</span><br><span class="line">SLF4J: Found binding <span class="keyword">in</span> [jar:file:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hive<span class="number">-3.1</span><span class="number">.2</span><span class="operator">/</span>lib<span class="operator">/</span>log4j<span class="operator">-</span>slf4j<span class="operator">-</span>impl<span class="number">-2.10</span><span class="number">.0</span>.jar<span class="operator">!</span><span class="operator">/</span>org<span class="operator">/</span>slf4j<span class="operator">/</span>impl<span class="operator">/</span>StaticLoggerBinder.class]</span><br><span class="line">SLF4J: Found binding <span class="keyword">in</span> [jar:file:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hadoop<span class="number">-3.1</span><span class="number">.4</span><span class="operator">/</span>share<span class="operator">/</span>hadoop<span class="operator">/</span>common<span class="operator">/</span>lib<span class="operator">/</span>slf4j<span class="operator">-</span>log4j12<span class="number">-1.7</span><span class="number">.25</span>.jar<span class="operator">!</span><span class="operator">/</span>org<span class="operator">/</span>slf4j<span class="operator">/</span>impl<span class="operator">/</span>StaticLoggerBinder.class]</span><br><span class="line">SLF4J: See http:<span class="operator">/</span><span class="operator">/</span>www.slf4j.org<span class="operator">/</span>codes.html#multiple_bindings <span class="keyword">for</span> an explanation.</span><br><span class="line">SLF4J: Actual binding <span class="keyword">is</span> <span class="keyword">of</span> type [org.apache.logging.slf4j.Log4jLoggerFactory]</span><br><span class="line">Hive Session ID <span class="operator">=</span> <span class="number">1</span>bf5a42e<span class="operator">-</span>f5e7<span class="number">-4</span>bd4<span class="number">-87</span>cb<span class="operator">-</span>a5d8aa719c62</span><br><span class="line"></span><br><span class="line">Logging initialized <span class="keyword">using</span> configuration <span class="keyword">in</span> file:<span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hive<span class="number">-3.1</span><span class="number">.2</span><span class="operator">/</span>conf<span class="operator">/</span>hive<span class="operator">-</span>log4j2.properties Async: <span class="literal">true</span></span><br><span class="line">Hive Session ID <span class="operator">=</span> <span class="number">1</span>fe787c1<span class="operator">-</span>bac7<span class="number">-42</span>bf<span class="number">-9</span>cb6<span class="number">-2254</span>f95fab17</span><br><span class="line">OK</span><br><span class="line">database_name</span><br><span class="line"><span class="keyword">default</span></span><br><span class="line">student</span><br><span class="line">teaceher</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">3.399</span> seconds, Fetched: <span class="number">3</span> <span class="type">row</span>(s)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-4-其他命令"><a href="#3-4-其他命令" class="headerlink" title="3.4 其他命令"></a>3.4 其他命令</h3><hr>
+
+<ul>
+<li>退出hive客户端命令（非beeline模式下）</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hive(<span class="keyword">default</span>)<span class="operator">&gt;</span>exit; </span><br><span class="line">hive(<span class="keyword">default</span>)<span class="operator">&gt;</span>quit;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>退出hive客户端命令（beeline模式下）</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive(<span class="keyword">default</span>)<span class="operator">&gt;</span><span class="operator">!</span>quit;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过客户端用命令行来查看HDFS的文件系统</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hive (<span class="keyword">default</span>)<span class="operator">&gt;</span> dfs <span class="operator">-</span>ls <span class="operator">/</span>;</span><br><span class="line">Found <span class="number">4</span> items</span><br><span class="line">drwxr<span class="operator">-</span>xr<span class="operator">-</span>x   <span class="operator">-</span> root supergroup          <span class="number">0</span> <span class="number">2020</span><span class="number">-12</span><span class="number">-06</span> <span class="number">20</span>:<span class="number">09</span> <span class="operator">/</span>data</span><br><span class="line">drwxr<span class="operator">-</span>xr<span class="operator">-</span>x   <span class="operator">-</span> root supergroup          <span class="number">0</span> <span class="number">2020</span><span class="number">-12</span><span class="number">-02</span> <span class="number">12</span>:<span class="number">53</span> <span class="operator">/</span>hive</span><br><span class="line">drwxr<span class="operator">-</span>xr<span class="operator">-</span>x   <span class="operator">-</span> root supergroup          <span class="number">0</span> <span class="number">2020</span><span class="number">-11</span><span class="number">-03</span> <span class="number">16</span>:<span class="number">42</span> <span class="operator">/</span><span class="keyword">system</span></span><br><span class="line">drwxrwxrwx   <span class="operator">-</span> root supergroup          <span class="number">0</span> <span class="number">2020</span><span class="number">-11</span><span class="number">-28</span> <span class="number">19</span>:<span class="number">04</span> <span class="operator">/</span>tmp</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看本地的文件系统（即虚拟机上的文件系统）</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hive (<span class="keyword">default</span>)<span class="operator">&gt;</span> <span class="operator">!</span> ls <span class="operator">/</span>opt<span class="operator">/</span>apps;</span><br><span class="line">data</span><br><span class="line">hadoop<span class="number">-3.1</span><span class="number">.4</span></span><br><span class="line">hive<span class="number">-3.1</span><span class="number">.2</span></span><br><span class="line">hive.sql</span><br><span class="line">jdk1<span class="number">.8</span><span class="number">.0</span>_261</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查看历史记录(即hive客户端的操作记录)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">## 必须进入主目录才行</span><br><span class="line">[root<span class="variable">@node02</span> apps]# cat .hivehistory</span><br><span class="line">cat: .hivehistory: 没有那个文件或目录</span><br><span class="line">[root<span class="variable">@node02</span> apps]# cd <span class="operator">~</span></span><br><span class="line">[root<span class="variable">@node02</span> <span class="operator">~</span>]# cat .hivehistory</span><br><span class="line">exit;</span><br><span class="line"><span class="keyword">show</span> tables;</span><br><span class="line">exit;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-5-HQL"><a href="#3-5-HQL" class="headerlink" title="3.5 HQL"></a>3.5 HQL</h3><hr>
+
+<blockquote>
+<p>HiveQL（简称HQL）是支持的类似的查询语言，HQL大体分为DDL、DDL、DML、UDF 四种类型。</p>
+<ul>
+<li><p>DDL:  （database definition language） 数据定义语言 引起的是结构上变化，不会影响数据 create drop alter</p>
+</li>
+<li><p>DML: DataManipulationLanguage 数据操作语言 不会引起结构上的变化 引起的是数据的变化 update</p>
+</li>
+<li><p>DQL: 数据查询语言 不会引起结构上的变化，也不会引起数据的变化，select where</p>
+</li>
+</ul>
+</blockquote>
+<p>DDL可以创建数据库、创建表、进行数据库和表的删除；DML可以进行数据的添加、查询；UDF还支持用户自定义查询函数。</p>
+<h3 id="3-6-Hive之DDL"><a href="#3-6-Hive之DDL" class="headerlink" title="3.6 Hive之DDL"></a>3.6 Hive之DDL</h3><hr>
+
+<blockquote>
+<p>（Database Definition Language） 数据定义语言 引起的是结构上变化，不会影响数据 create drop alter。</p>
+<p><strong>DDL主要负责的是数据库的创建、查看、修改、删除、表的创建、修改。</strong>（主要侧重于对数据库、表的操作）</p>
+</blockquote>
+<ul>
+<li><strong>内部表：</strong></li>
+</ul>
+<p>由Hive进行管理，创建内部表时，把内部表对应的数据会一并复制到对应的HDFS上（数据仓库）HIve所对应的目录下</p>
+<ul>
+<li><strong>外部表</strong></li>
+</ul>
+<p>不由Hive管理，在创建外部表时，同时指定一个指向实际数据的路径作为表的信息一同储存在映射表中，用户可以通过查询表中这一数据知道该映射结构表的实际数据在什么位置。创建外部表时，仅记录数据所在的路径，不会对数据位置进行任何改变</p>
+<p><strong>内部表和外部表的区别：</strong></p>
+<blockquote>
+<ul>
+<li><p>内部表和外部表在结构上没有任何区别，但在删除数据时，内部表可以用Hive进行删除，同时会把数据仓库上（HDFS上）对应的数据删掉。外部表则只是删除数据库中的数据信息，但不会真正的数据。</p>
+</li>
+<li><p>创建外部表时，要加一个External</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>分区表：</strong></li>
+</ul>
+<p>分区表实际上就是对应一个 HDFS 文件系统上的独立的文件夹，该文件夹下是该分区所有的数据文件。Hive 中的分区就是分目录，把一个大的数据集根据业务需要分割成小的数据集。在查询时通过 WHERE 子句中的表达式选择查询所需要的指定的分区，这样的查询效率会提高很多。（例如，将数科所有班级存入一张大表中（<strong>其实是个目录</strong>），为了利于管理，看起来更加系统，将这个大表进行分区，将数科191、数科192、数科201、数科202划分为四个区，辅导员需要哪个班级的数据时直接调对应分区的表即可。）</p>
+<p>![](3.Hive基本命令.assets/Image 1.png)</p>
+<h4 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h4><h5 id="3-6-1-创建数据库"><a href="#3-6-1-创建数据库" class="headerlink" title="3.6.1 创建数据库"></a>3.6.1 创建数据库</h5><p>创建数据库的SQL格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> (DATABASE<span class="operator">|</span>SCHEMA) [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] database_name</span><br><span class="line">  [COMMENT database_comment]</span><br><span class="line">  [LOCATION hdfs_path]</span><br><span class="line">  [<span class="keyword">WITH</span> DBPROPERTIES (property_name<span class="operator">=</span>property_value, ...)];</span><br><span class="line">  <span class="comment">--------------------------------------------------------------------------------------</span></span><br><span class="line">  <span class="comment">--(DATABASE|SCHEMA)：必须有的参数</span></span><br><span class="line"> <span class="comment">-- [IF NOT EXISTS]：可有可无（判断数据库是否已经存在）</span></span><br><span class="line"> <span class="comment">-- [COMMENT database_comment]：可有可无，对数据库加以说明</span></span><br><span class="line"> <span class="comment">-- [LOCATION hdfs_path]：指明数据库创建的路径</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--if not exists 用于判断数据库是否已经存在，不存在就创建（可有可无），COMMENT用于对数据库做介绍（可有可无）</span></span><br><span class="line"><span class="keyword">create</span> database if <span class="keyword">not</span> <span class="keyword">exists</span> books COMMENT &quot;第一个数据库&quot;;</span><br><span class="line"><span class="comment">--什么也不加</span></span><br><span class="line"><span class="keyword">create</span> database  books;</span><br><span class="line"><span class="comment">--指定创建位置</span></span><br><span class="line"><span class="keyword">create</span> database  books location &quot;/school&quot;;</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="3-6-2-查看数据库"><a href="#3-6-2-查看数据库" class="headerlink" title="3.6.2 查看数据库"></a>3.6.2 查看数据库</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查看数据库</span></span><br><span class="line"><span class="keyword">show</span> databases;</span><br><span class="line"><span class="comment">--过滤显示数据库</span></span><br><span class="line"><span class="keyword">show</span> databases <span class="keyword">like</span> &quot;student&quot;;</span><br><span class="line"><span class="comment">--显示数据库的基本信息</span></span><br><span class="line"><span class="keyword">desc</span> database student;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line">db_name	comment	location	owner_name	owner_type	parameters</span><br><span class="line">student		hdfs:<span class="operator">/</span><span class="operator">/</span>node01:<span class="number">9000</span><span class="operator">/</span>hive<span class="operator">/</span>warehouse<span class="operator">/</span>student.db	root	<span class="keyword">USER</span>	</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.185</span> seconds, Fetched: <span class="number">1</span> <span class="type">row</span>(s)</span><br><span class="line"><span class="comment">--显示数据库的详细信息</span></span><br><span class="line"> <span class="keyword">desc</span> database extended  student;</span><br><span class="line"> </span><br><span class="line">OK</span><br><span class="line">db_name	comment	location	owner_name	owner_type	parameters</span><br><span class="line">student		hdfs:<span class="operator">/</span><span class="operator">/</span>node01:<span class="number">9000</span><span class="operator">/</span>hive<span class="operator">/</span>warehouse<span class="operator">/</span>student.db	root	<span class="keyword">USER</span>	</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.108</span> seconds, Fetched: <span class="number">1</span> <span class="type">row</span>(s)</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-6-3-修改数据库"><a href="#3-6-3-修改数据库" class="headerlink" title="3.6.3 修改数据库"></a>3.6.3 修改数据库</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 修改数据库的属性</span><br><span class="line"><span class="keyword">ALTER</span> (DATABASE<span class="operator">|</span>SCHEMA) database_name <span class="keyword">SET</span> DBPROPERTIES (property_name<span class="operator">=</span>property_value, ...);</span><br><span class="line"><span class="comment">-- (注意: 在 Hive 0.14.0 增加了 SCHEMA 选项)</span></span><br><span class="line"></span><br><span class="line"># 修改数据库的拥有者和角色</span><br><span class="line"><span class="keyword">ALTER</span> (DATABASE<span class="operator">|</span>SCHEMA) database_name <span class="keyword">SET</span> OWNER [<span class="keyword">USER</span><span class="operator">|</span>ROLE] user_or_role; </span><br><span class="line"><span class="comment">-- (注意: Hive 0.13.0 以上版本可用;在 Hive 0.14.0 增加了 SCHEMA 选项)</span></span><br><span class="line"># 修改数据库的存储路径</span><br><span class="line"><span class="keyword">ALTER</span> (DATABASE<span class="operator">|</span>SCHEMA) database_name <span class="keyword">SET</span> LOCATION hdfs_path;</span><br><span class="line"><span class="comment">-- (注意: Hive 2.2.1, 2.4.0以及以上版本可用)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-6-4-删除数据库"><a href="#3-6-4-删除数据库" class="headerlink" title="3.6.4 删除数据库"></a>3.6.4 删除数据库</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--删除空数据库</span></span><br><span class="line"><span class="keyword">drop</span> database books;</span><br><span class="line"><span class="comment">--如果存在的话删除空数据库</span></span><br><span class="line"><span class="keyword">drop</span> database if <span class="keyword">exists</span> books;</span><br><span class="line"><span class="comment">--强制删除数据库</span></span><br><span class="line"><span class="keyword">drop</span> database books cascade;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h4><h5 id="3-6-3-创建内部表"><a href="#3-6-3-创建内部表" class="headerlink" title="3.6.3 创建内部表"></a>3.6.3 创建内部表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> if <span class="keyword">not</span> <span class="keyword">exists</span> studen(</span><br><span class="line">    stuid <span class="type">int</span>, <span class="comment">--学生学号</span></span><br><span class="line">    stuname string, <span class="comment">--学生姓名</span></span><br><span class="line">    stuage <span class="type">int</span> <span class="comment">--学生年龄</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">-- 每行字段以 \t分割</span></span><br><span class="line"><span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 根据查询结果创建表：有数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> if <span class="keyword">not</span> <span class="keyword">exists</span> student2 <span class="keyword">as</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> if <span class="keyword">not</span> <span class="keyword">exists</span> student4 <span class="keyword">as</span> <span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> teacher1;</span><br><span class="line"></span><br><span class="line"><span class="comment">--根据已经存在的表创建表（类似复制一张表）</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> if <span class="keyword">not</span> <span class="keyword">exists</span> student3 <span class="keyword">like</span> student;</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line">student3.sno	student3.sname	student3.sage	student3.ssex</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.773</span> seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加载数据到表中</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/opt/apps/data/teacher.txt&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> teacher;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> 查看表的类型</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">desc</span> formatted student3;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-6-4-创建外部表"><a href="#3-6-4-创建外部表" class="headerlink" title="3.6.4 创建外部表"></a>3.6.4 创建外部表</h5><p>外部表的创建与内部表没什么区别，只不过是在创建时要加上一个**<font color=red>external</font>**关键字即可。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">external</span> <span class="keyword">table</span>  tea(</span><br><span class="line">    stuid <span class="type">int</span>,</span><br><span class="line">    stuname string,</span><br><span class="line">    stuage <span class="type">int</span></span><br><span class="line">)</span><br><span class="line"><span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span>;	</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>加载数据到表中</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/opt/apps/data/teacher.txt&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> teacher;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> 查看数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> ext_stu;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查询表的类型</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">desc</span> formatted ext_stu;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> tea;</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> student3;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-6-5-创建分区表"><a href="#3-6-5-创建分区表" class="headerlink" title="3.6.5 创建分区表"></a>3.6.5 创建分区表</h5><ul>
+<li>创建分区表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student(id <span class="type">int</span>,name string )</span><br><span class="line">partitioned <span class="keyword">by</span>(<span class="keyword">day</span> string comment <span class="string">&#x27;study&#x27;</span>)</span><br><span class="line"><span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上传数据到分区中</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/opt/apps/data/student.txt&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> student <span class="keyword">partition</span> (<span class="keyword">day</span><span class="operator">=</span><span class="string">&#x27;01&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>增加分区</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--增加单分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">day</span><span class="operator">=</span><span class="string">&#x27;05&#x27;</span>);</span><br><span class="line"><span class="comment">--增加多分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">day</span><span class="operator">=</span><span class="string">&#x27;06&#x27;</span>) <span class="keyword">partition</span>(<span class="keyword">day</span><span class="operator">=</span><span class="string">&#x27;07&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除分区</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student4 <span class="keyword">drop</span> <span class="keyword">partition</span> (<span class="keyword">day</span><span class="operator">=</span><span class="string">&#x27;183&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看分区结构</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">desc</span> formatted student;</span><br></pre></td></tr></table></figure>
+
+<p>study.db为数据库；student为表（其实再HDFS文件系统中是一个目录）；表里面的day05、day06、day07、day08为分区表。</p>
+<p><img src="3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.assets/QQ%E6%88%AA%E5%9B%BE20201214203723.png"></p>
+<ul>
+<li>创建二级分区</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher(id <span class="type">int</span>,name string)</span><br><span class="line">partitioned <span class="keyword">by</span>(<span class="keyword">day</span> string ,<span class="keyword">month</span> string )</span><br><span class="line"><span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.assets/QQ%E6%88%AA%E5%9B%BE20201214205505.png"></p>
+<ul>
+<li>分区数据关联的三种方式</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 方式一：先hadoop上传，后修复</span></span><br><span class="line">dfs <span class="operator">-</span>put <span class="operator">/</span>opt<span class="operator">/</span>data<span class="operator">/</span>student.txt <span class="operator">/</span>hive<span class="operator">/</span>warehouse<span class="operator">/</span>student.db<span class="operator">/</span>student<span class="operator">/</span><span class="keyword">day</span><span class="operator">=</span><span class="number">04</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行修复</span></span><br><span class="line">msck repair <span class="keyword">table</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 方式二：先hadoop上传，后修改</span></span><br><span class="line">dfs <span class="operator">-</span>mkdir <span class="operator">/</span>hive<span class="operator">/</span>warehouse<span class="operator">/</span>study.db<span class="operator">/</span>student<span class="operator">/</span><span class="keyword">day</span><span class="operator">=</span><span class="number">06</span>;</span><br><span class="line">dfs <span class="operator">-</span>put <span class="operator">/</span>opt<span class="operator">/</span>data<span class="operator">/</span>teacher <span class="operator">/</span>hive<span class="operator">/</span>warehouse<span class="operator">/</span>study.db<span class="operator">/</span>student<span class="operator">/</span><span class="keyword">day</span><span class="operator">=</span><span class="number">06</span>;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">day</span><span class="operator">=</span><span class="string">&#x27;06&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 方式三：先上传，后加载</span></span><br><span class="line">dfs <span class="operator">-</span>mkdir <span class="operator">/</span>hive<span class="operator">/</span>warehouse<span class="operator">/</span>study.db<span class="operator">/</span>student<span class="operator">/</span><span class="keyword">day</span><span class="operator">=</span><span class="number">07</span>;</span><br><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/opt/data/teacher.txt&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> student <span class="keyword">partition</span>(<span class="keyword">day</span><span class="operator">=</span><span class="string">&#x27;07&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-6-6-修改表"><a href="#3-6-6-修改表" class="headerlink" title="3.6.6 修改表"></a>3.6.6 修改表</h5><ul>
+<li>表的重命名</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student rename <span class="keyword">to</span> student6;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加列</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student6 <span class="keyword">add</span> columns(<span class="keyword">new</span> string);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更改列：将某一列更改</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student6 change <span class="keyword">column</span> <span class="keyword">new</span> bb string;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>替换所有列：后面跟的是新的列名</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student6 replace columns(ids <span class="type">int</span>,names string,newb string);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改内部表 student2 为外部表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student2 <span class="keyword">set</span> tblproperties(<span class="string">&#x27;EXTERNAL&#x27;</span><span class="operator">=</span><span class="string">&#x27;TRUE&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-7-Hive之DML"><a href="#3-7-Hive之DML" class="headerlink" title="3.7 Hive之DML"></a>3.7 Hive之DML</h3><hr>
+
+<blockquote>
+<p> Hive 数据真正存放在 Hadoop 之上，因此最简单的数据导入方式就是将数据上传至 HDFS 相应目录即可，但是此操作会非常不方便，因此 Hive 为我们提供了以下数据加载的方式。</p>
+<p><strong>DML负责数据的导入、导出、更新、删除</strong>等操作（主要负责对数据的操作）。</p>
+</blockquote>
+<h4 id="3-7-1-数据导入"><a href="#3-7-1-数据导入" class="headerlink" title="3.7.1 数据导入"></a>3.7.1 数据导入</h4><p>Hive的数据是存放在Hadoop之上的，因此Hive在处理数据时需要将数据上传到HDFS中去。比如创建内部表时，需要将数据复制到HDFS上指定的目录中去。</p>
+<blockquote>
+<p> Hive提供以下五种数据上传到HDFS上的方法，分别是：Load模式、Import模式、Insert模式、as select模式、Location模式</p>
+</blockquote>
+<h5 id="3-7-1-1-导入数据（Load模式）"><a href="#3-7-1-1-导入数据（Load模式）" class="headerlink" title="3.7.1.1 导入数据（Load模式）"></a>3.7.1.1 导入数据（Load模式）</h5><p><strong>创建普通数据表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test(id <span class="type">int</span>,name string) </span><br><span class="line">    <span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从本地(Linux)上传数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/opt/data/student&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> test;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从本上传数据并覆盖原有</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/opt/data/student&#x27;</span> overwrite <span class="keyword">into</span> <span class="keyword">table</span>  test;</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建分区表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test02(id <span class="type">int</span>,name string)</span><br><span class="line">partitioned <span class="keyword">by</span> (num string)</span><br><span class="line"><span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>向分区表中加载数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data <span class="keyword">local</span>  inpath <span class="string">&#x27;/opt/apps/data/student.txt&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> test02 <span class="keyword">partition</span> (num<span class="operator">=</span><span class="string">&#x27;01&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>向分区表中加载数据,但是不指定分区(可以上传成功,但会报错)</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">load data <span class="keyword">local</span>  inpath <span class="string">&#x27;/opt/apps/data/student.txt&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> test02;</span><br><span class="line">## 错误如下</span><br><span class="line">Query ID <span class="operator">=</span> root_20201218174108_6408e79a<span class="number">-4</span>ec5<span class="number">-4</span>aa1<span class="number">-9</span>d5e<span class="number">-52558</span>c638b98</span><br><span class="line">Total jobs <span class="operator">=</span> <span class="number">3</span></span><br><span class="line">Launching Job <span class="number">1</span> <span class="keyword">out</span> <span class="keyword">of</span> <span class="number">3</span></span><br><span class="line">Number <span class="keyword">of</span> reduce tasks <span class="keyword">not</span> specified. Estimated <span class="keyword">from</span> input data size: <span class="number">1</span></span><br><span class="line"><span class="keyword">In</span> <span class="keyword">order</span> <span class="keyword">to</span> change the average load <span class="keyword">for</span> a reducer (<span class="keyword">in</span> bytes):</span><br><span class="line">  <span class="keyword">set</span> hive.exec.reducers.bytes.per.reducer<span class="operator">=</span><span class="operator">&lt;</span>number<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">In</span> <span class="keyword">order</span> <span class="keyword">to</span> limit the maximum number <span class="keyword">of</span> reducers:</span><br><span class="line">  <span class="keyword">set</span> hive.exec.reducers.max<span class="operator">=</span><span class="operator">&lt;</span>number<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">In</span> <span class="keyword">order</span> <span class="keyword">to</span> <span class="keyword">set</span> a constant number <span class="keyword">of</span> reducers:</span><br><span class="line">  <span class="keyword">set</span> mapreduce.job.reduces<span class="operator">=</span><span class="operator">&lt;</span>number<span class="operator">&gt;</span></span><br><span class="line">Starting Job <span class="operator">=</span> job_1608280545793_0001, Tracking URL <span class="operator">=</span> http:<span class="operator">/</span><span class="operator">/</span>node02:<span class="number">8088</span><span class="operator">/</span>proxy<span class="operator">/</span>application_1608280545793_0001<span class="operator">/</span></span><br><span class="line">Kill Command <span class="operator">=</span> <span class="operator">/</span>opt<span class="operator">/</span>apps<span class="operator">/</span>hadoop<span class="number">-3.1</span><span class="number">.4</span><span class="operator">/</span>bin<span class="operator">/</span>mapred job  <span class="operator">-</span>kill job_1608280545793_0001</span><br><span class="line">Hadoop job information <span class="keyword">for</span> Stage<span class="number">-1</span>: number <span class="keyword">of</span> mappers: <span class="number">0</span>; number <span class="keyword">of</span> reducers: <span class="number">0</span></span><br><span class="line"><span class="number">2020</span><span class="number">-12</span><span class="number">-18</span> <span class="number">17</span>:<span class="number">41</span>:<span class="number">19</span>,<span class="number">840</span> Stage<span class="number">-1</span> map <span class="operator">=</span> <span class="number">0</span><span class="operator">%</span>,  reduce <span class="operator">=</span> <span class="number">0</span><span class="operator">%</span></span><br><span class="line">Ended Job <span class="operator">=</span> job_1608280545793_0001 <span class="keyword">with</span> errors</span><br><span class="line">Error during job, obtaining debugging information...</span><br><span class="line">FAILED: Execution Error, <span class="keyword">return</span> code <span class="number">2</span> <span class="keyword">from</span> org.apache.hadoop.hive.ql.exec.mr.MapRedTask</span><br><span class="line">MapReduce Jobs Launched: </span><br><span class="line">Stage<span class="operator">-</span>Stage<span class="number">-1</span>:  HDFS Read: <span class="number">0</span> HDFS Write: <span class="number">0</span> FAIL</span><br><span class="line">Total MapReduce CPU <span class="type">Time</span> Spent: <span class="number">0</span> msec</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-7-2-导入数据-insert模式"><a href="#3-7-2-导入数据-insert模式" class="headerlink" title="3.7.2 导入数据(insert模式)"></a>3.7.2 导入数据(insert模式)</h5><blockquote>
+<p> 也可以使用 insert 子句将查询结果插入表中 (这种插入方法只能一条一条的插入)。</p>
+</blockquote>
+<p><strong>创建分区表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test03(id <span class="type">int</span> ,name string)</span><br><span class="line"> partitioned <span class="keyword">by</span>(age <span class="type">int</span>)</span><br><span class="line"> <span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>向分区表中加载数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">table</span>  test03 <span class="keyword">partition</span>(age<span class="operator">=</span><span class="number">1</span>) <span class="keyword">values</span>(<span class="number">1001</span>,<span class="string">&#x27;zhangsan&#x27;</span>),(<span class="number">1002</span>,<span class="string">&#x27;lisi&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/05/2.Hive%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">钉子君</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
