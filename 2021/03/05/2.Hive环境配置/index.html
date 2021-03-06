@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nanyu99.gitee.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="Hive是基于Hadoop的一个数据仓库工具，因此Hive的安装前提必须是Hadoop能够正常运行。 2.1 Hive安装模式   根据元数据的位置，将Hive的安装分为三个模式：内嵌模式、独立模式、远程模式（最复杂）  1.1.1 Hive内嵌安装模式不需要额外安装元数据库，采用Hive默认的Derby数据库，但这种模式有极大的缺陷就在于只允许一个 Hive 会话连接。 1.1.2 Hive独立">
+<meta property="og:type" content="article">
+<meta property="og:title" content="钉子君">
+<meta property="og:url" content="http://nanyu99.gitee.io/2021/03/05/2.Hive%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="钉子君">
+<meta property="og:description" content="Hive是基于Hadoop的一个数据仓库工具，因此Hive的安装前提必须是Hadoop能够正常运行。 2.1 Hive安装模式   根据元数据的位置，将Hive的安装分为三个模式：内嵌模式、独立模式、远程模式（最复杂）  1.1.1 Hive内嵌安装模式不需要额外安装元数据库，采用Hive默认的Derby数据库，但这种模式有极大的缺陷就在于只允许一个 Hive 会话连接。 1.1.2 Hive独立">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/11/28/81B76pTmIbGXAgC.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/28/uv1aOwLxbdI6o3B.png">
+<meta property="article:published_time" content="2021-03-05T09:19:55.525Z">
+<meta property="article:modified_time" content="2020-12-03T01:42:16.000Z">
+<meta property="article:author" content="钉子君">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/28/81B76pTmIbGXAgC.png">
+
+
+<link rel="canonical" href="http://nanyu99.gitee.io/2021/03/05/2.Hive%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title> | 钉子君</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">钉子君</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Hive%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">2.1 Hive安装模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-Hive%E5%86%85%E5%B5%8C%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.1 Hive内嵌安装模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-Hive%E7%8B%AC%E7%AB%8B%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">1.1.2 Hive独立安装模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-Hive%E8%BF%9C%E7%A8%8B%E5%AE%89%E8%A3%85%E6%A8%A1%E5%BC%8F%EF%BC%88%E2%88%9A%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">1.1.3 Hive远程安装模式（√）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E6%89%80%E9%9C%80%E8%BD%AF%E4%BB%B6%E5%90%88%E9%9B%86"><span class="nav-number">2.</span> <span class="nav-text">2.2所需软件合集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%AE%89%E8%A3%85Mysql"><span class="nav-number">3.</span> <span class="nav-text">2.3 安装Mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-%E5%AE%89%E8%A3%85Mysql"><span class="nav-number">3.1.</span> <span class="nav-text">2.3.1 安装Mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E5%90%AF%E5%8A%A8Mysql%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.2.</span> <span class="nav-text">2.3.2 启动Mysql服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-%E4%BF%AE%E6%94%B9Root%E5%AF%86%E7%A0%81"><span class="nav-number">3.3.</span> <span class="nav-text">2.3.3 修改Root密码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-3-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%A6%81%E7%94%A8%E5%AF%86%E7%A0%81%E7%AD%96%E7%95%A5"><span class="nav-number">3.3.1.</span> <span class="nav-text">2.3.3.1 为什么要禁用密码策略</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-4-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E7%A0%81%E4%B8%BAUTF-8"><span class="nav-number">3.4.</span> <span class="nav-text">2.3.4 修改数据库编码为UTF-8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-5-%E6%B7%BB%E5%8A%A0Root%E7%94%A8%E6%88%B7%E7%9A%84%E7%99%BB%E5%BD%95%E6%9D%83%E9%99%90"><span class="nav-number">3.5.</span> <span class="nav-text">2.3.5 添加Root用户的登录权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%AE%89%E8%A3%85Hive"><span class="nav-number">4.</span> <span class="nav-text">2.4 安装Hive</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-%E4%BF%AE%E6%94%B9%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">2.4.2 修改相关配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-2-1-Server%E7%AB%AF%E9%85%8D%E7%BD%AE%EF%BC%88node01%EF%BC%89"><span class="nav-number">4.1.1.</span> <span class="nav-text">2.4.2.1 Server端配置（node01）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-2-2-Client%E7%AB%AF%E9%85%8D%E7%BD%AE%EF%BC%88node02%EF%BC%89"><span class="nav-number">4.1.2.</span> <span class="nav-text">2.4.2.2 Client端配置（node02）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-3-%E6%B7%BB%E5%8A%A0Mysql%E9%A9%B1%E5%8A%A8"><span class="nav-number">4.2.</span> <span class="nav-text">2.4.3 添加Mysql驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-4-%E4%BF%AE%E6%94%B9%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">2.4.4 修改日志文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-5-%E6%A0%BC%E5%BC%8F%E5%8C%96Hive"><span class="nav-number">4.4.</span> <span class="nav-text">2.4.5 格式化Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-6-%E5%90%AF%E5%8A%A8Hive"><span class="nav-number">4.5.</span> <span class="nav-text">2.4.6  启动Hive</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">钉子君</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://nanyu99.gitee.io/2021/03/05/2.Hive%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="钉子君">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="钉子君">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-05 17:19:55" itemprop="dateCreated datePublished" datetime="2021-03-05T17:19:55+08:00">2021-03-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-03 09:42:16" itemprop="dateModified" datetime="2020-12-03T09:42:16+08:00">2020-12-03</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Hive是基于Hadoop的一个数据仓库工具，因此Hive的安装前提必须是Hadoop能够正常运行。</p>
+<h3 id="2-1-Hive安装模式"><a href="#2-1-Hive安装模式" class="headerlink" title="2.1 Hive安装模式"></a>2.1 Hive安装模式</h3><hr>
+
+<blockquote>
+<p>根据<strong>元数据</strong>的位置，将Hive的安装分为三个模式：<strong>内嵌模式、独立模式、远程模式</strong>（最复杂）</p>
+</blockquote>
+<h4 id="1-1-1-Hive内嵌安装模式"><a href="#1-1-1-Hive内嵌安装模式" class="headerlink" title="1.1.1 Hive内嵌安装模式"></a>1.1.1 Hive内嵌安装模式</h4><p>不需要额外安装元数据库，采用Hive默认的Derby数据库，但这种模式有极大的缺陷就在于只允许一个 Hive 会话连接。</p>
+<h4 id="1-1-2-Hive独立安装模式"><a href="#1-1-2-Hive独立安装模式" class="headerlink" title="1.1.2 Hive独立安装模式"></a>1.1.2 Hive独立安装模式</h4><p>一个节点即做服务端，也做客户端。在安装 Hive 的节点上安装一个 MySQL 服务端，并且将 <code>hive.metastore.local</code> 设置为 <code>true</code>，配置 MySQL 地址和用户名密码即可。</p>
+<h4 id="1-1-3-Hive远程安装模式（√）"><a href="#1-1-3-Hive远程安装模式（√）" class="headerlink" title="1.1.3 Hive远程安装模式（√）"></a>1.1.3 Hive远程安装模式（√）</h4><p>将 Hive 服务端与元数据的存储地址分开，元数据直接存储在远程的数据库服务器上即可。</p>
+<p>因此node01 安装 Hive 服务端，node02安装Hive客户端 ，node03 安装 MySQL，以此来实现 Hive 与元数据的解耦操作。</p>
+<h3 id="2-2所需软件合集"><a href="#2-2所需软件合集" class="headerlink" title="2.2所需软件合集"></a>2.2所需软件合集</h3><hr>
+
+<ul>
+<li><p>Mysql:<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">官网下载地址</a></p>
+<p>下载版本如下：</p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2020/11/28/81B76pTmIbGXAgC.png" alt="下载版本"></p>
+<ul>
+<li>Hive：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/apache/hive/">官网下载地址</a></li>
+</ul>
+<p>​        下载版本如下</p>
+<p><img src="https://i.loli.net/2020/11/28/uv1aOwLxbdI6o3B.png" alt="下载版本"></p>
+<h3 id="2-3-安装Mysql"><a href="#2-3-安装Mysql" class="headerlink" title="2.3 安装Mysql"></a>2.3 安装Mysql</h3><hr>
+
+<h4 id="2-3-1-安装Mysql"><a href="#2-3-1-安装Mysql" class="headerlink" title="2.3.1 安装Mysql"></a>2.3.1 安装Mysql</h4><p>下载Mysql，在其中一台节点上安装就行（这里选择在node03上安装Mysql）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1、先卸载node03上的数据库mariadb，不卸载会报错</span></span></span><br><span class="line">[root@node03 ~]# rpm -qa | grep mariadb</span><br><span class="line">mariadb-libs-5.5.65-1.el7.x86_64</span><br><span class="line">[root@node03 ~]# rpm -e --nodeps mariadb-libs-5.5.65-1.el7.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2、安装 net-tools 工具，否则会报缺少依赖的错</span></span></span><br><span class="line">[root@node03 ~]# yum -y install net-tools</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 3、安装 perl,否则会报缺少依赖的错误</span></span></span><br><span class="line">[root@node03 ~]# yum -y install perl</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 4、上传Mysql压缩包到node03上</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 创建一个新的文件夹用于存放安装包</span></span></span><br><span class="line">[root@node03 ~]# mkdir /opt/apps/Mysql</span><br><span class="line">[root@node03 ~]# cd /opt/apps/</span><br><span class="line">[root@node03 apps]# ls</span><br><span class="line">Hadoop  Java  Mysql</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 上传Mysql压缩包到node03的/opt/SoftWare/Mysql目录中</span></span></span><br><span class="line">[root@node03 ~]# cd /opt/SoftWare/Mysql</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 安装上传下载软件</span></span></span><br><span class="line">[root@node03 Mysql]# yum -y install lrzsz</span><br><span class="line">[root@node03 Mysql]# rz</span><br><span class="line">[root@node03 Mysql]# ls</span><br><span class="line">mysql-5.7.32-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 5、解包（并非解压）</span></span></span><br><span class="line">[root@node03 Mysql]# tar -xvf mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar </span><br><span class="line">mysql-community-client-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-common-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-devel-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-embedded-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-embedded-compat-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-embedded-devel-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-libs-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-libs-compat-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-server-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-test-5.7.32-1.el7.x86_64.rpm</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 开始安装，安装的顺序不能乱</span></span></span><br><span class="line">[root@node03 Mysql]# rpm -ivh mysql-community-common-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-common-5.7.32-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-common-5.7.32-1.e################################# [100%]</span><br><span class="line">[root@node03 Mysql]# rpm -ivh mysql-community-libs-5.7.32-1.el7.x86_64.rpm </span><br><span class="line">警告：mysql-community-libs-5.7.32-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-libs-5.7.32-1.el7################################# [100%]</span><br><span class="line">[root@node03 Mysql]# rpm -ivh mysql-community-libs-compat-5.7.32-1.el7.x86_64.rpm </span><br><span class="line">警告：mysql-community-libs-compat-5.7.32-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-libs-compat-5.7.3################################# [100%]</span><br><span class="line">[root@node03 Mysql]# rpm -ivh mysql-community-client-5.7.32-1.el7.x86_64.rpm </span><br><span class="line">警告：mysql-community-client-5.7.32-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-client-5.7.32-1.e################################# [100%]</span><br><span class="line">[root@node03 Mysql]# rpm -ivh mysql-community-server-5.7.32-1.el7.x86_64.rpm </span><br><span class="line">警告：mysql-community-server-5.7.32-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-server-5.7.32-1.e################################# [100%]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-3-2-启动Mysql服务"><a href="#2-3-2-启动Mysql服务" class="headerlink" title="2.3.2 启动Mysql服务"></a>2.3.2 启动Mysql服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1、启动Mysql服务</span></span></span><br><span class="line">[root@node03 Mysql]# systemctl start mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2、查看Mysql状态</span></span></span><br><span class="line">[root@node03 Mysql]# systemctl status mysqld</span><br><span class="line">● mysqld.service - MySQL Server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since 六 2020-11-28 15:12:41 CST; 2min 0s ago</span><br><span class="line">     Docs: man:mysqld(8)</span><br><span class="line">           http://dev.mysql.com/doc/refman/en/using-systemd.html</span><br><span class="line">  Process: 1394 ExecStart=/usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid $MYSQLD_OPTS (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 1345 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 1397 (mysqld)</span><br><span class="line">   CGroup: /system.slice/mysqld.service</span><br><span class="line">           └─1397 /usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid</span><br><span class="line"></span><br><span class="line">11月 28 15:12:36 node03 systemd[1]: Starting MySQL Server...</span><br><span class="line">11月 28 15:12:41 node03 systemd[1]: Started MySQL Server.</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 3、设置开机自启动</span></span></span><br><span class="line">[root@node03 Mysql]# systemctl enable mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 4、删除安装包（节省空间）</span></span></span><br><span class="line">[root@node03 Mysql]# ls</span><br><span class="line">mysql-5.7.32-1.el7.x86_64.rpm-bundle.tar                 mysql-community-embedded-devel-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-client-5.7.32-1.el7.x86_64.rpm           mysql-community-libs-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-common-5.7.32-1.el7.x86_64.rpm           mysql-community-libs-compat-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-devel-5.7.32-1.el7.x86_64.rpm            mysql-community-server-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-embedded-5.7.32-1.el7.x86_64.rpm         mysql-community-test-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">mysql-community-embedded-compat-5.7.32-1.el7.x86_64.rpm</span><br><span class="line">[root@node03 Mysql]# rm -rf mysql-*</span><br><span class="line">[root@node03 Mysql]# ls</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-3-3-修改Root密码"><a href="#2-3-3-修改Root密码" class="headerlink" title="2.3.3 修改Root密码"></a>2.3.3 修改Root密码</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1、 在日志文件中查看mysql的root用户默认密码</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#    如下，默认密码为root@localhost:后面的内容，即：4uNuB5DdiX+X</span></span></span><br><span class="line">[root@node03 Mysql]# grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br><span class="line">2020-11-28T07:12:38.953216Z 1 [Note] A temporary password is generated for root@localhost: 4uNuB5DdiX+X</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2、取消密码检查策略s</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#    修改/etc/my.cnf文件，在文件中添加以下内容以禁用密码策略</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#    validate_password=off（必须手敲，不能拷贝，拷贝会报错）</span></span></span><br><span class="line">[root@node03 Mysql]# vim /etc/my.cnf</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 3、重启Mysql服务</span></span></span><br><span class="line">[root@node03 Mysql]# systemctl restart mysqld</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 4、进入mysql，并输入4uNuB5DdiX+X密码</span></span></span><br><span class="line">[root@node03 Mysql]# mysql -uroot -p</span><br><span class="line">Enter password: 4uNuB5DdiX+X</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 5、修改密码为123456</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;123456&#x27;</span>;</span></span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 6、退出mysql的命令</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> <span class="built_in">exit</span></span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-3-1-为什么要禁用密码策略"><a href="#2-3-3-1-为什么要禁用密码策略" class="headerlink" title="2.3.3.1 为什么要禁用密码策略"></a>2.3.3.1 为什么要禁用密码策略</h5><p>mysql中的密码策略规定，密码不能太过于简单；必须要有大小写；长度必须符合规定等限制。如果没有取消密码策略检查，则在mysql5.7中必然会报错，让你修改密码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 密码策略示意表</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> show variables like <span class="string">&#x27;%password%&#x27;</span>;</span></span><br><span class="line">+----------------------------------------+-----------------+</span><br><span class="line">| Variable_name                          | Value           |</span><br><span class="line">+----------------------------------------+-----------------+</span><br><span class="line">| default_password_lifetime              | 0               |</span><br><span class="line">| disconnect_on_expired_password         | ON              |</span><br><span class="line">| log_builtin_as_identified_by_password  | OFF             |</span><br><span class="line">| mysql_native_password_proxy_users      | OFF             |</span><br><span class="line">| old_passwords                          | 0               |</span><br><span class="line">| report_password                        |                 |</span><br><span class="line">| sha256_password_auto_generate_rsa_keys | ON              |</span><br><span class="line">| sha256_password_private_key_path       | private_key.pem |</span><br><span class="line">| sha256_password_proxy_users            | OFF             |</span><br><span class="line">| sha256_password_public_key_path        | public_key.pem  |</span><br><span class="line">+----------------------------------------+-----------------+</span><br><span class="line">10 rows in set (0.01 sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-3-4-修改数据库编码为UTF-8"><a href="#2-3-4-修改数据库编码为UTF-8" class="headerlink" title="2.3.4 修改数据库编码为UTF-8"></a>2.3.4 修改数据库编码为UTF-8</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 在/etc/my.cnf文件中的添加以下内容</span></span></span><br><span class="line">character_set_server=utf8</span><br><span class="line">init_connect=&#x27;SET NAMES utf8&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-3-5-添加Root用户的登录权限"><a href="#2-3-5-添加Root用户的登录权限" class="headerlink" title="2.3.5 添加Root用户的登录权限"></a>2.3.5 添加Root用户的登录权限</h4><p>默认只允许 root 帐户在本地登录，如果要在其它机器上连接 MySQL，必须修改 root 允许远程连接，或者添加一个允许远程连接的帐户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1. 进入mysql</span></span></span><br><span class="line">[root@master SoftWare]# mysql -uroot -p123456</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2. 修改root的远程访问权限</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#    root代表用户名， %代表任何主机都可以访问， 123456为root访问的密码</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED BY <span class="string">&#x27;123456&#x27;</span> WITH GRANT OPTION;</span> </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 3. flush privileges 刷新MySQL的系统权限，使其即时生效，否则就重启服务器</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> FLUSH PRIVILEGES;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 4. 退出</span></span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> <span class="built_in">exit</span>;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-4-安装Hive"><a href="#2-4-安装Hive" class="headerlink" title="2.4 安装Hive"></a>2.4 安装Hive</h3><hr>
+#### 2.4.1 上传解压Hive压缩包配置环境变量
+
+<p>在node01和node02上都要执行一遍。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1、创建新的目录用于存放Hive安装包</span></span></span><br><span class="line">[root@node01 ~]# mkdir /opt/apps/Hive</span><br><span class="line">[root@node01 ~]# cd /opt/apps</span><br><span class="line">[root@node01 apps]# ls</span><br><span class="line">Hadoop3.1.4  Hive  JDK1.8</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2、上传Hive安装包到Hive文件中</span></span></span><br><span class="line">[root@node01 Hive]# rz</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 3、解压Hive安装包</span></span></span><br><span class="line">[root@node01 Hive]# ls</span><br><span class="line">apache-hive-3.1.2-bin-hadoop-3.1.4.tar.gz</span><br><span class="line">[root@node01 Hive]# tar -zxf apache-hive-3.1.2-bin-hadoop-3.1.4.tar.gz </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 4、重命名文件，方便使用</span></span></span><br><span class="line">[root@node01 Hive]# mv apache-hive-3.1.2-bin hive-3.1.2</span><br><span class="line">[root@node01 Hive]# ls</span><br><span class="line">apache-hive-3.1.2-bin-hadoop-3.1.4.tar.gz   hive-3.1.2</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 5、删除Hive安装包</span></span></span><br><span class="line">[root@node01 Hive]# rm -rf apache-hive-3.1.2-bin-hadoop-3.1.4.tar.gz</span><br><span class="line">[root@node01 Hive]# ls</span><br><span class="line"> hive-3.1.2</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 6、配置环境变量</span></span></span><br><span class="line">[root@node01 Hive]# cd hive-3.1.2/</span><br><span class="line">[root@node01 hive-3.1.2]# pwd</span><br><span class="line">/opt/apps/Hive/hive-3.1.2</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 编辑 profile 文件，添加以下环境变量内容</span></span></span><br><span class="line">[root@node01 hive-2.3.6]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Hive 环境变量</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#Hive</span></span></span><br><span class="line">export HIVE_HOME=/opt/apps/Hive/hive-3.1.2</span><br><span class="line">export PATH=$PATH:$HIVE_HOME/bin</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-4-2-修改相关配置文件"><a href="#2-4-2-修改相关配置文件" class="headerlink" title="2.4.2 修改相关配置文件"></a>2.4.2 修改相关配置文件</h4><h5 id="2-4-2-1-Server端配置（node01）"><a href="#2-4-2-1-Server端配置（node01）" class="headerlink" title="2.4.2.1 Server端配置（node01）"></a>2.4.2.1 Server端配置（node01）</h5><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">## 新建一个conf文件，在里面创建hive-site.xml配置文件，并添加一下内容</span><br><span class="line">[root<span class="meta">@node</span>01 hive<span class="number">-3.1</span><span class="number">.2</span>]# vim conf/hive-site.xml</span><br><span class="line"></span><br><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> standalone=<span class="string">&quot;no&quot;</span>?&gt;</span><br><span class="line">&lt;?xml-stylesheet <span class="class"><span class="keyword">type</span></span>=<span class="string">&quot;text/xsl&quot;</span> href=<span class="string">&quot;configuration.xsl&quot;</span>?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--数据库连接地址，使用<span class="type">MySQL</span>存储元数据信息--&gt;</span><br><span class="line">    &lt;name&gt;javax.jdo.option.<span class="type">ConnectionURL</span>&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;jdbc:mysql:<span class="comment">//node03:3306/metastore?createDatabaseIfNotExist=true&amp;amp;useSSL=false&lt;/value&gt;</span></span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--数据库驱动--&gt;</span><br><span class="line">    &lt;name&gt;javax.jdo.option.<span class="type">ConnectionDriverName</span>&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;com.mysql.jdbc.<span class="type">Driver</span>&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--数据库用户名--&gt;</span><br><span class="line">    &lt;name&gt;javax.jdo.option.<span class="type">ConnectionUserName</span>&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;root&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--密码--&gt;</span><br><span class="line">    &lt;name&gt;javax.jdo.option.<span class="type">ConnectionPassword</span>&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;<span class="number">123456</span>&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--<span class="type">HDFS</span>路径，用于存储不同 map/reduce 阶段的执行计划和这些阶段的中间输出结果。--&gt;</span><br><span class="line">    &lt;name&gt;hive.exec.local.scratchdir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/hive/tmp&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--<span class="type">HDFS</span>路径，本地表的默认位置--&gt;</span><br><span class="line">    &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/hive/warehouse&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--本地路径：<span class="type">Hive</span> 查询日志所在的目录，如果该值为空，将不创建查询日志。--&gt;</span><br><span class="line">    &lt;name&gt;hive.querylog.location&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/tmp/hive/logs&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;property&gt;&lt;!--本地路径：<span class="type">Hive</span>操作日志--&gt;</span><br><span class="line">    &lt;name&gt;hive.server2.logging.operation.log.location&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/tmp/hive/logs&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;property&gt;&lt;!--本地路径：远程资源下载的临时目录--&gt;</span><br><span class="line">    &lt;name&gt;hive.downloaded.resources.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/tmp/hive/resources&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;</span><br><span class="line">    &lt;!-- hiveserver2用户名 --&gt;</span><br><span class="line">    &lt;name&gt;beeline.hs2.connection.user&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;root&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;property&gt;</span><br><span class="line">    &lt;!-- hiveserver2密码 --&gt;</span><br><span class="line">    &lt;name&gt;beeline.hs2.connection.password&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;<span class="number">123456</span>&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-4-2-2-Client端配置（node02）"><a href="#2-4-2-2-Client端配置（node02）" class="headerlink" title="2.4.2.2 Client端配置（node02）"></a>2.4.2.2 Client端配置（node02）</h5><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">## 新建一个conf文件，在里面创建hive-site.xml配置文件，并添加一下内容</span><br><span class="line">[root<span class="meta">@node</span>02 hive<span class="number">-2.3</span><span class="number">.6</span>]# vi conf/hive-site.xml</span><br><span class="line"></span><br><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> standalone=<span class="string">&quot;no&quot;</span>?&gt;</span><br><span class="line">&lt;?xml-stylesheet <span class="class"><span class="keyword">type</span></span>=<span class="string">&quot;text/xsl&quot;</span> href=<span class="string">&quot;configuration.xsl&quot;</span>?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--这里配置的是否启用本地服务器连接<span class="type">Hive</span>，这里我们是客户端和服务端分开的一个配置，所以这里设置为<span class="literal">false</span>.--&gt;</span><br><span class="line">    &lt;name&gt;hive.metastore.local&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;<span class="literal">false</span>&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--<span class="type">HDFS</span>路径，用于存储不同 map/reduce 阶段的执行计划和这些阶段的中间输出结果。--&gt;</span><br><span class="line">    &lt;name&gt;hive.exec.local.scratchdir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/hive/tmp&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--本地表的默认位置--&gt;</span><br><span class="line">    &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/hive/warehouse&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">  &lt;property&gt;&lt;!--<span class="type">Hive</span>连接到该<span class="type">URI</span>请求远程元存储的元数据--&gt;</span><br><span class="line">    &lt;name&gt;hive.metastore.uris&lt;/name&gt; </span><br><span class="line">    &lt;value&gt;thrift:<span class="comment">//node01:9083&lt;/value&gt;</span></span><br><span class="line">  &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;property&gt;&lt;!--本地路径：<span class="type">Hive</span> 查询日志所在的目录，如果该值为空，将不创建查询日志。--&gt;</span><br><span class="line">    &lt;name&gt;hive.querylog.location&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/tmp/hive/logs&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;property&gt;&lt;!--本地路径：<span class="type">Hive</span>操作日志--&gt;</span><br><span class="line">    &lt;name&gt;hive.server2.logging.operation.log.location&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/tmp/hive/logs&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;property&gt;&lt;!--本地路径：远程资源下载的临时目录--&gt;</span><br><span class="line">    &lt;name&gt;hive.downloaded.resources.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/tmp/hive/resources&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;property&gt;&lt;!--显示当前所使用的数据库--&gt;</span><br><span class="line">    &lt;name&gt;hive.cli.print.current.db&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;<span class="literal">true</span>&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;property&gt;&lt;!--显示表头--&gt;</span><br><span class="line">    &lt;name&gt;hive.cli.print.header&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;<span class="literal">true</span>&lt;/value&gt;</span><br><span class="line">  &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-4-3-添加Mysql驱动"><a href="#2-4-3-添加Mysql驱动" class="headerlink" title="2.4.3 添加Mysql驱动"></a>2.4.3 添加Mysql驱动</h4><p>服务端（node01）与客户端（node02）都需要将驱动jar包上传至lib目录下</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## 上传驱动jar包到lib目录下</span><br><span class="line">[root<span class="meta">@node</span>02 hive<span class="number">-3.1</span><span class="number">.2</span>]# cd lib/</span><br><span class="line">[root<span class="meta">@node</span>02 lib]# rz -<span class="type">E</span></span><br><span class="line">rz waiting to receive.</span><br><span class="line">[root<span class="meta">@node</span>02 lib]# ls mysql-*</span><br><span class="line">mysql-connector-java<span class="number">-5.1</span><span class="number">.49</span>.jar  mysql-metadata-storage<span class="number">-0.12</span><span class="number">.0</span>.jar</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-4-4-修改日志文件"><a href="#2-4-4-修改日志文件" class="headerlink" title="2.4.4 修改日志文件"></a>2.4.4 修改日志文件</h4><p>Hive 的 log 默认存放在 /tmp/root/hive.log目录下（当前用户名下），可以对其进行修改，两台节点均需要配置</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## 重新复制一份log4j配置文件，从<span class="type">Hive</span> <span class="number">2.1</span><span class="number">.0</span> 开始，使用的是log4j2。</span><br><span class="line">[root<span class="meta">@node</span>01 hive<span class="number">-3.1</span><span class="number">.2</span>]# cp conf/hive-log4j2.properties.template conf/hive-log4j2.properties</span><br><span class="line">[root<span class="meta">@node</span>01 hive<span class="number">-3.1</span><span class="number">.2</span>]# vi conf/hive-log4j2.properties</span><br><span class="line">## 修改下面的内容</span><br><span class="line">property.hive.log.dir = /opt/apps/hive<span class="number">-3.1</span><span class="number">.2</span>/logs</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-4-5-格式化Hive"><a href="#2-4-5-格式化Hive" class="headerlink" title="2.4.5 格式化Hive"></a>2.4.5 格式化Hive</h4><p>先修改Hadoop的相关配置，否则会报错。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">## <span class="number">1.</span> 修改 <span class="type">Hadoop</span> 中的 core-site.xml 配置文件</span><br><span class="line">[root<span class="meta">@node</span>01 <span class="type">Hive</span>]# vi /opt/<span class="type">SoftWare</span>/<span class="type">Hadoop</span>/hadoop<span class="number">-2.7</span><span class="number">.7</span>/etc/hadoop/core-site.xml</span><br><span class="line">## 添加以下内容</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.proxyuser.root.groups&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;root&lt;/value&gt;</span><br><span class="line">    &lt;description&gt;<span class="type">Allow</span> the superuser oozie to impersonate any members of the group group1 and group2 &lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.proxyuser.root.hosts&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;*&lt;/value&gt;</span><br><span class="line">    &lt;description&gt;<span class="type">The</span> superuser can connect only from host1 and host2 to impersonate a user&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在node01上格式化Hive</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="meta">@node</span>01 hive<span class="number">-2.3</span><span class="number">.6</span>]# schematool -initSchema -dbType mysql</span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">Class</span> path contains multiple <span class="type">SLF4J</span> bindings.</span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">Found</span> binding in [jar:file:/opt/<span class="type">SoftWare</span>/<span class="type">Hive</span>/hive<span class="number">-2.3</span><span class="number">.6</span>/lib/log4j-slf4j-impl<span class="number">-2.6</span><span class="number">.2</span>.jar!/org/slf4j/impl/<span class="type">StaticLoggerBinder</span>.<span class="keyword">class</span>]</span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">Found</span> binding in [jar:file:/opt/<span class="type">SoftWare</span>/<span class="type">Hadoop</span>/hadoop<span class="number">-2.7</span><span class="number">.7</span>/share/hadoop/common/lib/slf4j-log4j12<span class="number">-1.7</span><span class="number">.10</span>.jar!/org/slf4j/impl/<span class="type">StaticLoggerBinder</span>.<span class="keyword">class</span>]</span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">See</span> http:<span class="comment">//www.slf4j.org/codes.html#multiple_bindings for an explanation.</span></span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">Actual</span> binding is of <span class="class"><span class="keyword">type</span> [org.apache.logging.slf4j.<span class="type">Log4jLoggerFactory</span>]</span></span><br><span class="line"><span class="class"><span class="title">Metastore</span> <span class="title">connection</span> <span class="title">URL</span></span>:     jdbc:mysql:<span class="comment">//node03:3306/metastore?createDatabaseIfNotExist=true&amp;useSSL=false</span></span><br><span class="line"><span class="type">Metastore</span> <span class="type">Connection</span> <span class="type">Driver</span> :     com.mysql.jdbc.<span class="type">Driver</span></span><br><span class="line"><span class="type">Metastore</span> connection <span class="type">User</span>:     root</span><br><span class="line"><span class="type">Starting</span> metastore schema initialization to <span class="number">2.3</span><span class="number">.0</span></span><br><span class="line"><span class="type">Initialization</span> script hive-schema<span class="number">-2.3</span><span class="number">.0</span>.mysql.sql</span><br><span class="line"><span class="type">Initialization</span> script completed</span><br><span class="line">schemaTool completed</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-4-6-启动Hive"><a href="#2-4-6-启动Hive" class="headerlink" title="2.4.6  启动Hive"></a>2.4.6  启动Hive</h4><p>两种方式区别</p>
+<ul>
+<li><p>方式一：只要是支持Jdbc的，都能连接（支持的是Jdbc协议）</p>
+</li>
+<li><p>方式二：必须使用hive客户端才能连接（支持的是thrift协议）</p>
+</li>
+</ul>
+<p>先启动Hadoop集群</p>
+<p>启动方法1</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1. 启动服务端  将启动时的结果输出到null中（扔掉） &amp;表示后台运行，在前台不显示</span></span></span><br><span class="line">[root@node01 hive-3.1.2]# hiveserver2 &gt; /dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2. 查询服务端进程 ID</span></span></span><br><span class="line">[root@node01 hive-3.1.2]# ps -aux| grep hiveserver2</span><br><span class="line">root      13931  1.0 11.1 2344932 431620 pts/0  Sl   00:10   0:16</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 3. 停止服务端【这里暂时不操作，关闭 Hive 的时候操作】</span></span></span><br><span class="line">[root@node01 hive-3.1.2]# kill -9 13931</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#4.先关闭Hadoop集群的安全模式</span></span></span><br><span class="line">[root@node01 ~]# hdfs dfsadmin -safemode leave   //集群退出安全模式</span><br><span class="line">Safe mode is OFF</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 5. 启动客户端</span></span></span><br><span class="line">[root@node02 hive-3.1.2]# beeline -u jdbc:hive2://node01:10000 -n root -p 123456</span><br><span class="line">0: jdbc:hive2://node01:10000&gt; show tables;</span><br><span class="line">+-----------+</span><br><span class="line">| tab_name  |</span><br><span class="line">+-----------+ |</span><br><span class="line">+-----------+</span><br><span class="line">1 row selected (0.616 seconds)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>启动方法2</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1. 启动服务端</span></span></span><br><span class="line">[root@node01 hive-2.3.6]# hive --service metastore &gt; /dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2. 查看服务端进程 ID</span></span></span><br><span class="line">[root@node01 hive-2.3.6]# ps -aux| grep metastore</span><br><span class="line">root      14342  5.5  8.9 2297776 345508 pts/0  Sl   01:18   0:09</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 3. 杀死服务进程</span></span></span><br><span class="line">[root@node01 hive-2.3.6]# kill -9 14342</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 4. 启动客户端</span></span></span><br><span class="line">[root@node02 hive-2.3.6]# hive</span><br><span class="line">hive (default)&gt; show tables;</span><br><span class="line">OK</span><br><span class="line">tab_name</span><br><span class="line">student2</span><br><span class="line">Time taken: 0.755 seconds, Fetched: 1 row(s)</span><br><span class="line">hive (default)&gt; exit;</span><br></pre></td></tr></table></figure>
+
+<p>启动方法3</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">## <span class="number">1.</span> 启动服务端</span><br><span class="line">[root<span class="meta">@node</span>01 hive<span class="number">-2.3</span><span class="number">.6</span>]# hive --service metastore &gt; /dev/<span class="literal">null</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span> &amp;</span><br><span class="line">## <span class="number">2.</span> 查看服务端进程 <span class="type">ID</span></span><br><span class="line">[root<span class="meta">@node</span>01 hive<span class="number">-2.3</span><span class="number">.6</span>]# ps -aux| grep metastore</span><br><span class="line">root      <span class="number">14342</span>  <span class="number">5.5</span>  <span class="number">8.9</span> <span class="number">2297776</span> <span class="number">345508</span> pts/<span class="number">0</span>  <span class="type">Sl</span>   <span class="number">01</span>:<span class="number">18</span>   <span class="number">0</span>:<span class="number">09</span></span><br><span class="line">## <span class="number">3.</span> 杀死服务进程</span><br><span class="line">[root<span class="meta">@node</span>01 hive<span class="number">-2.3</span><span class="number">.6</span>]# kill <span class="number">-9</span> <span class="number">14342</span></span><br><span class="line">## <span class="number">4.</span> 启动客户端（用的比较多的方法，因为可以写脚本）</span><br><span class="line">[root<span class="meta">@node</span>02 hive<span class="number">-2.3</span><span class="number">.6</span>]# hive -e <span class="string">&quot;show tables;&quot;</span></span><br><span class="line">which: no hbase in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/<span class="type">SoftWare</span>/<span class="type">Java</span>/jdk1<span class="number">.8</span><span class="number">.0</span>_212/bin:/opt/<span class="type">SoftWare</span>/<span class="type">Java</span>/jdk1<span class="number">.8</span><span class="number">.0</span>_212/jre/bin:/opt/<span class="type">SoftWare</span>/<span class="type">Hadoop</span>/hadoop<span class="number">-2.7</span><span class="number">.7</span>/bin:/opt/<span class="type">SoftWare</span>/<span class="type">Hadoop</span>/hadoop<span class="number">-2.7</span><span class="number">.7</span>/sbin:/root/bin:/opt/<span class="type">SoftWare</span>/<span class="type">Java</span>/jdk1<span class="number">.8</span><span class="number">.0</span>_212/bin:/opt/<span class="type">SoftWare</span>/<span class="type">Java</span>/jdk1<span class="number">.8</span><span class="number">.0</span>_212/jre/bin:/opt/<span class="type">SoftWare</span>/<span class="type">Hadoop</span>/hadoop<span class="number">-2.7</span><span class="number">.7</span>/bin:/opt/<span class="type">SoftWare</span>/<span class="type">Hadoop</span>/hadoop<span class="number">-2.7</span><span class="number">.7</span>/sbin:/opt/<span class="type">SoftWare</span>/<span class="type">Hive</span>/hive<span class="number">-2.3</span><span class="number">.6</span>/bin)</span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">Class</span> path contains multiple <span class="type">SLF4J</span> bindings.</span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">Found</span> binding in [jar:file:/opt/<span class="type">SoftWare</span>/<span class="type">Hive</span>/hive<span class="number">-2.3</span><span class="number">.6</span>/lib/log4j-slf4j-impl<span class="number">-2.6</span><span class="number">.2</span>.jar!/org/slf4j/impl/<span class="type">StaticLoggerBinder</span>.<span class="keyword">class</span>]</span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">Found</span> binding in [jar:file:/opt/<span class="type">SoftWare</span>/<span class="type">Hadoop</span>/hadoop<span class="number">-2.7</span><span class="number">.7</span>/share/hadoop/common/lib/slf4j-log4j12<span class="number">-1.7</span><span class="number">.10</span>.jar!/org/slf4j/impl/<span class="type">StaticLoggerBinder</span>.<span class="keyword">class</span>]</span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">See</span> http:<span class="comment">//www.slf4j.org/codes.html#multiple_bindings for an explanation.</span></span><br><span class="line"><span class="type">SLF4J</span>: <span class="type">Actual</span> binding is of <span class="class"><span class="keyword">type</span> [org.apache.logging.slf4j.<span class="type">Log4jLoggerFactory</span>]</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">Logging</span> <span class="title">initialized</span> <span class="title">using</span> <span class="title">configuration</span> <span class="title">in</span> <span class="title">file</span></span>:/opt/<span class="type">SoftWare</span>/<span class="type">Hive</span>/hive<span class="number">-2.3</span><span class="number">.6</span>/conf/hive-log4j2.properties <span class="type">Async</span>: <span class="literal">true</span></span><br><span class="line"><span class="type">OK</span></span><br><span class="line">tab_name</span><br><span class="line">student2</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">1.274</span> seconds, <span class="type">Fetched</span>: <span class="number">1</span> row(s)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/05/1.Hive%E5%85%A5%E9%97%A8/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/05/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">钉子君</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
