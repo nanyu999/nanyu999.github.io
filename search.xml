@@ -1,52 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>1.计算机基础部分</title>
-    <url>/2021/03/02/1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</url>
-    <content><![CDATA[<h3 id="1-1-计算机基础"><a href="#1-1-计算机基础" class="headerlink" title="1.1 计算机基础"></a>1.1 计算机基础</h3><hr>
-
-<p>计算机可分为硬件、软件两种。其中硬件是看得见摸得着的，比如键盘、鼠标、硬盘等。软件是摸不着的，比如系统软件、应用软件。</p>
-<p>系统软件包括：Windows、Linux、IOS</p>
-<p>应用软件包括：QQ、微信、谷歌浏览器、英雄联盟等。</p>
-<p>其中软件是在硬件的基础上运行的。</p>
-<img src="https://i.loli.net/2020/12/15/c7uE8QnpJWoizlk.jpg" style="zoom: 50%;" />
-
-
-
-<p><strong>程序在电脑上的运行过程:</strong></p>
-<ul>
-<li><p>当打开某个文件时，CPU不会直接从硬盘中取文件，而是先从硬盘中加载程序的代码到内存中去。</p>
-</li>
-<li><p>CPU执行内存中的代码。</p>
-</li>
-</ul>
-<p><strong>电脑这样做的原因:</strong><br>CPU读取数据是非常快的，而硬盘的速度则非常慢，如果只从硬盘中读取数据的话，会大大浪费CPU的性能，因此CPU选择读取速度更快的内存。 </p>
-<h3 id="2-2-计算机语言"><a href="#2-2-计算机语言" class="headerlink" title="2.2 计算机语言"></a>2.2 计算机语言</h3><hr>
-
-<p>计算机语言可以分为三种:<strong>机器语言、汇编语言、高级语言。</strong></p>
-<ul>
-<li><p><strong>机器语言</strong>:计算机能最终执行的，它是由0、1组成的二进制数，二进制是计算机的基础。</p>
-</li>
-<li><p><strong>汇编语言</strong>:汇编语言本质上与机器语言相同，都是直接对硬件进行操作，只不过汇编语言的指令采用了特殊的英语缩写标识，更容易被记忆和识别。</p>
-</li>
-<li><p><strong>高级语言</strong>:主要相对于低级需要来说的，他不是一种具体的语言，而是由许多编程语言组成，比如java、c、go语言、javascript、python等。</p>
-</li>
-</ul>
-<p>高级语言相对来说更适合人类编写，但计算机所能够识别的语言只有0、1构成的机器语言，因此计算机不能直接识别人类所编写的高级语言。这时就需要一种中间物体，能够将人类所写的高级语言转换为计算机所能识别的机器语言，这个中间物体就是**<font color=red>解释器</font>**，比如java所依赖的JVM上就有java解释器</p>
-<p><strong>编程语言与标记语言的区别：</strong></p>
-<ul>
-<li>编程语言:有很强的逻辑性，是主动的，比如在编程语言里会有大量的if else ,for ,while等。</li>
-<li>标记语言(Html):不用于向计算机发出指令，常用于格式化和链接，标记语言的存在是被读取的，是被动的。 </li>
-</ul>
-]]></content>
-      <categories>
-        <category>编程</category>
-      </categories>
-      <tags>
-        <tag>JS入门</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>1.Hive入门</title>
     <url>/2021/03/02/1.Hive%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h3 id="1-1-Hive-是什么"><a href="#1-1-Hive-是什么" class="headerlink" title="1.1 Hive 是什么"></a>1.1 Hive 是什么</h3><hr>
@@ -97,6 +51,52 @@ Hive 简化了 MapReduce 的开发难度，只要会 SQL，不需要去实现底
       </categories>
       <tags>
         <tag>Hive编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1.计算机基础部分</title>
+    <url>/2021/03/02/1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</url>
+    <content><![CDATA[<h3 id="1-1-计算机基础"><a href="#1-1-计算机基础" class="headerlink" title="1.1 计算机基础"></a>1.1 计算机基础</h3><hr>
+
+<p>计算机可分为硬件、软件两种。其中硬件是看得见摸得着的，比如键盘、鼠标、硬盘等。软件是摸不着的，比如系统软件、应用软件。</p>
+<p>系统软件包括：Windows、Linux、IOS</p>
+<p>应用软件包括：QQ、微信、谷歌浏览器、英雄联盟等。</p>
+<p>其中软件是在硬件的基础上运行的。</p>
+<img src="https://i.loli.net/2020/12/15/c7uE8QnpJWoizlk.jpg" style="zoom: 50%;" />
+
+
+
+<p><strong>程序在电脑上的运行过程:</strong></p>
+<ul>
+<li><p>当打开某个文件时，CPU不会直接从硬盘中取文件，而是先从硬盘中加载程序的代码到内存中去。</p>
+</li>
+<li><p>CPU执行内存中的代码。</p>
+</li>
+</ul>
+<p><strong>电脑这样做的原因:</strong><br>CPU读取数据是非常快的，而硬盘的速度则非常慢，如果只从硬盘中读取数据的话，会大大浪费CPU的性能，因此CPU选择读取速度更快的内存。 </p>
+<h3 id="2-2-计算机语言"><a href="#2-2-计算机语言" class="headerlink" title="2.2 计算机语言"></a>2.2 计算机语言</h3><hr>
+
+<p>计算机语言可以分为三种:<strong>机器语言、汇编语言、高级语言。</strong></p>
+<ul>
+<li><p><strong>机器语言</strong>:计算机能最终执行的，它是由0、1组成的二进制数，二进制是计算机的基础。</p>
+</li>
+<li><p><strong>汇编语言</strong>:汇编语言本质上与机器语言相同，都是直接对硬件进行操作，只不过汇编语言的指令采用了特殊的英语缩写标识，更容易被记忆和识别。</p>
+</li>
+<li><p><strong>高级语言</strong>:主要相对于低级需要来说的，他不是一种具体的语言，而是由许多编程语言组成，比如java、c、go语言、javascript、python等。</p>
+</li>
+</ul>
+<p>高级语言相对来说更适合人类编写，但计算机所能够识别的语言只有0、1构成的机器语言，因此计算机不能直接识别人类所编写的高级语言。这时就需要一种中间物体，能够将人类所写的高级语言转换为计算机所能识别的机器语言，这个中间物体就是**<font color=red>解释器</font>**，比如java所依赖的JVM上就有java解释器</p>
+<p><strong>编程语言与标记语言的区别：</strong></p>
+<ul>
+<li>编程语言:有很强的逻辑性，是主动的，比如在编程语言里会有大量的if else ,for ,while等。</li>
+<li>标记语言(Html):不用于向计算机发出指令，常用于格式化和链接，标记语言的存在是被读取的，是被动的。 </li>
+</ul>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>JS入门</tag>
       </tags>
   </entry>
   <entry>
