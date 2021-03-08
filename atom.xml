@@ -3,11 +3,11 @@
   <title>钉子君</title>
   
   <subtitle>等你很久了</subtitle>
-  <link href="http://nanyu99.gitee.io/atom.xml" rel="self"/>
+  <link href="http://dingzijun.top/atom.xml" rel="self"/>
   
-  <link href="http://nanyu99.gitee.io/"/>
+  <link href="http://dingzijun.top/"/>
   <updated>2021-03-06T15:50:14.200Z</updated>
-  <id>http://nanyu99.gitee.io/</id>
+  <id>http://dingzijun.top/</id>
   
   <author>
     <name>南雨</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>1.Hive入门</title>
-    <link href="http://nanyu99.gitee.io/2021/03/02/1.hive-ru-men/"/>
-    <id>http://nanyu99.gitee.io/2021/03/02/1.hive-ru-men/</id>
+    <link href="http://dingzijun.top/2021/03/02/1.hive-ru-men/"/>
+    <id>http://dingzijun.top/2021/03/02/1.hive-ru-men/</id>
     <published>2021-03-02T10:24:42.000Z</published>
     <updated>2021-03-06T15:50:14.200Z</updated>
     
@@ -28,17 +28,17 @@
     
     
     
-    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="http://dingzijun.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="Hive编程" scheme="http://nanyu99.gitee.io/tags/Hive%E7%BC%96%E7%A8%8B/"/>
+    <category term="Hive编程" scheme="http://dingzijun.top/tags/Hive%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>1.计算机基础部分</title>
-    <link href="http://nanyu99.gitee.io/2021/03/02/1.ji-suan-ji-ji-chu-bu-fen/"/>
-    <id>http://nanyu99.gitee.io/2021/03/02/1.ji-suan-ji-ji-chu-bu-fen/</id>
+    <link href="http://dingzijun.top/2021/03/02/1.ji-suan-ji-ji-chu-bu-fen/"/>
+    <id>http://dingzijun.top/2021/03/02/1.ji-suan-ji-ji-chu-bu-fen/</id>
     <published>2021-03-02T10:24:42.000Z</published>
     <updated>2021-03-06T15:50:40.444Z</updated>
     
@@ -47,17 +47,17 @@
     
     
     
-    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="http://dingzijun.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="JS入门" scheme="http://nanyu99.gitee.io/tags/JS%E5%85%A5%E9%97%A8/"/>
+    <category term="JS入门" scheme="http://dingzijun.top/tags/JS%E5%85%A5%E9%97%A8/"/>
     
   </entry>
   
   <entry>
     <title>我的第一篇博客文章</title>
-    <link href="http://nanyu99.gitee.io/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/"/>
-    <id>http://nanyu99.gitee.io/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/</id>
+    <link href="http://dingzijun.top/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/"/>
+    <id>http://dingzijun.top/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/</id>
     <published>2021-03-02T10:24:42.000Z</published>
     <updated>2021-03-02T10:27:46.584Z</updated>
     
@@ -78,8 +78,8 @@
   
   <entry>
     <title>2.Hive环境配置</title>
-    <link href="http://nanyu99.gitee.io/2021/03/02/2.hive-huan-jing-pei-zhi/"/>
-    <id>http://nanyu99.gitee.io/2021/03/02/2.hive-huan-jing-pei-zhi/</id>
+    <link href="http://dingzijun.top/2021/03/02/2.hive-huan-jing-pei-zhi/"/>
+    <id>http://dingzijun.top/2021/03/02/2.hive-huan-jing-pei-zhi/</id>
     <published>2021-03-02T10:24:42.000Z</published>
     <updated>2021-03-06T15:50:46.737Z</updated>
     
@@ -88,17 +88,17 @@
     
     
     
-    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="http://dingzijun.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="Hive编程" scheme="http://nanyu99.gitee.io/tags/Hive%E7%BC%96%E7%A8%8B/"/>
+    <category term="Hive编程" scheme="http://dingzijun.top/tags/Hive%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>3.Hive基本命令</title>
-    <link href="http://nanyu99.gitee.io/2021/03/02/3.hive-ji-ben-ming-ling/"/>
-    <id>http://nanyu99.gitee.io/2021/03/02/3.hive-ji-ben-ming-ling/</id>
+    <link href="http://dingzijun.top/2021/03/02/3.hive-ji-ben-ming-ling/"/>
+    <id>http://dingzijun.top/2021/03/02/3.hive-ji-ben-ming-ling/</id>
     <published>2021-03-02T10:24:42.000Z</published>
     <updated>2021-03-06T15:51:44.666Z</updated>
     
@@ -107,17 +107,17 @@
     
     
     
-    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="http://dingzijun.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="Hive编程" scheme="http://nanyu99.gitee.io/tags/Hive%E7%BC%96%E7%A8%8B/"/>
+    <category term="Hive编程" scheme="http://dingzijun.top/tags/Hive%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>2.JS学习</title>
-    <link href="http://nanyu99.gitee.io/2021/03/02/2.js-xue-xi/"/>
-    <id>http://nanyu99.gitee.io/2021/03/02/2.js-xue-xi/</id>
+    <link href="http://dingzijun.top/2021/03/02/2.js-xue-xi/"/>
+    <id>http://dingzijun.top/2021/03/02/2.js-xue-xi/</id>
     <published>2021-03-02T10:24:42.000Z</published>
     <updated>2021-03-06T15:50:59.045Z</updated>
     
@@ -126,10 +126,10 @@
     
     
     
-    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="http://dingzijun.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="JS" scheme="http://nanyu99.gitee.io/tags/JS/"/>
+    <category term="JS" scheme="http://dingzijun.top/tags/JS/"/>
     
   </entry>
   
