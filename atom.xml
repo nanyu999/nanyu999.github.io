@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>钉子君</title>
+  
+  <subtitle>等你很久了</subtitle>
+  <link href="http://nanyu99.gitee.io/atom.xml" rel="self"/>
+  
+  <link href="http://nanyu99.gitee.io/"/>
+  <updated>2021-03-06T15:50:14.200Z</updated>
+  <id>http://nanyu99.gitee.io/</id>
+  
+  <author>
+    <name>南雨</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1.Hive入门</title>
+    <link href="http://nanyu99.gitee.io/2021/03/02/1.hive-ru-men/"/>
+    <id>http://nanyu99.gitee.io/2021/03/02/1.hive-ru-men/</id>
+    <published>2021-03-02T10:24:42.000Z</published>
+    <updated>2021-03-06T15:50:14.200Z</updated>
+    
+    
+    <summary type="html">Hive入门，点我进入阅读吧</summary>
+    
+    
+    
+    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="Hive编程" scheme="http://nanyu99.gitee.io/tags/Hive%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1.计算机基础部分</title>
+    <link href="http://nanyu99.gitee.io/2021/03/02/1.ji-suan-ji-ji-chu-bu-fen/"/>
+    <id>http://nanyu99.gitee.io/2021/03/02/1.ji-suan-ji-ji-chu-bu-fen/</id>
+    <published>2021-03-02T10:24:42.000Z</published>
+    <updated>2021-03-06T15:50:40.444Z</updated>
+    
+    
+    <summary type="html">计算机基础部分，点我进入阅读</summary>
+    
+    
+    
+    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="JS入门" scheme="http://nanyu99.gitee.io/tags/JS%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一篇博客文章</title>
+    <link href="http://nanyu99.gitee.io/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/"/>
+    <id>http://nanyu99.gitee.io/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/</id>
+    <published>2021-03-02T10:24:42.000Z</published>
+    <updated>2021-03-02T10:27:46.584Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h2&gt;&lt;p&gt;你好呀&lt;/p&gt;
+&lt;h2 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2.Hive环境配置</title>
+    <link href="http://nanyu99.gitee.io/2021/03/02/2.hive-huan-jing-pei-zhi/"/>
+    <id>http://nanyu99.gitee.io/2021/03/02/2.hive-huan-jing-pei-zhi/</id>
+    <published>2021-03-02T10:24:42.000Z</published>
+    <updated>2021-03-06T15:50:46.737Z</updated>
+    
+    
+    <summary type="html">Hive环境配置，点我进入阅读</summary>
+    
+    
+    
+    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="Hive编程" scheme="http://nanyu99.gitee.io/tags/Hive%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3.Hive基本命令</title>
+    <link href="http://nanyu99.gitee.io/2021/03/02/3.hive-ji-ben-ming-ling/"/>
+    <id>http://nanyu99.gitee.io/2021/03/02/3.hive-ji-ben-ming-ling/</id>
+    <published>2021-03-02T10:24:42.000Z</published>
+    <updated>2021-03-06T15:51:44.666Z</updated>
+    
+    
+    <summary type="html">Hive基本命令，点我进入阅读吧</summary>
+    
+    
+    
+    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="Hive编程" scheme="http://nanyu99.gitee.io/tags/Hive%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2.JS学习</title>
+    <link href="http://nanyu99.gitee.io/2021/03/02/2.js-xue-xi/"/>
+    <id>http://nanyu99.gitee.io/2021/03/02/2.js-xue-xi/</id>
+    <published>2021-03-02T10:24:42.000Z</published>
+    <updated>2021-03-06T15:50:59.045Z</updated>
+    
+    
+    <summary type="html">JS学习，点我进入阅读</summary>
+    
+    
+    
+    <category term="编程" scheme="http://nanyu99.gitee.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="JS" scheme="http://nanyu99.gitee.io/tags/JS/"/>
+    
+  </entry>
+  
+</feed>

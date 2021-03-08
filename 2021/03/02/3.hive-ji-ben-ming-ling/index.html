@@ -29,7 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="钉子君" type="application/atom+xml">
+</head>
 
 
 
@@ -466,6 +469,11 @@
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    15 分
+                </div>
+                
 
                 
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
@@ -568,18 +576,18 @@ teaceher
 <ul>
 <li>退出hive客户端命令（非beeline模式下）</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token keyword">exit</span><span class="token punctuation">;</span> 
-hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">></span>quit<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token keyword">exit</span><span class="token punctuation">;</span> 
+hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>quit<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ul>
 <li>退出hive客户端命令（beeline模式下）</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token operator">!</span>quit<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token operator">!</span>quit<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>通过客户端用命令行来查看HDFS的文件系统</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive <span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">></span> dfs <span class="token operator">-</span>ls <span class="token operator">/</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive <span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span> dfs <span class="token operator">-</span>ls <span class="token operator">/</span><span class="token punctuation">;</span>
 Found <span class="token number">4</span> items
 drwxr<span class="token operator">-</span>xr<span class="token operator">-</span>x   <span class="token operator">-</span> root supergroup          <span class="token number">0</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">12</span><span class="token operator">-</span><span class="token number">06</span> <span class="token number">20</span>:<span class="token number">09</span> <span class="token operator">/</span><span class="token keyword">data</span>
 drwxr<span class="token operator">-</span>xr<span class="token operator">-</span>x   <span class="token operator">-</span> root supergroup          <span class="token number">0</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">12</span><span class="token operator">-</span><span class="token number">02</span> <span class="token number">12</span>:<span class="token number">53</span> <span class="token operator">/</span>hive
@@ -589,7 +597,7 @@ drwxrwxrwx   <span class="token operator">-</span> root supergroup          <spa
 <ul>
 <li>查看本地的文件系统（即虚拟机上的文件系统）</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive <span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token operator">!</span> ls <span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token punctuation">;</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive <span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span> <span class="token operator">!</span> ls <span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token punctuation">;</span>
 <span class="token keyword">data</span>
 hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span>
 hive<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.2</span>
@@ -742,13 +750,13 @@ student3<span class="token punctuation">.</span>sno	student3<span class="token p
 
 
 
-<h5 id="3-6-4-创建外部表"><a href="#3-6-4-创建外部表" class="headerlink" title="3.6.4 创建外部表"></a>3.6.4 创建外部表</h5><p>外部表的创建与内部表没什么区别，只不过是在创建时要加上一个**<font color=red>external</font>**关键字即可。</p>
+<h5 id="3-6-4-创建外部表"><a href="#3-6-4-创建外部表" class="headerlink" title="3.6.4 创建外部表"></a>3.6.4 创建外部表</h5><p>外部表的创建与内部表没什么区别，只不过是在创建时要加上一个**<font color="red">external</font>**关键字即可。</p>
 <pre class="line-numbers language-Sql" data-language="Sql"><code class="language-Sql">create external table  tea(
     stuid int,
     stuname string,
     stuage int
 )
-row format delimited fields terminated by &#39;\t&#39;;	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+row format delimited fields terminated by '\t';	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>加载数据到表中</li>
@@ -910,11 +918,11 @@ Total jobs <span class="token operator">=</span> <span class="token number">3</s
 Launching Job <span class="token number">1</span> <span class="token keyword">out</span> <span class="token keyword">of</span> <span class="token number">3</span>
 Number <span class="token keyword">of</span> reduce tasks <span class="token operator">not</span> specified<span class="token punctuation">.</span> Estimated <span class="token keyword">from</span> input <span class="token keyword">data</span> size: <span class="token number">1</span>
 <span class="token operator">In</span> <span class="token keyword">order</span> <span class="token keyword">to</span> change the average <span class="token keyword">load</span> <span class="token keyword">for</span> a reducer <span class="token punctuation">(</span><span class="token operator">in</span> bytes<span class="token punctuation">)</span>:
-  <span class="token keyword">set</span> hive<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">.</span>reducers<span class="token punctuation">.</span>bytes<span class="token punctuation">.</span>per<span class="token punctuation">.</span>reducer<span class="token operator">=</span><span class="token operator">&lt;</span>number<span class="token operator">></span>
+  <span class="token keyword">set</span> hive<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">.</span>reducers<span class="token punctuation">.</span>bytes<span class="token punctuation">.</span>per<span class="token punctuation">.</span>reducer<span class="token operator">=</span><span class="token operator">&lt;</span>number<span class="token operator">&gt;</span>
 <span class="token operator">In</span> <span class="token keyword">order</span> <span class="token keyword">to</span> <span class="token keyword">limit</span> the maximum number <span class="token keyword">of</span> reducers:
-  <span class="token keyword">set</span> hive<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">.</span>reducers<span class="token punctuation">.</span>max<span class="token operator">=</span><span class="token operator">&lt;</span>number<span class="token operator">></span>
+  <span class="token keyword">set</span> hive<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">.</span>reducers<span class="token punctuation">.</span>max<span class="token operator">=</span><span class="token operator">&lt;</span>number<span class="token operator">&gt;</span>
 <span class="token operator">In</span> <span class="token keyword">order</span> <span class="token keyword">to</span> <span class="token keyword">set</span> a constant number <span class="token keyword">of</span> reducers:
-  <span class="token keyword">set</span> mapreduce<span class="token punctuation">.</span>job<span class="token punctuation">.</span>reduces<span class="token operator">=</span><span class="token operator">&lt;</span>number<span class="token operator">></span>
+  <span class="token keyword">set</span> mapreduce<span class="token punctuation">.</span>job<span class="token punctuation">.</span>reduces<span class="token operator">=</span><span class="token operator">&lt;</span>number<span class="token operator">&gt;</span>
 <span class="token keyword">Starting</span> Job <span class="token operator">=</span> job_1608280545793_0001<span class="token punctuation">,</span> Tracking URL <span class="token operator">=</span> http:<span class="token comment">//node02:8088/proxy/application_1608280545793_0001/</span>
 <span class="token keyword">Kill</span> Command <span class="token operator">=</span> <span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span><span class="token operator">/</span>bin<span class="token operator">/</span>mapred job  <span class="token operator">-</span><span class="token keyword">kill</span> job_1608280545793_0001
 Hadoop job information <span class="token keyword">for</span> Stage<span class="token operator">-</span><span class="token number">1</span>: number <span class="token keyword">of</span> mappers: <span class="token number">0</span><span class="token punctuation">;</span> number <span class="token keyword">of</span> reducers: <span class="token number">0</span>
@@ -967,7 +975,7 @@ Total MapReduce CPU <span class="token keyword">Time</span> Spent: <span class="
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://nanyu99.gitee.io/2021/03/02/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">http://nanyu99.gitee.io/2021/03/02/3.Hive%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</a>
+                    <a href="http://nanyu99.gitee.io/2021/03/02/3.hive-ji-ben-ming-ling/">http://nanyu99.gitee.io/2021/03/02/3.hive-ji-ben-ming-ling/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1128,7 +1136,7 @@ Total MapReduce CPU <span class="token keyword">Time</span> Spent: <span class="
     <div id="rewardModal" class="modal">
         <div class="modal-content">
             <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <h4 class="reward-title">请作者喝杯可乐吧！</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
                     <ul class="tabs row">
@@ -1180,7 +1188,7 @@ Total MapReduce CPU <span class="token keyword">Time</span> Spent: <span class="
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/02/2.Hive%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+                <a href="/2021/03/02/2.hive-huan-jing-pei-zhi/">
                     <div class="card-image">
                         
                         
@@ -1229,7 +1237,7 @@ Total MapReduce CPU <span class="token keyword">Time</span> Spent: <span class="
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/02/2.JS%E5%AD%A6%E4%B9%A0/">
+                <a href="/2021/03/02/2.js-xue-xi/">
                     <div class="card-image">
                         
                         
@@ -1571,7 +1579,7 @@ Total MapReduce CPU <span class="token keyword">Time</span> Spent: <span class="
         <div class="col s12 m4 l4 social-link social-statis">
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:2567019819@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
