@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dingzijun.top/2021/03/10/navicat-ji-huo/</loc>
+    
+    <lastmod>2021-03-10</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://dingzijun.top/404/index.html</loc>
     
     <lastmod>2021-03-08</lastmod>
@@ -59,6 +66,27 @@
   </url>
 
   
+  <url>
+    <loc>http://dingzijun.top/tags/Navicat%E6%BF%80%E6%B4%BB/</loc>
+    <lastmod>2021-03-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://dingzijun.top/tags/Navicat/</loc>
+    <lastmod>2021-03-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>http://dingzijun.top/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-03-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
 </urlset>
