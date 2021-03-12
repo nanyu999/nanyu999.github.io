@@ -6,7 +6,7 @@
   <link href="https://dingzijun.top/atom.xml" rel="self"/>
   
   <link href="https://dingzijun.top/"/>
-  <updated>2021-03-10T10:38:14.229Z</updated>
+  <updated>2021-03-12T12:28:40.213Z</updated>
   <id>https://dingzijun.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hive入门</title>
+    <link href="https://dingzijun.top/2021/03/12/hive-ru-men/"/>
+    <id>https://dingzijun.top/2021/03/12/hive-ru-men/</id>
+    <published>2021-03-12T11:55:18.000Z</published>
+    <updated>2021-03-12T12:28:40.213Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;1-1-Hive-是什么&quot;&gt;&lt;a href=&quot;#1-1-Hive-是什么&quot; class=&quot;headerlink&quot; title=&quot;1.1 Hive 是什么&quot;&gt;&lt;/a&gt;1.1 Hive</summary>
+        
+      
+    
+    
+    
+    <category term="编程学习" scheme="https://dingzijun.top/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Hive" scheme="https://dingzijun.top/tags/Hive/"/>
+    
+  </entry>
   
   <entry>
     <title>Navicat快速激活</title>
