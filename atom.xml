@@ -6,7 +6,7 @@
   <link href="https://dingzijun.top/atom.xml" rel="self"/>
   
   <link href="https://dingzijun.top/"/>
-  <updated>2021-03-12T12:28:40.213Z</updated>
+  <updated>2021-03-16T10:26:51.872Z</updated>
   <id>https://dingzijun.top/</id>
   
   <author>
@@ -17,11 +17,63 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hive入门</title>
+    <title>3.Hive基本命令</title>
+    <link href="https://dingzijun.top/hive-ji-ben-ming-ling-yi.html"/>
+    <id>https://dingzijun.top/hive-ji-ben-ming-ling-yi.html</id>
+    <published>2021-03-16T10:19:06.000Z</published>
+    <updated>2021-03-16T10:26:51.872Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;3-1-Beeline命令&quot;&gt;&lt;a href=&quot;#3-1-Beeline命令&quot; class=&quot;headerlink&quot; title=&quot;3.1 Beeline命令&quot;&gt;&lt;/a&gt;3.1 Beeline命令&lt;/h3&gt;&lt;hr&gt;
+Beeline是 Hive</summary>
+        
+      
+    
+    
+    
+    <category term="编程学习" scheme="https://dingzijun.top/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Hive" scheme="https://dingzijun.top/tags/Hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2.Hive环境配置</title>
+    <link href="https://dingzijun.top/hive-huan-jing-pei-zhi.html"/>
+    <id>https://dingzijun.top/hive-huan-jing-pei-zhi.html</id>
+    <published>2021-03-16T10:01:14.000Z</published>
+    <updated>2021-03-16T10:26:50.667Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Hive是基于Hadoop的一个数据仓库工具，因此Hive的安装前提必须是Hadoop能够正常运行。&lt;/p&gt;
+&lt;h3 id=&quot;2-1-Hive安装模式&quot;&gt;&lt;a href=&quot;#2-1-Hive安装模式&quot; class=&quot;headerlink&quot; title=&quot;2.1</summary>
+        
+      
+    
+    
+    
+    <category term="编程学习" scheme="https://dingzijun.top/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Hive" scheme="https://dingzijun.top/tags/Hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1.Hive入门</title>
     <link href="https://dingzijun.top/hive-ru-men.html"/>
     <id>https://dingzijun.top/hive-ru-men.html</id>
     <published>2021-03-12T11:55:18.000Z</published>
-    <updated>2021-03-12T12:28:40.213Z</updated>
+    <updated>2021-03-16T10:26:52.661Z</updated>
     
     
       
@@ -46,7 +98,7 @@
     <link href="https://dingzijun.top/navicat-ji-huo.html"/>
     <id>https://dingzijun.top/navicat-ji-huo.html</id>
     <published>2021-03-10T05:51:18.000Z</published>
-    <updated>2021-03-10T10:38:14.229Z</updated>
+    <updated>2021-03-16T10:27:13.011Z</updated>
     
     
       
@@ -67,28 +119,6 @@
     <category term="Navicat激活" scheme="https://dingzijun.top/tags/Navicat%E6%BF%80%E6%B4%BB/"/>
     
     <category term="Navicat" scheme="https://dingzijun.top/tags/Navicat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的第一篇博客文章</title>
-    <link href="https://dingzijun.top/wo-de-di-yi-pian-bo-ke-wen-zhang.html"/>
-    <id>https://dingzijun.top/wo-de-di-yi-pian-bo-ke-wen-zhang.html</id>
-    <published>2021-03-02T10:24:42.000Z</published>
-    <updated>2021-03-02T10:27:46.584Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h2&gt;&lt;p&gt;你好呀&lt;/p&gt;
-&lt;h2 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
