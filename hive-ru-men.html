@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="我的第一篇博客文章, 编程，随笔，大数据，分布式，Python，Java，JS，学习笔记">
+    <meta name="keywords" content="Hive">
     <meta name="description" content="个人学习笔记、优秀资源分享网站">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>我的第一篇博客文章 | 钉子君</title>
+    <title>Hive入门 | 钉子君</title>
     <link rel="icon" type="image/jpeg" href="https://ae03.alicdn.com/kf/Ubce3d8100cab48a7b5dbc3317974bd2fz.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -246,12 +246,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://ae04.alicdn.com/kf/U61671aacd4354d5ab7bf54e53243166fA.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">我的第一篇博客文章</h1>
+                    <h1 class="description center-align post-title">Hive入门</h1>
                 </div>
             </div>
         </div>
@@ -365,12 +365,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Hive/">
+                                <span class="chip bg-color">Hive</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                编程学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -379,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-02
+                    2021-03-12
                 </div>
                 
 
@@ -388,14 +401,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    19
+                    822
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -418,10 +431,51 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>你好呀</p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>随便说说啦</p>
-<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><p>再见</p>
+                <h3 id="1-1-Hive-是什么"><a href="#1-1-Hive-是什么" class="headerlink" title="1.1 Hive 是什么"></a>1.1 Hive 是什么</h3><hr>
+Hive是领英公司开发，是基于Hadoop的一个开源<font color="red">数据仓库</font>工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的sql查询功能，可以将sql语句转换为MapReduce任务进行运行，需要注意的是，Hive并不是数据库。
 
+
+
+<blockquote>
+<p><strong>数据仓库：</strong>数据仓库注重存储、查询数据（并不注重对数据的查删改等操作）</p>
+<p> <strong>数据库：</strong>数据库注重管理数据，比如对数据的增删改查等操作。</p>
+<p><strong>Mysql\Oracle:</strong> 数据库管理软件。</p>
+</blockquote>
+<p>Hive 提供了一系列的工具，可以用来进行数据的提取、转换和加载【ETL】，是一种可以<strong>存储</strong>、<strong>查询</strong>和分析存储在 Hadoop中的大规模数据的架构体系。</p>
+<h3 id="1-2-为什么要有Hive"><a href="#1-2-为什么要有Hive" class="headerlink" title="1.2 为什么要有Hive"></a>1.2 为什么要有Hive</h3><hr>
+
+<p>Hive 简化了 MapReduce 的开发难度，只要会 SQL，不需要去实现底层Map Reduce代码，就能快速的上手 </p>
+<p>Hive，通过简单的 SQL 语句就能实现复杂的 MapReduce 所能达到的功能。（通过简单的Sql语句，即可实现</p>
+<p>MapReduce大多数功能）</p>
+<h3 id="1-3-Hive的优点"><a href="#1-3-Hive的优点" class="headerlink" title="1.3 Hive的优点"></a>1.3 Hive的优点</h3><hr>
+
+<ul>
+<li><p>简单容易上手操作接口采用类 SQL 语法，提供快速开发的能力。</p>
+</li>
+<li><p>学习成本低避免了去写MapReduce，减少开发人员的学习成本。</p>
+</li>
+<li><p>可扩展Hive 可以自由扩展集群规模，一般情况下不需要重启服务</p>
+</li>
+<li><p>延展性Hive支持用户自定义函数，用户可以根据自己的需求来实现自己的函数</p>
+</li>
+<li><p>容错性良好的容错性，即使节点出现问题 SQL 仍能够正常完成</p>
+</li>
+</ul>
+<h3 id="1-4-Hive的缺点"><a href="#1-4-Hive的缺点" class="headerlink" title="1.4 Hive的缺点"></a>1.4 Hive的缺点</h3><hr>
+
+<ul>
+<li><p>Hive 的 HQL 表达能力有限迭代式算法无法表达，比如 pagerank 。数据挖掘方面，比如 k-means .</p>
+</li>
+<li><p>Hive 的效率比较低Hive 自动生成的 MapReduce 作业，通常情况下不够智能化</p>
+</li>
+<li><p>Hive 调优比较困难，粒度较粗</p>
+</li>
+<li><p>Hive 可控性差</p>
+</li>
+</ul>
+<h3 id="1-5-Hive与传统数据库的比较"><a href="#1-5-Hive与传统数据库的比较" class="headerlink" title="1.5 Hive与传统数据库的比较"></a>1.5 Hive与传统数据库的比较</h3><hr>
+<br>
+<table><thead><tr><th>项目</th> <th>Hive</th> <th>传统数据库</th></tr></thead> <tbody><tr><td>查询语言</td> <td>HiveQL</td> <td>SQL</td></tr> <tr><td>存储</td> <td>HDFS【理论上无限存储】</td> <td>存储有限，随着容量增加，计算速度急剧下降</td></tr> <tr><td>执行引擎</td> <td>依赖于 MR/Spark框架，无法进行良好的性能优化</td> <td>可以选择更加有效的算法执行查询，以此提高执行效率</td></tr> <tr><td>灵活性</td> <td>元数据独立存储，数据存储在HDFS上，耦合度降低</td> <td>数据用途单一，耦合度高</td></tr> <tr><td>执行效率</td> <td>在大数据情况下，执行效率远远高于传统数据库</td> <td>在少量数据情况下，比较快</td></tr> <tr><td>延迟性</td> <td>高</td> <td>低</td></tr> <tr><td>数据加载模式</td> <td>读时模式</td> <td>写时模式</td></tr> <tr><td>数据操作</td> <td>数据覆盖追加</td> <td>行级更新删除</td></tr> <tr><td>索引</td> <td>0.7.0版本后加入，索引比较简单</td> <td>复杂索引</td></tr> <tr><td>事务</td> <td>支持，只能对数据库和表设置锁</td> <td>完全支持，具备完善的事务机制</td></tr> <tr><td>可靠性</td> <td>借助于 HDFS 数据有备份</td> <td>需要设置数据库的热备，以防止丢失</td></tr> <tr><td>基本环境</td> <td></td> <td></td></tr> <tr><td>应用场景</td> <td>大规模数据分析查询</td> <td>小规模数据的实时查询</td></tr> <tr><td>费用</td> <td>开源，免费</td> <td>商业应用，收费较高</td></tr></tbody></table>
                 
             </div>
             <hr/>
@@ -447,7 +501,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dingzijun.top/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/">https://dingzijun.top/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/</a>
+                    <a href="https://dingzijun.top/hive-ru-men.html">https://dingzijun.top/hive-ru-men.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -484,7 +538,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Hive/">
+                                    <span class="chip bg-color">Hive</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -652,11 +710,61 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/10/navicat-ji-huo/">
+                <a href="/hive-ru-men.html">
+                    <div class="card-image">
+                        
+                        <img src="https://ae04.alicdn.com/kf/U61671aacd4354d5ab7bf54e53243166fA.jpg" class="responsive-img" alt="Hive入门">
+                        
+                        <span class="card-title">Hive入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            简单介绍Hive，Hive优缺点，Hive与传统数据库的区别。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    编程学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hive/">
+                        <span class="chip bg-color">Hive</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/navicat-ji-huo.html">
                     <div class="card-image">
                         
                         <img src="https://ae02.alicdn.com/kf/U45fbdac60e634092b28cca889d85ba08i.jpg" class="responsive-img" alt="Navicat快速激活">
@@ -671,9 +779,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -698,44 +806,6 @@
                     </a>
                     
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/03/02/wo-de-di-yi-pian-bo-ke-wen-zhang/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="我的第一篇博客文章">
-                        
-                        <span class="card-title">我的第一篇博客文章</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-02
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            南雨
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>
