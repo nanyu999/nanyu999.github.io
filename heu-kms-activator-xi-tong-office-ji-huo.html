@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hive">
+    <meta name="keywords" content="Win10激活,office激活,系统激活">
     <meta name="description" content="个人学习笔记、优秀资源分享网站">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -19,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>3.Hive基本命令 | 钉子君</title>
+    <title>HEU KMS Activator系统/Office激活 | 钉子君</title>
     <link rel="icon" type="image/jpeg" href="https://ae03.alicdn.com/kf/Ubce3d8100cab48a7b5dbc3317974bd2fz.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -249,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://ae04.alicdn.com/kf/U0d5ee9ded72742f9abe9f10a86590f609.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://gitee.com/nanyu99/picgo/raw/master/image/24.jpg.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">3.Hive基本命令</h1>
+                    <h1 class="description center-align post-title">HEU KMS Activator系统/Office激活</h1>
                 </div>
             </div>
         </div>
@@ -370,8 +370,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Hive/">
-                                <span class="chip bg-color">Hive</span>
+                            <a href="/tags/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/">
+                                <span class="chip bg-color">好软推荐</span>
                             </a>
                         
                     </div>
@@ -382,8 +382,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                编程学习
+                            <a href="/categories/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/" class="post-category">
+                                好软推荐
                             </a>
                         
                     </div>
@@ -395,7 +395,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-16
+                    2021-03-24
                 </div>
                 
 
@@ -404,14 +404,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    452
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
 
@@ -434,132 +434,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="3-1-Beeline命令"><a href="#3-1-Beeline命令" class="headerlink" title="3.1 Beeline命令"></a>3.1 Beeline命令</h3><hr>
-Beeline是 Hive 0.11版本引入的新命令行客户端工具,基于SQLLine CLI的JDBC客户端。
+                <p>经常重装系统的小伙伴应该知道，每次重装完系统之后都要重新激活系统和Office，但正版激活序列一般较贵，所以很多人喜欢在某购物平台上买激活序列。</p>
 
-<p>Beeline支持内嵌模式(embedded mode)和远程模式(remote mode)。在嵌入式模式下，运行嵌入式的Hive(类似Hive CLI)，而远程模式可以通过Thrift连接到独立的HiveServer2进程上。从Hive 0.14版本开始，Beeline使用HiveServer2工作时，它也会从HiveServer2输出日志信息到STDERR。</p>
-<ul>
-<li><strong>Hive的三种安装方式</strong></li>
-</ul>
-<blockquote>
-<p>内嵌模式：不需要额外安装元数据库，采用的是Hive默认的Derby数据库，但这种模式有极大的缺陷就在于只允许一个 Hive 会话连接。</p>
-<p>独立模式：在安装 Hive 的节点上安装一个 MySQL 服务端，并且将 <code>hive.metastore.local</code> 设置为 <code>true</code></p>
-<p>远程模式：将 Hive 服务端与元数据的存储地址分开，元数据直接存储在远程的数据库服务器上即可。因此这里我们采用的是 node01 安装 Hive 服务端，而node03 安装 MySQL，以此来实现 Hive 与元数据的解耦操作。</p>
-</blockquote>
-<p>Beeline和其他工具有一些不同，执行查询都是正常的SQL输入。</p>
-<ul>
-<li><p>create databases;【创建数据库】</p>
-</li>
-<li><p>select * from table_name;【查询表】</p>
-</li>
-</ul>
-<p>但是如果是一些管理的命令，比如进行连接，中断，退出，执行Beeline命令需要带上“!”，不需要终止符。</p>
-<ul>
-<li><strong>!connect url</strong> 【连接不同的Hive2服务器】</li>
-<li><strong>!exit</strong> 【退出shell】</li>
-<li><strong>!help</strong> 【显示全部命令列表】</li>
-<li><strong>!verbose</strong> 【显示查询追加的明细】</li>
-</ul>
-<h3 id="3-2-hive-e"><a href="#3-2-hive-e" class="headerlink" title="3.2 hive  -e"></a>3.2 hive  -e</h3><hr>
+<p>其实，除了购买激活序列，还有一种方式可以激活系统和Office，即使用KMS激活，这也是微软官方认可的一种系统激活方式，它的激活命令是由微软官方提供、官方可查询。</p>
 
-<p>不用进入交互窗口就能执行数据库相关命令</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">[</span>root<span class="token variable">@node02</span> <span class="token operator">~</span><span class="token punctuation">]</span><span class="token comment"># hive -e "show databases";</span>
-<span class="token comment">## 以下是结果</span>
-which: <span class="token keyword">no</span> hbase <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token operator">/</span>usr<span class="token operator">/</span><span class="token keyword">local</span><span class="token operator">/</span>sbin:<span class="token operator">/</span>usr<span class="token operator">/</span><span class="token keyword">local</span><span class="token operator">/</span>bin:<span class="token operator">/</span>usr<span class="token operator">/</span>sbin:<span class="token operator">/</span>usr<span class="token operator">/</span>bin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>jdk1<span class="token punctuation">.</span><span class="token number">8.0</span>_261<span class="token operator">/</span>bin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>jdk1<span class="token punctuation">.</span><span class="token number">8.0</span>_261<span class="token operator">/</span>jre<span class="token operator">/</span>bin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span><span class="token operator">/</span>bin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span><span class="token operator">/</span>sbin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hive<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.2</span><span class="token operator">/</span>bin:<span class="token operator">/</span>root<span class="token operator">/</span>bin<span class="token punctuation">)</span>
-SLF4J: Class path <span class="token keyword">contains</span> multiple SLF4J bindings<span class="token punctuation">.</span>
-SLF4J: Found binding <span class="token operator">in</span> <span class="token punctuation">[</span>jar:<span class="token keyword">file</span>:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hive<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.2</span><span class="token operator">/</span>lib<span class="token operator">/</span>log4j<span class="token operator">-</span>slf4j<span class="token operator">-</span>impl<span class="token operator">-</span><span class="token number">2.10</span><span class="token number">.0</span><span class="token punctuation">.</span>jar<span class="token operator">!</span><span class="token operator">/</span>org<span class="token operator">/</span>slf4j<span class="token operator">/</span>impl<span class="token operator">/</span>StaticLoggerBinder<span class="token punctuation">.</span>class<span class="token punctuation">]</span>
-SLF4J: Found binding <span class="token operator">in</span> <span class="token punctuation">[</span>jar:<span class="token keyword">file</span>:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span><span class="token operator">/</span><span class="token keyword">share</span><span class="token operator">/</span>hadoop<span class="token operator">/</span>common<span class="token operator">/</span>lib<span class="token operator">/</span>slf4j<span class="token operator">-</span>log4j12<span class="token operator">-</span><span class="token number">1.7</span><span class="token number">.25</span><span class="token punctuation">.</span>jar<span class="token operator">!</span><span class="token operator">/</span>org<span class="token operator">/</span>slf4j<span class="token operator">/</span>impl<span class="token operator">/</span>StaticLoggerBinder<span class="token punctuation">.</span>class<span class="token punctuation">]</span>
-SLF4J: See http:<span class="token comment">//www.slf4j.org/codes.html#multiple_bindings for an explanation.</span>
-SLF4J: Actual binding <span class="token operator">is</span> <span class="token keyword">of</span> <span class="token keyword">type</span> <span class="token punctuation">[</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>logging<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Log4jLoggerFactory<span class="token punctuation">]</span>
-Hive <span class="token keyword">Session</span> ID <span class="token operator">=</span> e308f3e6<span class="token operator">-</span><span class="token number">6</span>cac<span class="token operator">-</span><span class="token number">4</span>e85<span class="token operator">-</span>b4a1<span class="token operator">-</span><span class="token number">2</span>f53376dc53c
+<p>而今天小钉分享的这款，是由大神知彼而知己开发，多年来备受好评，多年前曾开放源码。这款软件激活成功率高、安全无毒、无捆绑后门、可断网激活。
+</p>
 
-Logging initialized <span class="token keyword">using</span> configuration <span class="token operator">in</span> <span class="token keyword">file</span>:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hive<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.2</span><span class="token operator">/</span>conf<span class="token operator">/</span>hive<span class="token operator">-</span>log4j2<span class="token punctuation">.</span>properties Async: <span class="token boolean">true</span>
-Hive <span class="token keyword">Session</span> ID <span class="token operator">=</span> <span class="token number">2</span>b23427f<span class="token operator">-</span><span class="token number">3062</span><span class="token operator">-</span><span class="token number">4</span>ad0<span class="token operator">-</span>a6e4<span class="token operator">-</span><span class="token number">5</span>c51159af89d
-OK
-database_name
-<span class="token keyword">default</span>
-student
-teaceher
-<span class="token keyword">Time</span> taken: <span class="token number">3.745</span> seconds<span class="token punctuation">,</span> Fetched: <span class="token number">3</span> <span class="token keyword">row</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="软件介绍"><a href="#软件介绍" class="headerlink" title="#软件介绍"></a>#软件介绍</h3><p>软件名称:<b> HEU KMS Activator </b><br>软件大小：7.1M<br>适用系统：Win<br>下载地址：见文末<br></p>
+<p>虽然软件安全无毒，但杀毒软件会误报，所以如果出现误报，请先关闭杀毒软件。</p>
 
 
 
-<h3 id="3-3-hive-f"><a href="#3-3-hive-f" class="headerlink" title="3.3 hive -f"></a>3.3 hive -f</h3><hr>
+<p>如果当前系统还没有激活，软件可以识别最佳的激活方式。</p>
 
-<p>不用进入交互窗口，用<code>vim</code>或<code>vi</code>创建一个文件，写入一些sql命令，通过hive -f 即可执行。</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">[</span>root<span class="token variable">@node02</span> apps<span class="token punctuation">]</span><span class="token comment"># vim hive.sql</span>
-<span class="token comment">## 文件中的内容</span>
-<span class="token keyword">show</span> <span class="token keyword">databases</span><span class="token punctuation">;</span>
-<span class="token comment">## 以下是执行结果</span>
-<span class="token punctuation">[</span>root<span class="token variable">@node02</span> apps<span class="token punctuation">]</span><span class="token comment"># hive -f hive.sql</span>
-which: <span class="token keyword">no</span> hbase <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token operator">/</span>usr<span class="token operator">/</span><span class="token keyword">local</span><span class="token operator">/</span>sbin:<span class="token operator">/</span>usr<span class="token operator">/</span><span class="token keyword">local</span><span class="token operator">/</span>bin:<span class="token operator">/</span>usr<span class="token operator">/</span>sbin:<span class="token operator">/</span>usr<span class="token operator">/</span>bin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>jdk1<span class="token punctuation">.</span><span class="token number">8.0</span>_261<span class="token operator">/</span>bin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>jdk1<span class="token punctuation">.</span><span class="token number">8.0</span>_261<span class="token operator">/</span>jre<span class="token operator">/</span>bin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span><span class="token operator">/</span>bin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span><span class="token operator">/</span>sbin:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hive<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.2</span><span class="token operator">/</span>bin:<span class="token operator">/</span>root<span class="token operator">/</span>bin<span class="token punctuation">)</span>
-SLF4J: Class path <span class="token keyword">contains</span> multiple SLF4J bindings<span class="token punctuation">.</span>
-SLF4J: Found binding <span class="token operator">in</span> <span class="token punctuation">[</span>jar:<span class="token keyword">file</span>:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hive<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.2</span><span class="token operator">/</span>lib<span class="token operator">/</span>log4j<span class="token operator">-</span>slf4j<span class="token operator">-</span>impl<span class="token operator">-</span><span class="token number">2.10</span><span class="token number">.0</span><span class="token punctuation">.</span>jar<span class="token operator">!</span><span class="token operator">/</span>org<span class="token operator">/</span>slf4j<span class="token operator">/</span>impl<span class="token operator">/</span>StaticLoggerBinder<span class="token punctuation">.</span>class<span class="token punctuation">]</span>
-SLF4J: Found binding <span class="token operator">in</span> <span class="token punctuation">[</span>jar:<span class="token keyword">file</span>:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span><span class="token operator">/</span><span class="token keyword">share</span><span class="token operator">/</span>hadoop<span class="token operator">/</span>common<span class="token operator">/</span>lib<span class="token operator">/</span>slf4j<span class="token operator">-</span>log4j12<span class="token operator">-</span><span class="token number">1.7</span><span class="token number">.25</span><span class="token punctuation">.</span>jar<span class="token operator">!</span><span class="token operator">/</span>org<span class="token operator">/</span>slf4j<span class="token operator">/</span>impl<span class="token operator">/</span>StaticLoggerBinder<span class="token punctuation">.</span>class<span class="token punctuation">]</span>
-SLF4J: See http:<span class="token comment">//www.slf4j.org/codes.html#multiple_bindings for an explanation.</span>
-SLF4J: Actual binding <span class="token operator">is</span> <span class="token keyword">of</span> <span class="token keyword">type</span> <span class="token punctuation">[</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>logging<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Log4jLoggerFactory<span class="token punctuation">]</span>
-Hive <span class="token keyword">Session</span> ID <span class="token operator">=</span> <span class="token number">1</span>bf5a42e<span class="token operator">-</span>f5e7<span class="token operator">-</span><span class="token number">4</span>bd4<span class="token operator">-</span><span class="token number">87</span>cb<span class="token operator">-</span>a5d8aa719c62
+<img src="https://gitee.com/nanyu99/picgo/raw/master/image/mmexport1616574986985.jpg" style="zoom:67%;">
 
-Logging initialized <span class="token keyword">using</span> configuration <span class="token operator">in</span> <span class="token keyword">file</span>:<span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token operator">/</span>hive<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.2</span><span class="token operator">/</span>conf<span class="token operator">/</span>hive<span class="token operator">-</span>log4j2<span class="token punctuation">.</span>properties Async: <span class="token boolean">true</span>
-Hive <span class="token keyword">Session</span> ID <span class="token operator">=</span> <span class="token number">1</span>fe787c1<span class="token operator">-</span>bac7<span class="token operator">-</span><span class="token number">42</span>bf<span class="token operator">-</span><span class="token number">9</span>cb6<span class="token operator">-</span><span class="token number">2254</span>f95fab17
-OK
-database_name
-<span class="token keyword">default</span>
-student
-teaceher
-<span class="token keyword">Time</span> taken: <span class="token number">3.399</span> seconds<span class="token punctuation">,</span> Fetched: <span class="token number">3</span> <span class="token keyword">row</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>同时软件可检测系统系统是否已经激活，如果已经激活也可重置激活。</p>
 
+<img src="https://gitee.com/nanyu99/picgo/raw/master/image/mmexport1616574990958.jpg" style="zoom:67%;">
 
+<p>可使用KMS激活方式来激活系统或激活Office。</p>
 
-<h3 id="3-4-其他命令"><a href="#3-4-其他命令" class="headerlink" title="3.4 其他命令"></a>3.4 其他命令</h3><hr>
+<img src="https://gitee.com/nanyu99/picgo/raw/master/image/mmexport1616574993498.jpg" style="zoom:67%;">
 
-<ul>
-<li>退出hive客户端命令（非beeline模式下）</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token keyword">exit</span><span class="token punctuation">;</span> 
-hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>quit<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>也可以使用数字许可证激活方式或KMS38方式激活系统。</p>
 
-<ul>
-<li>退出hive客户端命令（beeline模式下）</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive<span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token operator">!</span>quit<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<img src="https://gitee.com/nanyu99/picgo/raw/master/image/mmexport1616574996330.jpg" style="zoom:67%;">
 
-<ul>
-<li>通过客户端用命令行来查看HDFS的文件系统</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive <span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span> dfs <span class="token operator">-</span>ls <span class="token operator">/</span><span class="token punctuation">;</span>
-Found <span class="token number">4</span> items
-drwxr<span class="token operator">-</span>xr<span class="token operator">-</span>x   <span class="token operator">-</span> root supergroup          <span class="token number">0</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">12</span><span class="token operator">-</span><span class="token number">06</span> <span class="token number">20</span>:<span class="token number">09</span> <span class="token operator">/</span><span class="token keyword">data</span>
-drwxr<span class="token operator">-</span>xr<span class="token operator">-</span>x   <span class="token operator">-</span> root supergroup          <span class="token number">0</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">12</span><span class="token operator">-</span><span class="token number">02</span> <span class="token number">12</span>:<span class="token number">53</span> <span class="token operator">/</span>hive
-drwxr<span class="token operator">-</span>xr<span class="token operator">-</span>x   <span class="token operator">-</span> root supergroup          <span class="token number">0</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">11</span><span class="token operator">-</span><span class="token number">03</span> <span class="token number">16</span>:<span class="token number">42</span> <span class="token operator">/</span>system
-drwxrwxrwx   <span class="token operator">-</span> root supergroup          <span class="token number">0</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">11</span><span class="token operator">-</span><span class="token number">28</span> <span class="token number">19</span>:<span class="token number">04</span> <span class="token operator">/</span>tmp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最近的版本又新增了OEM激活方式。</p>
 
-<ul>
-<li>查看本地的文件系统（即虚拟机上的文件系统）</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">hive <span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token operator">&gt;</span> <span class="token operator">!</span> ls <span class="token operator">/</span>opt<span class="token operator">/</span>apps<span class="token punctuation">;</span>
-<span class="token keyword">data</span>
-hadoop<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.4</span>
-hive<span class="token operator">-</span><span class="token number">3.1</span><span class="token number">.2</span>
-hive<span class="token punctuation">.</span><span class="token keyword">sql</span>
-jdk1<span class="token punctuation">.</span><span class="token number">8.0</span>_261<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="https://gitee.com/nanyu99/picgo/raw/master/image/mmexport1616574998966.jpg" style="zoom:67%;">
 
-<ul>
-<li>查看历史记录(即hive客户端的操作记录)</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">## 必须进入主目录才行</span>
-<span class="token punctuation">[</span>root<span class="token variable">@node02</span> apps<span class="token punctuation">]</span><span class="token comment"># cat .hivehistory</span>
-cat: <span class="token punctuation">.</span>hivehistory: 没有那个文件或目录
-<span class="token punctuation">[</span>root<span class="token variable">@node02</span> apps<span class="token punctuation">]</span><span class="token comment"># cd ~</span>
-<span class="token punctuation">[</span>root<span class="token variable">@node02</span> <span class="token operator">~</span><span class="token punctuation">]</span><span class="token comment"># cat .hivehistory</span>
-<span class="token keyword">exit</span><span class="token punctuation">;</span>
-<span class="token keyword">show</span> <span class="token keyword">tables</span><span class="token punctuation">;</span>
-<span class="token keyword">exit</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br>
 
+<img src="https://gitee.com/nanyu99/picgo/raw/master/image/mmexport1616575001704.jpg" style="zoom:67%;">
 
+<p>软件作者开设的也有微信公众号，名叫：知彼而知己，有兴趣的可以去作者的公众号看看哦。</p>
 
-<p>以上是Hive的一些简单命令，下一篇文章会介绍Hive的一些HQL语句，简单介绍HQL的DDL、DDL、DML、UDF 四种类型。</p>
+<p>今天的分享就到这啦，有需要的小伙伴建议收藏起来，暂时用不到的也可以收藏起来，有备无患~</p>
 
+<h3 id="软件下载"><a href="#软件下载" class="headerlink" title="#软件下载"></a>#软件下载</h3><br>
+
+<p><a target="_blank" rel="noopener" href="https://nanyu.lanzous.com/ifgJgn4m13i">点我下载</a></p>
+<center>欢迎关注微信公众号：钉子君</center>
+
+<img src="https://gitee.com/nanyu99/picgo/raw/master/image/_export1615371698717.jpg.png" style="zoom:50%;">
                 
             </div>
             <hr/>
@@ -585,7 +505,7 @@ cat: <span class="token punctuation">.</span>hivehistory: 没有那个文件或�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dingzijun.top/hive-ji-ben-ming-ling-yi.html">https://dingzijun.top/hive-ji-ben-ming-ling-yi.html</a>
+                    <a href="https://dingzijun.top/heu-kms-activator-xi-tong-office-ji-huo.html">https://dingzijun.top/heu-kms-activator-xi-tong-office-ji-huo.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -623,8 +543,8 @@ cat: <span class="token punctuation">.</span>hivehistory: 没有那个文件或�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Hive/">
-                                    <span class="chip bg-color">Hive</span>
+                                <a href="/tags/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/">
+                                    <span class="chip bg-color">好软推荐</span>
                                 </a>
                             
                         </div>
@@ -1057,28 +977,29 @@ cat: <span class="token punctuation">.</span>hivehistory: 没有那个文件或�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/hai-tun-ting-shu-mian-fei-de-ting-shu-ruan-jian.html">
+                <a href="/heu-kms-activator-xi-tong-office-ji-huo.html">
                     <div class="card-image">
                         
-                        <img src="https://gitee.com/nanyu99/picgo/raw/master/image/%E5%9B%BE%E7%89%8711.png" class="responsive-img" alt="海豚听书-免费的听书软件">
+                        <img src="https://gitee.com/nanyu99/picgo/raw/master/image/24.jpg.png" class="responsive-img" alt="HEU KMS Activator系统/Office激活">
                         
-                        <span class="card-title">海豚听书-免费的听书软件</span>
+                        <span class="card-title">HEU KMS Activator系统/Office激活</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            免费听书软件。安全、无广告、速度快。
+                            系统/office激活
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1091,6 +1012,7 @@ cat: <span class="token punctuation">.</span>hivehistory: 没有那个文件或�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1109,31 +1031,30 @@ cat: <span class="token punctuation">.</span>hivehistory: 没有那个文件或�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hive-huan-jing-pei-zhi.html">
+                <a href="/hai-tun-ting-shu-mian-fei-de-ting-shu-ruan-jian.html">
                     <div class="card-image">
                         
+                        <img src="https://gitee.com/nanyu99/picgo/raw/master/image/%E5%9B%BE%E7%89%8711.png" class="responsive-img" alt="海豚听书-免费的听书软件">
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="2.Hive环境配置">
-                        
-                        <span class="card-title">2.Hive环境配置</span>
+                        <span class="card-title">海豚听书-免费的听书软件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hive的环境配置。
+                            免费听书软件。安全、无广告、速度快。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    编程学习
+                            <a href="/categories/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/" class="post-category">
+                                    好软推荐
                                 </a>
                             
                             
@@ -1143,8 +1064,8 @@ cat: <span class="token punctuation">.</span>hivehistory: 没有那个文件或�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hive/">
-                        <span class="chip bg-color">Hive</span>
+                    <a href="/tags/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/">
+                        <span class="chip bg-color">好软推荐</span>
                     </a>
                     
                 </div>
