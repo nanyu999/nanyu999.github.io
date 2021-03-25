@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>1.Hive入门</title>
+    <url>/hive-ru-men.html</url>
+    <content><![CDATA[<h3 id="1-1-Hive-是什么"><a href="#1-1-Hive-是什么" class="headerlink" title="1.1 Hive 是什么"></a>1.1 Hive 是什么</h3><hr>
+Hive是领英公司开发，是基于Hadoop的一个开源<font color="red">数据仓库</font>工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的sql查询功能，可以将sql语句转换为MapReduce任务进行运行，需要注意的是，Hive并不是数据库。
+
+
+
+<blockquote>
+<p><strong>数据仓库：</strong>数据仓库注重存储、查询数据（并不注重对数据的查删改等操作）</p>
+<p> <strong>数据库：</strong>数据库注重管理数据，比如对数据的增删改查等操作。</p>
+<p><strong>Mysql\Oracle:</strong> 数据库管理软件。</p>
+</blockquote>
+<p>Hive 提供了一系列的工具，可以用来进行数据的提取、转换和加载【ETL】，是一种可以<strong>存储</strong>、<strong>查询</strong>和分析存储在 Hadoop中的大规模数据的架构体系。</p>
+<h3 id="1-2-为什么要有Hive"><a href="#1-2-为什么要有Hive" class="headerlink" title="1.2 为什么要有Hive"></a>1.2 为什么要有Hive</h3><hr>
+
+<p>Hive 简化了 MapReduce 的开发难度，只要会 SQL，不需要去实现底层Map Reduce代码，就能快速的上手 </p>
+<p>Hive，通过简单的 SQL 语句就能实现复杂的 MapReduce 所能达到的功能。（通过简单的Sql语句，即可实现</p>
+<p>MapReduce大多数功能）</p>
+<h3 id="1-3-Hive的优点"><a href="#1-3-Hive的优点" class="headerlink" title="1.3 Hive的优点"></a>1.3 Hive的优点</h3><hr>
+
+<ul>
+<li><p>简单容易上手操作接口采用类 SQL 语法，提供快速开发的能力。</p>
+</li>
+<li><p>学习成本低避免了去写MapReduce，减少开发人员的学习成本。</p>
+</li>
+<li><p>可扩展Hive 可以自由扩展集群规模，一般情况下不需要重启服务</p>
+</li>
+<li><p>延展性Hive支持用户自定义函数，用户可以根据自己的需求来实现自己的函数</p>
+</li>
+<li><p>容错性良好的容错性，即使节点出现问题 SQL 仍能够正常完成</p>
+</li>
+</ul>
+<h3 id="1-4-Hive的缺点"><a href="#1-4-Hive的缺点" class="headerlink" title="1.4 Hive的缺点"></a>1.4 Hive的缺点</h3><hr>
+
+<ul>
+<li><p>Hive 的 HQL 表达能力有限迭代式算法无法表达，比如 pagerank 。数据挖掘方面，比如 k-means .</p>
+</li>
+<li><p>Hive 的效率比较低Hive 自动生成的 MapReduce 作业，通常情况下不够智能化</p>
+</li>
+<li><p>Hive 调优比较困难，粒度较粗</p>
+</li>
+<li><p>Hive 可控性差</p>
+</li>
+</ul>
+<h3 id="1-5-Hive与传统数据库的比较"><a href="#1-5-Hive与传统数据库的比较" class="headerlink" title="1.5 Hive与传统数据库的比较"></a>1.5 Hive与传统数据库的比较</h3><hr>
+<br>
+<table><thead><tr><th>项目</th> <th>Hive</th> <th>传统数据库</th></tr></thead> <tbody><tr><td>查询语言</td> <td>HiveQL</td> <td>SQL</td></tr> <tr><td>存储</td> <td>HDFS【理论上无限存储】</td> <td>存储有限，随着容量增加，计算速度急剧下降</td></tr> <tr><td>执行引擎</td> <td>依赖于 MR/Spark框架，无法进行良好的性能优化</td> <td>可以选择更加有效的算法执行查询，以此提高执行效率</td></tr> <tr><td>灵活性</td> <td>元数据独立存储，数据存储在HDFS上，耦合度降低</td> <td>数据用途单一，耦合度高</td></tr> <tr><td>执行效率</td> <td>在大数据情况下，执行效率远远高于传统数据库</td> <td>在少量数据情况下，比较快</td></tr> <tr><td>延迟性</td> <td>高</td> <td>低</td></tr> <tr><td>数据加载模式</td> <td>读时模式</td> <td>写时模式</td></tr> <tr><td>数据操作</td> <td>数据覆盖追加</td> <td>行级更新删除</td></tr> <tr><td>索引</td> <td>0.7.0版本后加入，索引比较简单</td> <td>复杂索引</td></tr> <tr><td>事务</td> <td>支持，只能对数据库和表设置锁</td> <td>完全支持，具备完善的事务机制</td></tr> <tr><td>可靠性</td> <td>借助于 HDFS 数据有备份</td> <td>需要设置数据库的热备，以防止丢失</td></tr> <tr><td>基本环境</td> <td></td> <td></td></tr> <tr><td>应用场景</td> <td>大规模数据分析查询</td> <td>小规模数据的实时查询</td></tr> <tr><td>费用</td> <td>开源，免费</td> <td>商业应用，收费较高</td></tr></tbody></table>]]></content>
+      <categories>
+        <category>编程学习</category>
+      </categories>
+      <tags>
+        <tag>Hive</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HEU KMS Activator系统/Office激活</title>
     <url>/heu-kms-activator-xi-tong-office-ji-huo.html</url>
     <content><![CDATA[<p>经常重装系统的小伙伴应该知道，每次重装完系统之后都要重新激活系统和Office，但正版激活序列一般较贵，所以很多人喜欢在某购物平台上买激活序列。</p>
@@ -54,61 +109,6 @@
       </categories>
       <tags>
         <tag>好软推荐</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>1.Hive入门</title>
-    <url>/hive-ru-men.html</url>
-    <content><![CDATA[<h3 id="1-1-Hive-是什么"><a href="#1-1-Hive-是什么" class="headerlink" title="1.1 Hive 是什么"></a>1.1 Hive 是什么</h3><hr>
-Hive是领英公司开发，是基于Hadoop的一个开源<font color="red">数据仓库</font>工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的sql查询功能，可以将sql语句转换为MapReduce任务进行运行，需要注意的是，Hive并不是数据库。
-
-
-
-<blockquote>
-<p><strong>数据仓库：</strong>数据仓库注重存储、查询数据（并不注重对数据的查删改等操作）</p>
-<p> <strong>数据库：</strong>数据库注重管理数据，比如对数据的增删改查等操作。</p>
-<p><strong>Mysql\Oracle:</strong> 数据库管理软件。</p>
-</blockquote>
-<p>Hive 提供了一系列的工具，可以用来进行数据的提取、转换和加载【ETL】，是一种可以<strong>存储</strong>、<strong>查询</strong>和分析存储在 Hadoop中的大规模数据的架构体系。</p>
-<h3 id="1-2-为什么要有Hive"><a href="#1-2-为什么要有Hive" class="headerlink" title="1.2 为什么要有Hive"></a>1.2 为什么要有Hive</h3><hr>
-
-<p>Hive 简化了 MapReduce 的开发难度，只要会 SQL，不需要去实现底层Map Reduce代码，就能快速的上手 </p>
-<p>Hive，通过简单的 SQL 语句就能实现复杂的 MapReduce 所能达到的功能。（通过简单的Sql语句，即可实现</p>
-<p>MapReduce大多数功能）</p>
-<h3 id="1-3-Hive的优点"><a href="#1-3-Hive的优点" class="headerlink" title="1.3 Hive的优点"></a>1.3 Hive的优点</h3><hr>
-
-<ul>
-<li><p>简单容易上手操作接口采用类 SQL 语法，提供快速开发的能力。</p>
-</li>
-<li><p>学习成本低避免了去写MapReduce，减少开发人员的学习成本。</p>
-</li>
-<li><p>可扩展Hive 可以自由扩展集群规模，一般情况下不需要重启服务</p>
-</li>
-<li><p>延展性Hive支持用户自定义函数，用户可以根据自己的需求来实现自己的函数</p>
-</li>
-<li><p>容错性良好的容错性，即使节点出现问题 SQL 仍能够正常完成</p>
-</li>
-</ul>
-<h3 id="1-4-Hive的缺点"><a href="#1-4-Hive的缺点" class="headerlink" title="1.4 Hive的缺点"></a>1.4 Hive的缺点</h3><hr>
-
-<ul>
-<li><p>Hive 的 HQL 表达能力有限迭代式算法无法表达，比如 pagerank 。数据挖掘方面，比如 k-means .</p>
-</li>
-<li><p>Hive 的效率比较低Hive 自动生成的 MapReduce 作业，通常情况下不够智能化</p>
-</li>
-<li><p>Hive 调优比较困难，粒度较粗</p>
-</li>
-<li><p>Hive 可控性差</p>
-</li>
-</ul>
-<h3 id="1-5-Hive与传统数据库的比较"><a href="#1-5-Hive与传统数据库的比较" class="headerlink" title="1.5 Hive与传统数据库的比较"></a>1.5 Hive与传统数据库的比较</h3><hr>
-<br>
-<table><thead><tr><th>项目</th> <th>Hive</th> <th>传统数据库</th></tr></thead> <tbody><tr><td>查询语言</td> <td>HiveQL</td> <td>SQL</td></tr> <tr><td>存储</td> <td>HDFS【理论上无限存储】</td> <td>存储有限，随着容量增加，计算速度急剧下降</td></tr> <tr><td>执行引擎</td> <td>依赖于 MR/Spark框架，无法进行良好的性能优化</td> <td>可以选择更加有效的算法执行查询，以此提高执行效率</td></tr> <tr><td>灵活性</td> <td>元数据独立存储，数据存储在HDFS上，耦合度降低</td> <td>数据用途单一，耦合度高</td></tr> <tr><td>执行效率</td> <td>在大数据情况下，执行效率远远高于传统数据库</td> <td>在少量数据情况下，比较快</td></tr> <tr><td>延迟性</td> <td>高</td> <td>低</td></tr> <tr><td>数据加载模式</td> <td>读时模式</td> <td>写时模式</td></tr> <tr><td>数据操作</td> <td>数据覆盖追加</td> <td>行级更新删除</td></tr> <tr><td>索引</td> <td>0.7.0版本后加入，索引比较简单</td> <td>复杂索引</td></tr> <tr><td>事务</td> <td>支持，只能对数据库和表设置锁</td> <td>完全支持，具备完善的事务机制</td></tr> <tr><td>可靠性</td> <td>借助于 HDFS 数据有备份</td> <td>需要设置数据库的热备，以防止丢失</td></tr> <tr><td>基本环境</td> <td></td> <td></td></tr> <tr><td>应用场景</td> <td>大规模数据分析查询</td> <td>小规模数据的实时查询</td></tr> <tr><td>费用</td> <td>开源，免费</td> <td>商业应用，收费较高</td></tr></tbody></table>]]></content>
-      <categories>
-        <category>编程学习</category>
-      </categories>
-      <tags>
-        <tag>Hive</tag>
       </tags>
   </entry>
   <entry>
