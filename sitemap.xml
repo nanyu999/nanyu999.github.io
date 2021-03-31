@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dingzijun.top/java-xue-xi-ji-chu-yu-fa.html</loc>
+    
+    <lastmod>2021-03-31</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://dingzijun.top/hive-huan-jing-pei-zhi.html</loc>
     
     <lastmod>2021-03-29</lastmod>
@@ -81,7 +88,7 @@
 
   <url>
     <loc>https://dingzijun.top/</loc>
-    <lastmod>2021-03-29</lastmod>
+    <lastmod>2021-03-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -89,21 +96,28 @@
   
   <url>
     <loc>https://dingzijun.top/tags/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-03-29</lastmod>
+    <lastmod>2021-03-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://dingzijun.top/tags/Hive/</loc>
-    <lastmod>2021-03-29</lastmod>
+    <lastmod>2021-03-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://dingzijun.top/tags/%E5%AE%89%E5%8D%93%E5%A5%BD%E8%BD%AF/</loc>
-    <lastmod>2021-03-29</lastmod>
+    <lastmod>2021-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://dingzijun.top/tags/Java/</loc>
+    <lastmod>2021-03-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -112,14 +126,14 @@
   
   <url>
     <loc>https://dingzijun.top/categories/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/</loc>
-    <lastmod>2021-03-29</lastmod>
+    <lastmod>2021-03-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://dingzijun.top/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-03-29</lastmod>
+    <lastmod>2021-03-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
