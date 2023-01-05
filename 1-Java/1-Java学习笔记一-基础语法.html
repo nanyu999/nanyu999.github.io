@@ -1,0 +1,2437 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1. Java学习笔记一 基础语法 · 知识星球</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="南雨">
+        <meta name="identifier" content="图书编号" scheme="ISBN">
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-lou/lou.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2-Java学习笔记二-面向对象.html" />
+    
+    
+
+    </head>
+    <body>
+         
+<div class="donate-modal modal">
+  <div class="modal-header">
+    <div>
+      <span>
+        <img
+          id="modal-avatar"
+          class="modal-avatar"
+          src="static/logo.png"
+        />
+      </span>
+      <span id="nickname"> 南雨 </span>
+      <p class="modal-close close" onclick="closeDonateModal()">×</p>
+    </div>
+    <div class="message">
+      <div class="tip">
+        <i></i>
+        <span>随意打赏，但不要超过一顿早餐钱！</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-content">
+    <div class="modal-pay-way">
+      <div id="wxpay" onclick="showDonateImg(0)">
+        <input
+          type="radio"
+          name="pay-way"
+          value="wxpay"
+          class="zs-type"
+          checked="checked"
+        />
+        <span>
+          <img
+            id="wxpay-logo"
+            src="data:image/png;base64,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"
+          />
+        </span>
+      </div>
+      <div id="alipay" onclick="showDonateImg(1)">
+        <input type="radio" name="pay-way" value="alipay" class="zs-type" />
+        <span>
+          <img
+            id="alipay-logo"
+            src="data:image/png;base64,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"
+          />
+        </span>
+      </div>
+    </div>
+    <div class="modal-pay-qrcode">
+      <img id="wxpay-code" src="static/wechatpay.jpg" />
+      <img
+        id="alipay-code"
+        src="static/alipay.jpg"
+        hidden
+      />
+    </div>
+  </div>
+</div>
+<div class="mask"></div>
+
+
+<div class="book">
+  <div class="header-inner">
+    <!-- LOGO -->
+    <div class="logo"></div>
+    <span class="title"></span>
+
+    <!-- Search -->
+    
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+
+    <!-- Nav -->
+    <ul class="header-nav">
+      <li>
+        <a href="https://dingzijun.top" target="_blank">南雨</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="book-summary">
+    <div class="book-summary-title">文档目录</div>
+     
+    <nav role="navigation">
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Java
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="1-Java学习笔记一-基础语法.html">
+            
+                <a href="1-Java学习笔记一-基础语法.html">
+            
+                    
+                    1. Java学习笔记一 基础语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2-Java学习笔记二-面向对象.html">
+            
+                <a href="2-Java学习笔记二-面向对象.html">
+            
+                    
+                    2. Java学习笔记二 面向对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="3-Java学习笔记三-API的使用(一">
+            
+                <span>
+            
+                    
+                    3. Java学习笔记三 API的使用(一)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="4-Java学习笔记四-继承、多态.html">
+            
+                <a href="4-Java学习笔记四-继承、多态.html">
+            
+                    
+                    4. Java学习笔记四 继承、多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="5-Java学习笔记五-API的使用(二">
+            
+                <span>
+            
+                    
+                    5. Java学习笔记五 API的使用(二)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="6-Java学习笔记六-异常与集合.html">
+            
+                <a href="6-Java学习笔记六-异常与集合.html">
+            
+                    
+                    6. Java学习笔记六 异常与集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="7-Java学习笔记七-File类及IO流.html">
+            
+                <a href="7-Java学习笔记七-File类及IO流.html">
+            
+                    
+                    7. Java学习笔记七 File类及IO流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="8-Java学习笔记八-多线程及网络.html">
+            
+                <a href="8-Java学习笔记八-多线程及网络.html">
+            
+                    
+                    8. Java学习笔记八 多线程及网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="9-Java反射.html">
+            
+                <a href="9-Java反射.html">
+            
+                    
+                    9. Java反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Spark
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../10-Spark/1-Spark.html">
+            
+                <a href="../10-Spark/1-Spark.html">
+            
+                    
+                    1. Spark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../10-Spark/2-ElasticSearch.html">
+            
+                <a href="../10-Spark/2-ElasticSearch.html">
+            
+                    
+                    2. ElasticSearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../10-Spark/KafKa安装配置.html">
+            
+                <a href="../10-Spark/KafKa安装配置.html">
+            
+                    
+                    3. KafKa安装配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    Java后端
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../2-JavaWeb/1-BootStrap.html">
+            
+                <a href="../2-JavaWeb/1-BootStrap.html">
+            
+                    
+                    1. BootStrap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../5-JavaScript/1-JS学习.html">
+            
+                <a href="../5-JavaScript/1-JS学习.html">
+            
+                    
+                    2. JS学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../3-MySql/1-Mysql基本语句.html">
+            
+                <a href="../3-MySql/1-Mysql基本语句.html">
+            
+                    
+                    3. Mysql基本语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../2-JavaWeb/2-JavaWeb.html">
+            
+                <a href="../2-JavaWeb/2-JavaWeb.html">
+            
+                    
+                    4. JavaWeb
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../4-Spring/1-Spring.html">
+            
+                <a href="../4-Spring/1-Spring.html">
+            
+                    
+                    5. Spring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../12-Redis/1-Redis简介.html">
+            
+                <a href="../12-Redis/1-Redis简介.html">
+            
+                    
+                    6. Redis简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    Python
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../6-Python/1-Python数据分析.html">
+            
+                <a href="../6-Python/1-Python数据分析.html">
+            
+                    
+                    1. Python数据分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../6-Python/2-初识Python.html">
+            
+                <a href="../6-Python/2-初识Python.html">
+            
+                    
+                    2. 初识Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    Hadoop生态
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../7-Hadoop/1-Centos7安装.html">
+            
+                <a href="../7-Hadoop/1-Centos7安装.html">
+            
+                    
+                    1. Centos7安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../7-Hadoop/2-Hadoop环境搭建.html">
+            
+                <a href="../7-Hadoop/2-Hadoop环境搭建.html">
+            
+                    
+                    2. Hadoop环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../9-Flume/1-Flume.html">
+            
+                <a href="../9-Flume/1-Flume.html">
+            
+                    
+                    3. Flume
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../8-Hive/1-Hive入门.html">
+            
+                <a href="../8-Hive/1-Hive入门.html">
+            
+                    
+                    4. Hive入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../8-Hive/2-Hive环境配置.html">
+            
+                <a href="../8-Hive/2-Hive环境配置.html">
+            
+                    
+                    5. Hive环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../8-Hive/3-Hive基本命令.html">
+            
+                <a href="../8-Hive/3-Hive基本命令.html">
+            
+                    
+                    6. Hive基本命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../11-Scala/1-Scala.html">
+            
+                <a href="../11-Scala/1-Scala.html">
+            
+                    
+                    7. Scala
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    Blog
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../13-Blog/1-CSS之postion属性.html">
+            
+                <a href="../13-Blog/1-CSS之postion属性.html">
+            
+                    
+                    1. CSS之Postion属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../13-Blog/2-CSS之浮动.html">
+            
+                <a href="../13-Blog/2-CSS之浮动.html">
+            
+                    
+                    2. CSS之浮动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../13-Blog/3-flask_migrate数据库迁移.html">
+            
+                <a href="../13-Blog/3-flask_migrate数据库迁移.html">
+            
+                    
+                    3. Flask Migrate数据库迁移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../13-Blog/4-HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备 .html">
+            
+                <a href="../13-Blog/4-HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备 .html">
+            
+                    
+                    4. HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../13-Blog/5-Hexo搭建个人博客.html">
+            
+                <a href="../13-Blog/5-Hexo搭建个人博客.html">
+            
+                    
+                    5. Hexo搭建个人博客
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../13-Blog/6-MySQL查询乱码.html">
+            
+                <a href="../13-Blog/6-MySQL查询乱码.html">
+            
+                    
+                    6. MySQL查询乱码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../13-Blog/7-计算APP评分.html">
+            
+                <a href="../13-Blog/7-计算APP评分.html">
+            
+                    
+                    7. 计算APP评分
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../13-Blog/8-动态规划解决最大子数组问题.html">
+            
+                <a href="../13-Blog/8-动态规划解决最大子数组问题.html">
+            
+                    
+                    8. 动态规划解决最大子数组问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    408
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../14-408/1-操作系统/1-操作系统.html">
+            
+                <a href="../14-408/1-操作系统/1-操作系统.html">
+            
+                    
+                    1. 操作系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../14-408/2-数据结构/1-数据结构.html">
+            
+                <a href="../14-408/2-数据结构/1-数据结构.html">
+            
+                    
+                    2. 数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    Project
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../15-Project/1-小程序开发流程.html">
+            
+                <a href="../15-Project/1-小程序开发流程.html">
+            
+                    
+                    1. 小程序开发流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../15-Project/2-项目管理系统.html">
+            
+                <a href="../15-Project/2-项目管理系统.html">
+            
+                    
+                    2. 项目管理系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../15-Project/3-接口文档.html">
+            
+                <a href="../15-Project/3-接口文档.html">
+            
+                    
+                    3. 接口文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+</nav>
+     
+  </div>
+
+  <!-- Content nav -->
+  <div class="book-anchor">
+    <div class="book-anchor-title"></div>
+
+    <div class="book-anchor-body"></div>
+  </div>
+
+  <div class="book-body">
+    
+    <div class="body-inner">
+       
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >1. Java学习笔记一 基础语法</a>
+    </h1>
+</div>
+
+
+
+      <div class="page-wrapper" tabindex="-1" role="main">
+        <div class="page-inner">
+          
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+          <section class="normal markdown-section">
+             <h1 id="1-java&#x8DE8;&#x5E73;&#x53F0;&#x539F;&#x7406;">1. Java&#x8DE8;&#x5E73;&#x53F0;&#x539F;&#x7406;</h1>
+<ul>
+<li>&#x4EC0;&#x4E48;&#x662F;&#x5E73;&#x53F0;</li>
+</ul>
+<p>&#x5E73;&#x53F0;&#x6307;&#x7684;&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5E73;&#x53F0;&#xFF0C;&#x6BD4;&#x5982;Windows&#x3001;Linux&#x3001;Mac</p>
+<ul>
+<li>&#x4EC0;&#x4E48;&#x662F;&#x8DE8;&#x5E73;&#x53F0;&#xFF1F;</li>
+</ul>
+<p>Java&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x5728;&#x4EFB;&#x610F;&#x5E73;&#x53F0;&#x4E0A;&#x8FD0;&#x884C;</p>
+<ul>
+<li>&#x8DE8;&#x5E73;&#x53F0;&#x539F;&#x7406;</li>
+</ul>
+<p>&#x4E0D;&#x540C;&#x56FD;&#x5BB6;&#x7684;&#x4EBA;&#x4E4B;&#x95F4;&#x4EA4;&#x6D41;&#x9700;&#x8981;&#x7FFB;&#x8BD1;&#x624D;&#x80FD;&#x8FDB;&#x884C;&#x4EA4;&#x6D41;&#x3002;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328094722.png" alt=""></p>
+<p>&#x540C;&#x7406;&#xFF0C;Java&#x7A0B;&#x5E8F;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0A;&#x8FD0;&#x884C;&#x65F6;&#x4E5F;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x7FFB;&#x8BD1;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x7FFB;&#x8BD1;&#x5C31;&#x662F;Java&#x865A;&#x62DF;&#x673A;&#xFF08;JVM&#xFF1A;Java Virtua
+Machine&#xFF09;&#xFF0C;&#x4EE5;&#x4E0B;&#x7B80;&#x79F0;JVM&#x3002;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328095349.png" style="zoom:80%;"></p>
+<p>&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E0D;&#x540C;&#x7684;JVM&#x5373;&#x53EF;&#x5B9E;&#x73B0;Java&#x8DE8;&#x5E73;&#x53F0;&#x3002;&#x5728;Win&#x4E0A;&#x8FD0;&#x884C;Java&#x7A0B;&#x5E8F;&#x65F6;&#x63D0;&#x4F9B;Win&#x7248;&#x7684;JVM&#xFF1B;&#x5728;Mac&#x4E0A;&#x8FD0;&#x884C;Java&#x7A0B;&#x5E8F;&#x65F6;&#x63D0;&#x4F9B;Mac&#x7248;&#x7684;JVM&#xFF1B;&#x5728;Linux&#x4E0A;&#x8FD0;&#x884C;Java&#x7A0B;&#x5E8F;&#x65F6;&#x63D0;&#x4F9B;Linux&#x7248;&#x7684;JVM&#x5373;&#x53EF;&#x3002;</p>
+<blockquote>
+<p>&#x603B;&#x7ED3;&#xFF1A;&#x5728;&#x9700;&#x8981;&#x8FD0;&#x884C;Java&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0A;&#xFF0C;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5BF9;&#x5E94;&#x7684;Java&#x865A;&#x62DF;&#x673A;(JVM&#xFF1A;Java Virtua
+Machine)&#x5373;&#x53EF;&#x3002;</p>
+</blockquote>
+<h1 id="2jre&#x548C;jdk">2.JRE&#x548C;JDK</h1>
+<h2 id="21-&#x4EC0;&#x4E48;&#x662F;jre&#xFF1F;">2.1 &#x4EC0;&#x4E48;&#x662F;JRE&#xFF1F;</h2>
+<p>JRE&#xFF1A;(Java Runtime Environment)&#x662F;Java&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x73AF;&#x5883;&#xFF0C;&#x5305;&#x542B;<strong>JVM</strong>&#x548C;&#x8FD0;&#x884C;&#x65F6;&#x6240;&#x9700;&#x7684;<strong>&#x6838;&#x5FC3;&#x7C7B;&#x5E93;</strong>&#x3002;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;Java&#x7A0B;&#x5E8F;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5B89;&#x88C5;JRE&#x5373;&#x53EF;&#x3002;</p>
+<blockquote>
+<p>&#x4E0A;&#x8282;&#x8BF4;&#x5230;JVM&#x80FD;&#x4FDD;&#x8BC1;Java&#x8DE8;&#x5E73;&#x53F0;&#x8FD0;&#x884C;&#xFF0C;&#x800C;JRE&#x53C8;&#x5305;&#x542B;JVM&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EA;&#x5B89;&#x88C5;JRE&#x4E5F;&#x80FD;&#x4FDD;&#x8BC1;Java&#x8DE8;&#x5E73;&#x53F0;&#x8FD0;&#x884C;</p>
+</blockquote>
+<h2 id="22-&#x4EC0;&#x4E48;&#x662F;jdk&#xFF1F;">2.2 &#x4EC0;&#x4E48;&#x662F;JDK&#xFF1F;</h2>
+<p>JDK&#xFF1A;(Java Development Kit)&#xFF0C;<strong>&#x5305;&#x542B;JRE</strong>&#x548C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x4F7F;&#x7528;&#x7684;<strong>&#x5F00;&#x53D1;&#x5DE5;&#x5177;</strong>&#x3002;&#x6211;&#x4EEC;&#x60F3;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;Java&#x7A0B;&#x5E8F;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x5B89;&#x88C5;JDK&#x3002;</p>
+<p>&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#xFF1A;&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#xFF08;javac.exe&#xFF09;&#x3001;&#x8FD0;&#x884C;&#x5DE5;&#x5177;&#xFF08;java.exe&#xFF09;</p>
+<blockquote>
+<p> &#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x65F6;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;JDK&#x5373;&#x53EF;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5305;&#x542B;&#x4E86;JRE&#x548C;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x3002;</p>
+</blockquote>
+<h2 id="23-&#x5173;&#x7CFB;&#x56FE;">2.3 &#x5173;&#x7CFB;&#x56FE;</h2>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/jdk.png" style="zoom: 50%;"></p>
+<h1 id="3jdk&#x4E0B;&#x8F7D;&#x4E0E;&#x5B89;&#x88C5;">3.JDK&#x4E0B;&#x8F7D;&#x4E0E;&#x5B89;&#x88C5;</h1>
+<p><a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank">&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;</a></p>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;</strong>&#x4E0B;&#x8F7D;&#x65F6;&#x8981;&#x4E0B;&#x8F7D;&#x4E0E;&#x81EA;&#x5DF1;&#x7535;&#x8111;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x7248;&#x672C;&#x3002;</p>
+<h1 id="4&#x5E38;&#x7528;dos&#x547D;&#x4EE4;">4.&#x5E38;&#x7528;DOS&#x547D;&#x4EE4;</h1>
+<p>&#x6253;&#x5F00;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x7A97;&#x53E3;&#xFF1A;</p>
+<p>1.&#x6309;&#x4E0B;Win+R</p>
+<p>2.&#x5728;&#x5F39;&#x51FA;&#x6846;&#x4E2D;&#x8F93;&#x5165;cmd</p>
+<p>3.&#x6572;&#x56DE;&#x8F66;&#x6216;&#x70B9;&#x786E;&#x5B9A;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328103722.png" style="zoom:50%;"></p>
+<p>&#x5E38;&#x7528;&#x547D;&#x4EE4;</p>
+<table>
+<thead>
+<tr>
+<th>&#x64CD;&#x4F5C;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D:&#x56DE;&#x8F66;&#x6216;&#x8005;d:&#x56DE;&#x8F66;</td>
+<td>&#x5207;&#x6362;&#x5230;D&#x76D8;</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>&#x67E5;&#x770B;&#x5F53;&#x524D;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;</td>
+</tr>
+<tr>
+<td>cd &#x76EE;&#x5F55;</td>
+<td>&#x5207;&#x6362;&#x5230;&#x6307;&#x5B9A;&#x76EE;&#x5F55; cd blog&#xFF08;&#x6309;&#x4E0B;Tab&#x952E;&#x53EF;&#x8865;&#x9F50;&#x76EE;&#x5F55;&#xFF09;</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>&#x8FD4;&#x56DE;&#x4E0A;&#x7EA7;&#x76EE;&#x5F55;</td>
+</tr>
+<tr>
+<td>cd blog\themes</td>
+<td>&#x5207;&#x6362;&#x5230;&#x591A;&#x7EA7;&#x76EE;&#x5F55;</td>
+</tr>
+<tr>
+<td>cd \</td>
+<td>&#x8FD4;&#x56DE;&#x5230;&#x5F53;&#x524D;&#x76D8;&#x7684;&#x6839;&#x76EE;&#x5F55;</td>
+</tr>
+<tr>
+<td>cls</td>
+<td>&#x6E05;&#x5C4F;</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>&#x9000;&#x51FA;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x7A97;&#x53E3;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="5path&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;">5.Path&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;</h1>
+<h2 id="51-&#x4E3A;&#x4EC0;&#x4E48;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;">5.1 &#x4E3A;&#x4EC0;&#x4E48;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;</h2>
+<p>&#x6211;&#x4EEC;&#x5728;&#x5F00;&#x53D1;Java&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x5230;JDK&#x63D0;&#x4F9B;&#x7684;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x5728;JDK&#x7684;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x7684;bin&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328105154.png" style="zoom: 50%;"></p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x914D;&#x7F6E;Java&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4F1A;&#x600E;&#x4E48;&#x6837;&#xFF1F;&#x6253;&#x5F00;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7A97;&#x53E3;&#xFF0C;&#x8F93;&#x5165;javac&#x6216;java&#xFF0C;&#x7136;&#x540E;&#x56DE;&#x8F66;&#x5C31;&#x4F1A;&#x4F1A;&#x63D0;&#x793A;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<blockquote>
+<p>&apos;javac&apos; &#x4E0D;&#x662F;&#x5185;&#x90E8;&#x6216;&#x5916;&#x90E8;&#x547D;&#x4EE4;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x53EF;&#x8FD0;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#x6216;&#x6279;&#x5904;&#x7406;&#x6587;&#x4EF6;&#x3002;</p>
+</blockquote>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328105527.png" style="zoom: 67%;"></p>
+<p>&#x600E;&#x4E48;&#x624D;&#x80FD;&#x6B63;&#x5E38;&#x4F7F;&#x7528;javac&#x6216;java&#x547D;&#x4EE4;&#xFF1F;</p>
+<p><strong>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;</strong></p>
+<p>&#x6267;&#x884C;javac&#x6216;java&#x547D;&#x4EE4;&#x65F6;&#xFF0C;&#x5148;&#x5207;&#x6362;&#x5230;JDK&#x7684;bin&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x547D;&#x4EE4;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/qwwreqrq.png" alt=""></p>
+<p><strong>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;</strong></p>
+<p>&#x7531;&#x4E8E;&#x6BCF;&#x6B21;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x65F6;&#x90FD;&#x8981;&#x5207;&#x6362;&#x5230;bin&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x6240;&#x6709;&#x7565;&#x663E;&#x9EBB;&#x70E6;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#x4E5F;&#x4E0D;&#x65B9;&#x4FBF;&#xFF0C;&#x6240;&#x4EE5;&#x624D;&#x6709;&#x4E86;&#x4E00;&#x79CD;&#x4E00;&#x52B3;&#x6C38;&#x9038;&#x7684;&#x65B9;&#x6CD5;&#x4E8C;&#xFF0C;&#x5373;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3002;</p>
+<h2 id="52-&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF08;jdk8&#x4E3A;&#x4F8B;&#xFF09;">5.2 &#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF08;JDK8&#x4E3A;&#x4F8B;&#xFF09;</h2>
+<p>&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668;&#xFF0C;&#x53F3;&#x952E;&#x6B64;&#x7535;&#x8111;&#xFF0C;&#x9009;&#x62E9;&#x5C5E;&#x6027;&#x3002;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/Snipaste_2021-03-28_11-39-02.png" style="zoom: 50%;"></p>
+<p>&#x70B9;&#x51FB;&#x9AD8;&#x7EA7;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328114238.png" style="zoom: 50%;"></p>
+<p>&#x70B9;&#x51FB;&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328114407.png" style="zoom:50%;"></p>
+<p>&#x627E;&#x5230;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#xFF0C;&#x70B9;&#x51FB;&#x65B0;&#x5EFA;&#xFF0C;&#x4F1A;&#x5F39;&#x51FA;&#x7A97;&#x53E3;&#x3002;</p>
+<p>&#x53D8;&#x91CF;&#x540D;&#xFF1A;JAVA_HOME</p>
+<p>&#x53D8;&#x91CF;&#x503C;&#xFF1A;JDK&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328114647.png" style="zoom:50%;"></p>
+<p>&#x5728;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#x4E2D;&#x627E;&#x5230;Path&#xFF0C;&#x70B9;&#x51FB;&#x7F16;&#x8F91;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328115000.png" style="zoom:50%;"></p>
+<p>&#x70B9;&#x51FB;&#x65B0;&#x5EFA;&#xFF0C;&#x6DFB;&#x52A0;&#x4E0B;&#x56FE;&#x4E2D;&#x4E24;&#x6761;&#x53D8;&#x91CF;&#xFF0C;&#x6700;&#x540E;&#x70B9;&#x51FB;&#x786E;&#x5B9A;&#x3002;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328115217.png" style="zoom:50%;"></p>
+<p>&#x4EE5;&#x4E0A;&#xFF0C;Java&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x5B8C;&#x6210;&#xFF0C;&#x5728;&#x4EFB;&#x610F;&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C;<code>javac</code>&#x547D;&#x4EE4;&#x82E5;&#x5982;&#x4E0B;&#x56FE;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x914D;&#x7F6E;&#x6210;&#x529F;&#x3002;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328115813.png" style="zoom: 50%;"></p>
+<h1 id="6&#x7B2C;&#x4E00;&#x4E2A;java&#x7A0B;&#x5E8F;">6.&#x7B2C;&#x4E00;&#x4E2A;Java&#x7A0B;&#x5E8F;</h1>
+<p>&#x5F00;&#x53D1;&#x4E00;&#x4E2A;Java&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;<strong><font color="red">&#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x3001;&#x7F16;&#x8BD1;&#x7A0B;&#x5E8F;&#x3001;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;</font></strong></p>
+<blockquote>
+<p>Java&#x5C5E;&#x4E8E;&#x7F16;&#x8BD1;&#x578B;&#x8BED;&#x8A00;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x8FD0;&#x884C;Java&#x7A0B;&#x5E8F;&#x4E4B;&#x524D;&#x9700;&#x8981;&#x5148;&#x5BF9;Java&#x6E90;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#xFF0C;&#x7F16;&#x8BD1;&#x6210;Java&#x81EA;&#x5DF1;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#xFF0C;&#x6700;&#x540E;&#x624D;&#x80FD;&#x6267;&#x884C;Java&#x7A0B;&#x5E8F;&#x3002;</p>
+</blockquote>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/%E5%9B%BE%E7%89%87112.png" style="zoom: 50%;"></p>
+<p><strong>&#x7B2C;&#x4E00;&#x4E2A;Java&#x7A0B;&#x5E8F;&#xFF1A;Hello World&#xFF1A;</strong></p>
+<p>1.&#x65B0;&#x5EFA;&#x6587;&#x672C;&#x6587;&#x6863;&#xFF0C;&#x4FEE;&#x6539;&#x540D;&#x4E3A;HelloWorld.java</p>
+<p>2.&#x7528;&#x8BB0;&#x4E8B;&#x672C;&#x6253;&#x5F00;HelloWorld.java&#x6587;&#x672C;&#xFF0C;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x5E76;&#x4FDD;&#x5B58;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span> <span class="hljs-params">(String [] args)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;Hello World&#xFF01;&quot;</span>);
+}
+}
+</code></pre>
+<p>3.&#x6253;&#x5F00;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x7A97;&#x53E3;&#xFF0C;&#x8FDB;&#x5165;&#x5230;HelloWorld.java&#x6240;&#x5728;&#x76EE;&#x5F55;&#xFF0C;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x5148;&#x5BF9;java&#x6E90;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;</p>
+<pre><code class="lang-java">javac HelloWorld.java
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x540E;&#x4F1A;&#x5728;HelloWorld.java&#x7684;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x4E3A;java&#x7C7B;&#x540D;&#xFF0C;&#x540E;&#x7F00;&#x540D;&#x4E3A;<code>.class</code>&#x7684;&#x6587;&#x4EF6;HelloWorld.class&#xFF0C;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x5373;&#x53EF;&#x6267;&#x884C;&#x8BE5;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x6CE8;&#x610F;:java&#x76F4;&#x63A5;&#x8DDF;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x4E0D;&#x80FD;&#x52A0;&#x540E;&#x7F00;&#xFF0C;&#x52A0;&#x540E;&#x7F00;&#x4F1A;&#x62A5;&#x9519;</span>
+java HelloWorld
+</code></pre>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210328121216.png" style="zoom:50%;"></p>
+<h1 id="7&#x5E38;&#x91CF;&#x3001;&#x53D8;&#x91CF;&#x3001;&#x6570;&#x636E;&#x7C7B;&#x578B;">7.&#x5E38;&#x91CF;&#x3001;&#x53D8;&#x91CF;&#x3001;&#x6570;&#x636E;&#x7C7B;&#x578B;</h1>
+<h2 id="71-&#x6CE8;&#x91CA;">7.1 &#x6CE8;&#x91CA;</h2>
+<ul>
+<li><p>&#x6CE8;&#x91CA;&#x6307;&#x5728;&#x7A0B;&#x5E8F;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x6DFB;&#x52A0;&#x8BF4;&#x660E;&#x6027;&#x4FE1;&#x606F;</p>
+</li>
+<li><p>&#x6CE8;&#x91CA;&#x4E0D;&#x53C2;&#x4E0E;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#xFF0C;&#x4EC5;&#x8D77;&#x5230;&#x8BF4;&#x660E;&#x4F5C;&#x7528;</p>
+</li>
+<li><p>&#x6CE8;&#x91CA;&#x5206;&#x4E3A;&#xFF1A;&#x5355;&#x884C;&#x6CE8;&#x91CA;&#x3001;&#x591A;&#x884C;&#x6CE8;&#x91CA;&#x3001;&#x6587;&#x6863;&#x6CE8;&#x91CA;</p>
+</li>
+</ul>
+<p><strong>&#x5355;&#x884C;&#x6CE8;&#x91CA;</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span> <span class="hljs-params">(String [] args)</span> </span>{
+        <span class="hljs-comment">//&#x8FD9;&#x662F;&#x5355;&#x884C;&#x6CE8;&#x91CA;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#x6B64;&#x884C;</span>
+        System.out.println(<span class="hljs-string">&quot;Hello World&#xFF01;&quot;</span>);
+}
+}
+</code></pre>
+<p><strong>&#x591A;&#x884C;&#x6CE8;&#x91CA;</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span> <span class="hljs-params">(String [] args)</span> </span>{
+<span class="hljs-comment">/*    &#x8FD9;&#x662F;&#x591A;&#x884C;&#x6CE8;&#x91CA;
+    &#x7A0B;&#x5E8F;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#x6211;&#x4EEC;
+    &#x6211;&#x7684;&#x6CE8;&#x91CA;&#x8303;&#x56F4;&#x6BD4;&#x5355;&#x884C;&#x6CE8;&#x91CA;&#x66F4;&#x5E7F;*/</span>
+        System.out.println(<span class="hljs-string">&quot;Hello World&#xFF01;&quot;</span>);
+}
+}
+</code></pre>
+<p><strong>&#x6587;&#x672C;&#x6CE8;&#x91CA;</strong></p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+&#x8FD9;&#x662F;&#x6587;&#x6863;&#x6CE8;&#x91CA;
+**/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span> <span class="hljs-params">(String [] args)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;Hello World&#xFF01;&quot;</span>);
+}
+}
+</code></pre>
+<h4 id="72-&#x5173;&#x952E;&#x5B57;">7.2 &#x5173;&#x952E;&#x5B57;</h4>
+<p><strong>&#x5173;&#x952E;&#x5B57;&#x63CF;&#x8FF0;&#xFF1A;</strong>&#x5173;&#x952E;&#x5B57;&#x5C31;&#x662F;&#x88AB;Java&#x8BED;&#x8A00;&#x8D4B;&#x4E88;&#x4E86;&#x7279;&#x6B8A;&#x542B;&#x4E49;&#x7684;&#x5355;&#x8BCD;</p>
+<p><strong>&#x5173;&#x952E;&#x5B57;&#x7684;&#x7279;&#x70B9;&#xFF1A;</strong></p>
+<ul>
+<li><p>&#x5173;&#x952E;&#x5B57;&#x7684;&#x5B57;&#x6BCD;&#x5168;&#x90E8;&#x5C0F;&#x5199;</p>
+</li>
+<li><p>&#x5E38;&#x7528;&#x7684;&#x4EE3;&#x7801;&#x7F16;&#x8F91;&#x5668;&#x5BF9;&#x5173;&#x952E;&#x8BCD;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x989C;&#x8272;&#x663E;&#x793A;</p>
+</li>
+<li><p>&#x5173;&#x952E;&#x5B57;&#x6709;50&#x591A;&#x4E2A;&#x5DE6;&#x53F3;</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x8BE5;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;public&#x3001;class&#x3001;void&#x90FD;&#x662F;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x540E;&#x671F;&#x4F1A;&#x5B66;&#x5230;&#x66F4;&#x591A;&#x7684;&#x5173;&#x952E;&#x5B57;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] args)</span></span>{
+        System.out.println(<span class="hljs-string">&quot;Hello World&quot;</span>);
+    }
+}
+</code></pre>
+<h2 id="73-&#x5E38;&#x91CF;">7.3 &#x5E38;&#x91CF;</h2>
+<p><strong>&#x5E38;&#x91CF;&#x6982;&#x8FF0;&#xFF1A;</strong>&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5176;&#x503C;&#x4E0D;&#x53EF;&#x4EE5;&#x518D;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x7684;&#x91CF;</p>
+<p><strong>&#x5E38;&#x91CF;&#x5206;&#x7C7B;&#xFF1A;</strong></p>
+<table>
+<thead>
+<tr>
+<th>&#x5E38;&#x91CF;&#x7C7B;&#x578B;</th>
+<th>&#x8BF4;&#x660E;</th>
+<th>&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;</td>
+<td>&#x82F1;&#x6587;&#x53CC;&#x5F15;&#x53F7;&#x62EC;&#x8D77;&#x6765;</td>
+<td>&quot;&#x9489;&#x5B50;&#x541B;&#x535A;&#x5BA2;&quot; &#xFF0C; &quot;&#x9489;&#x5B50;&#x541B;&quot;</td>
+</tr>
+<tr>
+<td>&#x6574;&#x6570;&#x5E38;&#x91CF;</td>
+<td>&#x6574;&#x6570;&#x5305;&#x62EC;&#x6B63;&#x8D1F;</td>
+<td>18&#xFF0C;-18&#xFF0C;0</td>
+</tr>
+<tr>
+<td>&#x5C0F;&#x6570;&#x5E38;&#x91CF;</td>
+<td>&#x542B;&#x6709;&#x5C0F;&#x6570;&#x70B9;&#x7684;&#x6570;&#x5B57;</td>
+<td>1.5&#xFF0C;10.0&#xFF0C;10.00&#xFF0C;-1.0&#xFF0C;0.1</td>
+</tr>
+<tr>
+<td>&#x5B57;&#x7B26;&#x5E38;&#x91CF;</td>
+<td>&#x7528;&#x5355;&#x5F15;&#x53F7;&#x62EC;&#x8D77;&#x6765;</td>
+<td>&apos;A&apos;&#xFF0C;&apos;0&apos;&#xFF0C;&apos;&#x6211;&apos;</td>
+</tr>
+<tr>
+<td>&#x5E03;&#x5C14;&#x5E38;&#x91CF;</td>
+<td>&#x5E03;&#x5C14;&#x503C;&#xFF0C;&#x8868;&#x771F;&#x5047;</td>
+<td>&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x503C;&#xFF1A;true&#x3001;false</td>
+</tr>
+<tr>
+<td>&#x7A7A;&#x5E38;&#x91CF;</td>
+<td>&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x503C;&#xFF1A;&#x7A7A;&#x503C;</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] args)</span></span>{
+        <span class="hljs-comment">//&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;</span>
+        System.out.println(<span class="hljs-string">&quot;Hello World&quot;</span>);
+        <span class="hljs-comment">//&#x6574;&#x6570;&#x5E38;&#x91CF;</span>
+       System.out.println(<span class="hljs-number">12</span>);
+       System.out.println(-<span class="hljs-number">12</span>);
+        <span class="hljs-comment">//&#x5C0F;&#x6570;&#x5E38;&#x91CF;</span>
+       System.out.println(<span class="hljs-number">12.1</span>);
+       System.out.println(-<span class="hljs-number">12.1</span>);
+        <span class="hljs-comment">//&#x5B57;&#x7B26;&#x5E38;&#x91CF;</span>
+       System.out.println(<span class="hljs-string">&apos;1&apos;</span>);
+       System.out.println(<span class="hljs-string">&apos;&#x6211;&apos;</span>);
+       System.out.println(<span class="hljs-string">&apos;A&apos;</span>);
+        <span class="hljs-comment">//&#x5E03;&#x5C14;&#x5E38;&#x91CF;</span>
+       System.out.println(<span class="hljs-keyword">true</span>);
+       System.out.println(<span class="hljs-keyword">false</span>);
+        <span class="hljs-comment">//&#x7A7A;&#x5E38;&#x91CF;</span>
+       System.out.println(<span class="hljs-keyword">null</span>);
+    }
+}
+</code></pre>
+<h2 id="74-&#x6570;&#x636E;&#x7C7B;&#x578B;">7.4 &#x6570;&#x636E;&#x7C7B;&#x578B;</h2>
+<ul>
+<li><strong>&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x5B58;&#x50A8;&#x5355;&#x5143;</strong></li>
+</ul>
+<p>&#x8BA1;&#x7B97;&#x673A;&#x662F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7684;&#xFF0C;&#x4F46;&#x65E0;&#x8BBA;&#x662F;&#x5185;&#x5B58;&#x8FD8;&#x662F;&#x786C;&#x76D8;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x5B58;&#x50A8;&#x8BBE;&#x5907;&#x7684;&#x6700;&#x5C0F;&#x4FE1;&#x606F;&#x5355;&#x5143;&#x53EB;&#x201C;&#x4F4D;(bit)&quot;&#xFF0C;&#x53C8;&#x79F0;&#x4E4B;</p>
+<p>&#x4E3A;&#x201C;&#x6BD4;&#x7279;&#x4F4D;&#x201D;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x5C0F;&#x5199;&#x7684;&#x5B57;&#x6BCD;&#x201D; b&#x201D;&#x8868;&#x793A;&#x3002;&#x800C;&#x8BA1;&#x7B97;&#x673A;&#x4E2D;&#x6700;&#x5C0F;&#x7684;&#x5B58;&#x50A8;&#x5355;&#x5143;&#x53EB;&#x201C;&#x5B57;&#x8282;(byte)&quot;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x5927;&#x5199;&#x5B57;</p>
+<p>&#x6BCD;&#x201D;B&#x201D;&#x8868;&#x793A;&#xFF0C;&#x5B57;&#x8282;&#x7531;&#x8FDE;&#x7EED;&#x7684;8&#x4E2A;&#x4F4D;&#x7EC4;&#x6210;&#x3002;</p>
+<p>1B(&#x5B57;&#x8282;) = 8bit</p>
+<p>1KB = 1024B</p>
+<p>1MB = 1024kB</p>
+<p>1GB = 1024MB</p>
+<p>1TB = 1024GB</p>
+<ul>
+<li><strong>&#x6570;&#x636E;&#x7C7B;&#x578B;</strong></li>
+</ul>
+<p>Java&#x8BED;&#x8A00;&#x662F;&#x5F3A;&#x7C7B;&#x578B;&#x8BED;&#x8A00;&#xFF0C;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x79CD;&#x6570;&#x636E;&#x90FD;&#x7ED9;&#x51FA;&#x4E86;&#x660E;&#x786E;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E5F;&#x5206;&#x914D;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;,&#x6240;</p>
+<p>&#x4EE5;&#x5B83;&#x4EEC;&#x8868;&#x793A;&#x7684;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x4E5F;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x3002;Java&#x5728;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#x65F6;&#x5FC5;&#x987B;&#x6307;&#x660E;&#x8BE5;&#x53D8;&#x91CF;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x6BD4;&#x5982;Python&#x3001;</p>
+<p>JavaScript&#x5C31;&#x4E0D;&#x8BB8;&#x8981;&#x6307;&#x660E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;</p>
+<blockquote>
+<p>Java&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5206;&#x4E3A;&#x4E24;&#x5927;&#x7C7B;&#x5206;&#x522B;&#x662F;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x5305;&#x542B;int&#xFF0C;float&#xFF0C;double&#xFF0C;char&#xFF0C;</p>
+<p>boolean&#x7B49;&#x516B;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5305;&#x542B;&#x7C7B;&#xFF0C;&#x6570;&#x7EC4;&#xFF0C;&#x63A5;&#x53E3;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#x3002;</p>
+</blockquote>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/as.jpg" style="zoom:67%;"></p>
+<table>
+<thead>
+<tr>
+<th>&#x6570;&#x636E;&#x7C7B;&#x578B;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x5360;&#x7528;&#x5B57;&#x8282;</th>
+<th>&#x53D6;&#x503C;&#x8303;&#x56F4;</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>&#x6574;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6574;&#x6570;</td>
+<td>4&#x5B57;&#x8282;</td>
+<td>-2147483648~2147483647</td>
+<td>0</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>Java&#x4E2D;&#x6700;&#x5C0F;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;</td>
+<td>1&#x5B57;&#x8282;</td>
+<td>-128~127</td>
+<td>0</td>
+</tr>
+<tr>
+<td>short</td>
+<td>&#x77ED;&#x6574;&#x578B;</td>
+<td>2&#x5B57;&#x8282;</td>
+<td>-32768~32717</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>&#x957F;&#x6574;&#x578B;</td>
+<td>8&#x5B57;&#x8282;</td>
+<td>-2^63~2^63-1</td>
+<td>0L</td>
+</tr>
+<tr>
+<td>float</td>
+<td>&#x6D6E;&#x70B9;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x5E26;&#x5C0F;&#x6570;&#x70B9;&#x7684;&#x6570;&#x5B57;</td>
+<td>4&#x5B57;&#x8282;</td>
+<td></td>
+<td>0.0f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>&#x53CC;&#x7CBE;&#x5EA6;&#x6D6E;&#x70B9;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x5E26;&#x6709;&#x5C0F;&#x6570;&#x70B9;&#x7684;&#x6570;&#x5B57;</td>
+<td>8&#x5B57;&#x8282;</td>
+<td></td>
+<td>0.0d</td>
+</tr>
+<tr>
+<td>char</td>
+<td>&#x5B57;&#x7B26;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x5355;&#x4E2A;&#x5B57;&#x7B26;</td>
+<td>2&#x5B57;&#x8282;</td>
+<td>0~65535</td>
+<td>&#x7A7A;</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x5224;&#x65AD;&#x771F;&#x6216;&#x5047;</td>
+<td>1&#x5B57;&#x8282;</td>
+<td>true&#x3001;false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4E92;&#x8F6C;&#x6362;</li>
+</ul>
+<p>&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5206;&#x4E3A;&#xFF1A;&#x81EA;&#x52A8;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x548C;&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</p>
+<p><strong>&#x81EA;&#x52A8;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF1A;</strong>&#x5C06;&#x8868;&#x793A;&#x6570;&#x503C;&#x5C0F;&#x7684;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x4E3A;&#x8868;&#x793A;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x5927;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5C0F;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x4E3A;&#x5927;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x8F6C;&#x6362;&#x3002;</p>
+<p>&#x8868;&#x793A;&#x6570;&#x636E;&#x8303;&#x56F4;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x56FE;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/%E5%9B%BE%E7%89%87sw1.png" alt=""></p>
+<p>&#x6848;&#x4F8B;&#xFF1A;10&#x4E3A;int&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x5C06;&#x5B83;&#x8D4B;&#x503C;&#x7ED9;double&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;10&#x5C31;&#x81EA;&#x52A8;&#x8F6C;&#x6362;&#x4E3A;&#x4E86;&#x6D6E;&#x70B9;&#x578B;10.0</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] args)</span></span>{
+       <span class="hljs-keyword">double</span> d=<span class="hljs-number">10</span>;
+        System.out.println(d);<span class="hljs-comment">//&#x7ED3;&#x679C;&#x4E3A;10.0</span>
+    }
+}
+</code></pre>
+<p><strong>&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</strong>&#xFF1A;&#x5C06;&#x8868;&#x793A;&#x6570;&#x503C;&#x5927;&#x7684;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x4E3A;&#x8868;&#x793A;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x5C0F;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5927;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x4E3A;&#x5C0F;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x9700;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x3002;</p>
+<p>&#x6848;&#x4F8B;&#xFF1A;10.0&#x4E3A;double&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x5C06;&#x5B83;&#x8D4B;&#x503C;&#x7ED9;int&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x624D;&#x80FD;&#x8F6C;&#x6362;&#x6210;&#x529F;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] args)</span></span>{
+       <span class="hljs-keyword">int</span> n=(<span class="hljs-keyword">int</span>)<span class="hljs-number">10.0</span>;<span class="hljs-comment">//(&#x76EE;&#x6807;&#x6570;&#x636E;&#x7C7B;&#x578B;)</span>
+        System.out.println(n);<span class="hljs-comment">//&#x7ED3;&#x679C;&#x4E3A;10</span>
+    }
+}
+</code></pre>
+<h2 id="76-&#x53D8;&#x91CF;">7.6 &#x53D8;&#x91CF;</h2>
+<p><strong>&#x53D8;&#x91CF;&#x6982;&#x8FF0;&#xFF1A;</strong>&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5176;&#x503C;&#x53EF;&#x4EE5;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x7684;&#x91CF;&#x3002;&#x4ECE;&#x672C;&#x8D28;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x53D8;&#x91CF;&#x5C31;&#x662F;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4E00;&#x5C0F;&#x5757;&#x533A;&#x57DF;</p>
+<p><strong>&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#xFF1A;</strong> </p>
+<p>&#x683C;&#x5F0F;&#xFF1A;&#x6570;&#x636E;&#x7C7B;&#x578B;  &#x53D8;&#x91CF;&#x540D;=&#x53D8;&#x91CF;&#x503C;;</p>
+<p>&#x8303;&#x4F8B;&#xFF1A;<code>int num=10;</code></p>
+<p><strong>&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#xFF1A;</strong> &#x53D6;&#x503C;&#x548C;&#x4FEE;&#x6539;&#x503C;</p>
+<p>&#x53D6;&#x503C;&#xFF1A;&#x53D8;&#x91CF;&#x540D;</p>
+<p>&#x8303;&#x4F8B;&#xFF1A;num</p>
+<p>&#x4FEE;&#x6539;&#x503C;&#xFF1A;num=18;</p>
+<p>&#x53D8;&#x91CF;&#x4F7F;&#x7528;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;:</p>
+<ul>
+<li><p>&#x53D8;&#x91CF;&#x540D;&#x5B57;&#x4E0D;&#x80FD;&#x91CD;&#x590D;</p>
+</li>
+<li><p>&#x53D8;&#x91CF;&#x672A;&#x8D4B;&#x503C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;</p>
+</li>
+<li><p>long&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x7684;&#x65F6;&#x4E3A;&#x9632;&#x6B62;&#x6574;&#x6570;&#x8FC7;&#x5927;&#xFF0C;&#x540E;&#x9762;&#x8981;&#x52A0;L</p>
+</li>
+<li><p>float&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x65F6;&#xFF0C;&#x4E3A;&#x9632;&#x6B62;&#x7C7B;&#x578B;&#x4E0D;&#x517C;&#x5BB9;&#xFF0C;&#x540E;&#x9762;&#x8981;&#x52A0;F</p>
+</li>
+</ul>
+<h1 id="8&#x8FD0;&#x7B97;&#x7B26;">8.&#x8FD0;&#x7B97;&#x7B26;</h1>
+<h2 id="81-&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x7B26;">8.1 &#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x7B26;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x4F5C;&#x7528;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x52A0;</td>
+<td>+</td>
+<td>1+2=3&#xFF0C;&apos;&apos;1&apos;+&apos;&apos;2&apos;=&apos;&apos;12&apos;&apos; &#xFF0C;&apos;A&apos;+10=75</td>
+</tr>
+<tr>
+<td>&#x51CF;</td>
+<td>-</td>
+<td>2-1=1&#xFF0C;1.5-1=0.5</td>
+</tr>
+<tr>
+<td>&#x4E58;</td>
+<td>*</td>
+<td>2<em>1=2&#xFF0C;2.0 </em> 1=2.0</td>
+</tr>
+<tr>
+<td>&#x9664;</td>
+<td>/</td>
+<td>6/5=1&#xFF0C;&#x6574;&#x6570;&#x76F8;&#x9664;&#x53EA;&#x80FD;&#x5F97;&#x5230;&#x6574;&#x6570;&#xFF1B;6.0/5=1.2</td>
+</tr>
+<tr>
+<td>&#x53D6;&#x4F59;</td>
+<td>%</td>
+<td>8%4=0&#xFF0C;0&#x662F;&#x4E24;&#x4E2A;&#x6570;&#x76F8;&#x9664;&#x7684;&#x4F59;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> b=<span class="hljs-number">2</span>;
+        System.out.print(a+b);
+        System.out.print(b-a);
+        System.out.print(a*b);
+        System.out.print(a/b);
+        System.out.print(b%a);
+    }
+}
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;1&#xFF1A;</strong></p>
+<p>&#x7B97;&#x672F;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x5305;&#x542B;&#x591A;&#x4E2A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6574;&#x4E2A;&#x7B97;&#x672F;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x4F1A;&#x81EA;&#x52A8;&#x8FDB;&#x884C;&#x63D0;&#x5347;&#x3002;</p>
+<p>&#x63D0;&#x5347;&#x89C4;&#x5219;&#xFF1A;</p>
+<ul>
+<li><p>byte&#x7C7B;&#x578B;&#xFF0C;short&#x7C7B;&#x578B;&#x548C;char&#x7C7B;&#x578B;&#x5C06;&#x88AB;&#x63D0;&#x5347;&#x5230;int&#x7C7B;&#x578B;</p>
+</li>
+<li><p>&#x6574;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x81EA;&#x52A8;&#x63D0;&#x5347;&#x5230;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x6700;&#x9AD8;&#x7B49;&#x7EA7;&#x64CD;&#x4F5C;&#x6570;&#x540C;&#x6837;&#x7684;&#x7C7B;&#x578B;&#x7B49;&#x7EA7;&#x987A;&#x5E8F;: </p>
+</li>
+</ul>
+<blockquote>
+<p>byte,short,char &#x2192;int &#x2192; long &#x2192; float  double</p>
+</blockquote>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{     
+        <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>;     
+        <span class="hljs-keyword">char</span> b=<span class="hljs-string">&apos;A&apos;</span>;     
+      <span class="hljs-keyword">double</span> c=<span class="hljs-number">10.1</span>
+    System.out.print(b+a);<span class="hljs-comment">//11 ,&#x7ED3;&#x679C;&#x63D0;&#x5347;&#x4E3A;int&#x7C7B;&#x578B;</span>
+   System.out.print(b+c);<span class="hljs-comment">//20.1 ,&#x7ED3;&#x679C;&#x63D0;&#x5347;&#x4E3A;double&#x7C7B;&#x578B;    </span>
+}
+}
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;2&#xFF1A;</strong></p>
+<p>&#x5B57;&#x7B26;&#x4E5F;&#x53EF;&#x4EE5;&#x505A;+&#x8FD0;&#x7B97;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x4E14;&#x5B57;&#x7B26;&#x4E5F;&#x6709;&#x6570;&#x503C;&#x3002;</p>
+<p>&#x8BE6;&#x89C1;&#xFF1A;<a href="https://tool.oschina.net/commons?type=4" target="_blank">ASCII&#x5BF9;&#x7167;&#x8868;</a></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+     <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>;
+     <span class="hljs-keyword">char</span> b=<span class="hljs-string">&apos;A&apos;</span>;<span class="hljs-comment">//&#x5BF9;&#x5E94;ASCII&#x503C;&#x4E3A;65</span>
+     System.out.print(b+a);<span class="hljs-comment">//11</span>
+    }
+}
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;3&#xFF1A;</strong></p>
+<p>&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x53EF;&#x4EE5;&#x505A;+&#x8FD0;&#x7B97;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x52A0;&#xFF0C;&#x7ED3;&#x679C;&#x76F4;&#x63A5;&#x62FC;&#x63A5;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+     <span class="hljs-keyword">int</span> a=<span class="hljs-number">10</span>;
+     String b=<span class="hljs-string">&quot;&#x9489;&#x5B50;&#x541B;&quot;</span>;
+     String c=<span class="hljs-string">&quot;&#x725B;&#x54C7;&#x725B;&#x54C7;&quot;</span>;
+     <span class="hljs-keyword">int</span> d=<span class="hljs-number">6</span>
+     System.out.print(b+a);<span class="hljs-comment">//&#x9489;&#x5B50;&#x541B;11</span>
+     System.out.print(b+c);<span class="hljs-comment">//&#x9489;&#x5B50;&#x541B;&#x725B;&#x54C7;&#x725B;&#x54C7;</span>
+     System.out.print(b+a+d);<span class="hljs-comment">//&#x9489;&#x5B50;&#x541B;106</span>
+     System.out.print(a+d+b);<span class="hljs-comment">//16&#x9489;&#x5B50;&#x541B;</span>
+    }
+}
+</code></pre>
+<h2 id="82-&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;">8.2 &#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x4F5C;&#x7528;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>&#x8D4B;&#x503C;</td>
+<td>a=10;&#x5C06;10&#x8D4B;&#x503C;&#x7ED9;a</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>&#x52A0;&#x540E;&#x8D4B;&#x503C;</td>
+<td>a+=1;&#x7B49;&#x4EF7;&#x4E8E;a=a+1;</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>&#x51CF;&#x540E;&#x8D4B;&#x503C;</td>
+<td>a-=1;&#x7B49;&#x4EF7;&#x4E8E;a=a-1;</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>&#x4E58;&#x540E;&#x8D4B;&#x503C;</td>
+<td>a<em>=1;&#x7B49;&#x4EF7;&#x4E8E;a=a </em> 1;</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>&#x9664;&#x540E;&#x8D4B;&#x503C;</td>
+<td>a/=1;&#x7B49;&#x4EF7;&#x4E8E;a=a/1;</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>&#x53D6;&#x4F59;&#x540E;&#x8D4B;&#x503C;</td>
+<td>a%=1;&#x7B49;&#x4EF7;&#x4E8E;a=a%1;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+     <span class="hljs-keyword">int</span> a=<span class="hljs-number">10</span>;
+     System.out.print(a);<span class="hljs-comment">//10</span>
+     a+=<span class="hljs-number">10</span>;
+     System.out.print(a);<span class="hljs-comment">//20</span>
+     a-=<span class="hljs-number">10</span>;
+     System.out.print(a);<span class="hljs-comment">//0</span>
+     a*=<span class="hljs-number">10</span>;
+     System.out.print(a);<span class="hljs-comment">//100</span>
+     a/=<span class="hljs-number">10</span>;
+     System.out.print(a);<span class="hljs-comment">//1</span>
+     a%=<span class="hljs-number">3</span>;
+     System.out.print(a);<span class="hljs-comment">//1</span>
+    }
+}
+</code></pre>
+<h2 id="83-&#x81EA;&#x589E;&#x51CF;&#x8FD0;&#x7B97;&#x7B26;">8.3 &#x81EA;&#x589E;/&#x51CF;&#x8FD0;&#x7B97;&#x7B26;</h2>
+<p>&#x81EA;&#x589E;&#xFF1A;&#x81EA;&#x52A8;&#x52A0;&#x4E00;</p>
+<p>&#x81EA;&#x51CF;&#xFF1A;&#x81EA;&#x52A8;&#x51CF;&#x4E00;</p>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+   <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>;
+   <span class="hljs-comment">//&#x5148;&#x8F93;&#x51FA;a&#x7684;&#x503C;&#xFF0C;&#x518D;&#x8FDB;&#x884C;++&#x64CD;&#x4F5C;</span>
+   System.out.println(a++);<span class="hljs-comment">//1</span>
+   <span class="hljs-keyword">int</span> b=<span class="hljs-number">1</span>;
+   <span class="hljs-comment">//&#x5148;&#x8FDB;&#x884C;++&#x64CD;&#x4F5C;&#xFF0C;&#x518D;&#x8F93;&#x51FA;b&#x7684;&#x503C;</span>
+   System.out.println(++b);<span class="hljs-comment">//2</span>
+   <span class="hljs-keyword">int</span> c=<span class="hljs-number">2</span>;
+   <span class="hljs-comment">//&#x5148;&#x8F93;&#x51FA;c&#x7684;&#x503C;&#xFF0C;&#x518D;&#x8FDB;&#x884C;--&#x64CD;&#x4F5C;</span>
+   System.out.println(c--);<span class="hljs-comment">//2</span>
+   <span class="hljs-keyword">int</span> d=<span class="hljs-number">2</span>;
+   <span class="hljs-comment">//&#x5148;&#x8FDB;&#x884C;--&#x64CD;&#x4F5C;&#xFF0C;&#x518D;&#x8F93;&#x51FA;d&#x7684;&#x503C;</span>
+   System.out.println(--d);<span class="hljs-comment">//1</span>
+    }
+}
+</code></pre>
+<h2 id="84-&#x5173;&#x7CFB;&#x8FD0;&#x7B97;&#x7B26;">8.4 &#x5173;&#x7CFB;&#x8FD0;&#x7B97;&#x7B26;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>a==b&#xFF0C;&#x5224;&#x65AD;a&#x548C;b&#x7684;&#x503C;&#x662F;&#x5426;&#x76F8;&#x7B49;&#xFF0C;&#x6210;&#x7ACB;&#x4E3A;true&#xFF0C;&#x4E0D;&#x6210;&#x7ACB;&#x4E3A;false</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>a!=b&#xFF0C;&#x5224;&#x65AD;a&#x548C;b&#x7684;&#x503C;&#x662F;&#x5426;&#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x6210;&#x7ACB;&#x4E3A;true&#xFF0C;&#x4E0D;&#x6210;&#x7ACB;&#x4E3A;false</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>a&gt;b&#xFF0C;&#x5224;&#x65AD;a&#x662F;&#x5426;&#x5927;&#x4E8E;b&#x3002;&#x6210;&#x7ACB;&#x4E3A;true&#xFF0C;&#x4E0D;&#x6210;&#x7ACB;&#x4E3A;false</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>a&gt;=b&#xFF0C;&#x5224;&#x65AD;a&#x662F;&#x5426;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;b&#xFF0C;&#x6210;&#x7ACB;&#x4E3A;true&#xFF0C;&#x4E0D;&#x6210;&#x7ACB;&#x4E3A;falsea&lt;b</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>&#x5224;&#x65AD;a&#x662F;&#x5426;&#x5C0F;&#x4E8E;b&#xFF0C;&#x6210;&#x7ACB;&#x4E3A;true&#xFF0C;&#x4E0D;&#x6210;&#x7ACB;&#x4E3A;falsea&lt;=b</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>&#x5224;&#x65AD;a&#x662F;&#x5426;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;b&#xFF0C;&#x6210;&#x7ACB;&#x4E3A;true&#xFF0C;&#x4E0D;&#x6210;&#x7ACB;&#x4E3A;false</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> b=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> c=<span class="hljs-number">2</span>;
+        String str1=<span class="hljs-string">&quot;&#x4F60;&#x597D;&quot;</span>;
+        String str2=<span class="hljs-string">&quot;&#x4F60;&#x597D;&quot;</span>;
+        System.out.println(a==b);<span class="hljs-comment">//true</span>
+        System.out.println(a==c);<span class="hljs-comment">//false</span>
+        System.out.println(a&lt;=c);<span class="hljs-comment">//true</span>
+        System.out.println(a&gt;=b);<span class="hljs-comment">//true</span>
+        System.out.println(str1==str2);<span class="hljs-comment">//true</span>
+    }
+}
+</code></pre>
+<h2 id="85-&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;">8.5 &#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;</h2>
+<p>&#x5728;&#x6570;&#x5B66;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x6570;&#x636E;x&#xFF0C;&#x5927;&#x4E8E;3&#xFF0C;&#x5C0F;&#x4E8E;6&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x6765;&#x8FDB;&#x884C;&#x8868;&#x793A;: 3&lt;x&lt;6&#x3002;</p>
+<p>&#x4F46;&#x5728;Java&#x4E2D;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5199;&#x4E0A;&#x9762;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x9700;&#x8981;&#x628A;&#x4E0A;&#x9762;&#x7684;&#x5F0F;&#x5B50;&#x5148;&#x8FDB;&#x884C;&#x62C6;&#x89E3;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x3002;</p>
+<ul>
+<li>&#x62C6;&#x89E3;&#xFF1A;x&gt;3&#x4E14;x&lt;6</li>
+<li>&#x5408;&#x5E76;&#xFF1A;x&gt;3&amp;&amp;x&lt;6</li>
+</ul>
+<p><strong>&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;</strong></p>
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x4F5C;&#x7528;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>&#x903B;&#x8F91;&#x4E0E;</td>
+<td>a&amp;b,a&#x548C;b&#x90FD;&#x662F;true&#xFF0C;&#x7ED3;&#x679C;&#x4E3A;true&#xFF0C;&#x5426;&#x5219;&#x4E3A;false</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+<td>&#x903B;&#x8F91;&#x6216;</td>
+<td>a\</td>
+<td>b,a&#x548C;b&#x90FD;&#x662F;false&#xFF0C;&#x7ED3;&#x679C;&#x4E3A;false&#xFF0C;&#x5426;&#x5219;&#x4E3A;true</td>
+</tr>
+<tr>
+<td>^</td>
+<td>&#x903B;&#x8F91;&#x5F02;&#x6216;</td>
+<td>a^b&#xFF0C;a&#x548C;b&#x7ED3;&#x679C;&#x4E0D;&#x540C;&#x4E3A;true&#xFF0C;&#x76F8;&#x540C;&#x4E3A;false</td>
+</tr>
+<tr>
+<td>&#xFF01;</td>
+<td>&#x903B;&#x8F91;&#x975E;</td>
+<td>!a&#xFF0C;&#x7ED3;&#x679C;&#x548C;a&#x7684;&#x7ED3;&#x679C;&#x6B63;&#x597D;&#x76F8;&#x53CD;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> b=<span class="hljs-number">2</span>;
+        <span class="hljs-keyword">int</span> c=<span class="hljs-number">3</span>;
+        System.out.println(b&gt;a&amp;c&gt;a);<span class="hljs-comment">//true</span>
+        System.out.println(b&gt;c|c&gt;a);<span class="hljs-comment">//true</span>
+        System.out.println(b&gt;c^c&gt;a);<span class="hljs-comment">//false^true   true</span>
+        System.out.println(b&gt;a^c&gt;a);<span class="hljs-comment">//true^true    false</span>
+        System.out.println(b&lt;a^c&lt;a);<span class="hljs-comment">//false^fasle  false</span>
+        System.out.println(b&gt;a^c&lt;a);<span class="hljs-comment">//true^fasle   true</span>
+        System.out.println(!(b&gt;a)^c&lt;a);<span class="hljs-comment">//fasle^fasle   false</span>
+    }
+}
+</code></pre>
+<p><strong>&#x77ED;&#x8DEF;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;</strong></p>
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x4F5C;&#x7528;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;&amp;</td>
+<td>&#x77ED;&#x8DEF;&#x4E0E;</td>
+<td>&#x4F5C;&#x7528;&#x548C;&amp;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x77ED;&#x8DEF;&#x6548;&#x679C;</td>
+</tr>
+<tr>
+<td>\</td>
+<td>\</td>
+<td></td>
+<td>&#x77ED;&#x8DEF;&#x6216;</td>
+<td>&#x4F5C;&#x7528;&#x548C;\</td>
+<td>&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x77ED;&#x8DEF;&#x6216;&#x6548;&#x679C;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x903B;&#x8F91;&#x4E0E;&amp;&#xFF0C;&#x65E0;&#x8BBA;&#x5DE6;&#x8FB9;&#x771F;&#x5047;&#xFF0C;&#x53F3;&#x8FB9;&#x90FD;&#x8981;&#x6267;&#x884C;&#x3002;</li>
+</ul>
+<p>&#x77ED;&#x8DEF;&#x4E0E;&amp;&amp;&#xFF0C;&#x5982;&#x679C;&#x5DE6;&#x8FB9;&#x4E3A;&#x771F;&#xFF0C;&#x53F3;&#x8FB9;&#x6267;&#x884C;&#xFF1B;&#x5982;&#x679C;&#x5DE6;&#x8FB9;&#x4E3A;&#x5047;&#x3002;&#x53F3;&#x8FB9;&#x4E0D;&#x6267;&#x884C;&#x3002;</p>
+<ul>
+<li>&#x903B;&#x8F91;&#x6216;&#xFF0C;&#x65E0;&#x8BBA;&#x5DE6;&#x8FB9;&#x771F;&#x5047;&#xFF0C;&#x53F3;&#x8FB9;&#x90FD;&#x8981;&#x6267;&#x884C;&#x3002;</li>
+</ul>
+<p>&#x77ED;&#x8DEF;&#x6216;|l&#xFF0C;&#x5982;&#x679C;&#x5DE6;&#x8FB9;&#x4E3A;&#x5047;&#xFF0C;&#x53F3;&#x8FB9;&#x6267;&#x884C;&#xFF1B;&#x5982;&#x679C;&#x5DE6;&#x8FB9;&#x4E3A;&#x771F;&#xFF0C;&#x53F3;&#x8FB9;&#x4E0D;&#x6267;&#x884C;.</p>
+<blockquote>
+<p>&#x6700;&#x5E38;&#x7528;&#x7684;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;&#xFF1A;&amp;&amp;&#x4E0E;||</p>
+</blockquote>
+<h2 id="86-&#x4E09;&#x5143;&#x8FD0;&#x7B97;&#x7B26;">8.6 &#x4E09;&#x5143;&#x8FD0;&#x7B97;&#x7B26;</h2>
+<p>&#x683C;&#x5F0F;&#xFF1A;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;&#xFF1F;&#x8868;&#x8FBE;&#x5F0F;1:&#x8868;&#x8FBE;&#x5F0F;2</p>
+<p>&#x8303;&#x4F8B;&#xFF1A;a&gt;b?a:b</p>
+<p>&#x8BA1;&#x7B97;&#x89C4;&#x5219;&#xFF1A;&#x5148;&#x8BA1;&#x7B97;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x503C;&#x4E3A;true&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;1&#x7684;&#x503C;&#x5C31;&#x662F;&#x8FD0;&#x7B97;&#x7ED3;&#x679C;&#x3002;&#x5982;&#x679C;&#x503C;&#x4E3A;false&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;2&#x7684;&#x503C;&#x5C31;&#x662F;&#x8FD0;&#x7B97;&#x7ED3;&#x679C;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> b=<span class="hljs-number">2</span>;
+        <span class="hljs-comment">//&#x8868;&#x8FBE;&#x5F0F;&#x6210;&#x7ACB;&#x5219;&#x8F93;&#x51FA;&#x8868;&#x8FBE;&#x5F0F;1&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x4E0D;&#x6210;&#x7ACB;&#x8F93;&#x51FA;&#x8868;&#x8FBE;&#x5F0F;2</span>
+        System.out.println(a&gt;b?a:b);<span class="hljs-comment">//2</span>
+    }
+}
+</code></pre>
+<h1 id="9-&#x5206;&#x652F;&#x8BED;&#x53E5;">9. &#x5206;&#x652F;&#x8BED;&#x53E5;</h1>
+<p>&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#x8BED;&#x53E5;&#x5206;&#x7C7B;&#xFF1A;</p>
+<ul>
+<li>&#x987A;&#x5E8F;&#x7ED3;&#x6784;</li>
+<li>&#x5206;&#x652F;&#x7ED3;&#x6784;&#xFF08;if&#xFF0C;switch&#xFF09;</li>
+<li>&#x5FAA;&#x73AF;&#x63A7;&#x5236;&#xFF08;for&#xFF0C;while&#xFF0C;do&#x2026;while&#xFF09;</li>
+</ul>
+<h2 id="91-&#x987A;&#x5E8F;&#x7ED3;&#x6784;">9.1 &#x987A;&#x5E8F;&#x7ED3;&#x6784;</h2>
+<p>&#x987A;&#x5E8F;&#x7ED3;&#x6784;&#x662F;&#x7A0B;&#x5E8F;&#x4E2D;&#x6700;&#x57FA;&#x672C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#xFF0C;&#x5B83;&#x6CA1;&#x6709;&#x7279;&#x5B9A;&#x7684;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#xFF0C;&#x6309;&#x7167;&#x4EE3;&#x7801;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x90FD;&#x662F;&#x8FD9;&#x6837;&#x6267;&#x884C;&#x7684;&#x3002;</p>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/shunxu.png" style="zoom:50%;"></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+    System.out.println(<span class="hljs-string">&quot;&#x8FD9;&#x662F;&#x987A;&#x5E8F;&#x7ED3;&#x6784;&#x6848;&#x4F8B;&quot;</span>);
+    System.out.println(<span class="hljs-string">&quot;&#x6CA1;&#x6709;&#x7279;&#x5B9A;&#x7684;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&quot;</span>);
+    System.out.println(<span class="hljs-string">&quot;&#x6309;&#x7167;&#x4EE3;&#x7801;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x4EE3;&#x7801;&quot;</span>);
+    System.out.println(<span class="hljs-string">&quot;&#x7A0B;&#x5E8F;&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x90FD;&#x662F;&#x8FD9;&#x6837;&#x6267;&#x884C;&#x7684;&quot;</span>);
+    }
+}
+</code></pre>
+<h2 id="92-&#x5206;&#x652F;&#x7ED3;&#x6784;">9.2 &#x5206;&#x652F;&#x7ED3;&#x6784;</h2>
+<h3 id="921-if&#x8BED;&#x53E5;">9.2.1 if&#x8BED;&#x53E5;</h3>
+<p><strong>&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#x4E00;&#xFF1A;if</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span>(&#x8868;&#x8FBE;&#x5F0F;){
+ &#x8BED;&#x53E5;&#x4F53;;
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x8BA1;&#x7B97;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x4E3A;true&#x5C31;&#x6267;&#x884C;&#x8BED;&#x53E5;&#x4F53;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x4E3A;false&#x5C31;&#x4E0D;&#x6267;&#x884C;&#x8BED;&#x53E5;&#x4F53;</p>
+</li>
+<li><p>&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x540E;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x5185;&#x5BB9;</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">if</span> (a &lt; b) {
+            System.out.println(<span class="hljs-string">&quot;a&#x5C0F;&#x4E8E;b&quot;</span>);
+        }
+    }
+}
+</code></pre>
+<p><strong>&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#x4E8C;&#xFF1A;if-else</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span>(&#x8868;&#x8FBE;&#x5F0F;){
+ &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">1</span>;
+}<span class="hljs-keyword">else</span>{
+ &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">2</span>;
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x8BA1;&#x7B97;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;1&#x7684;&#x503C;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x4E3A;true&#x5C31;&#x6267;&#x884C;&#x8BED;&#x53E5;&#x4F53;1</p>
+</li>
+<li>&#x5982;&#x679C;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x4E3A;false&#x5C31;&#x6267;&#x884C;&#x8BED;&#x53E5;&#x4F53;2</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">if</span> (a &lt; b) {
+            System.out.println(<span class="hljs-string">&quot;a&#x5C0F;&#x4E8E;b&quot;</span>);
+        }<span class="hljs-keyword">else</span>{
+            System.out.println(<span class="hljs-string">&quot;a&#x5927;&#x4E8E;b&quot;</span>);
+        }
+    }
+}
+</code></pre>
+<p><strong>&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#x4E09;&#xFF1A;if&#x2026;else-if</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">if</span>(&#x8868;&#x8FBE;&#x5F0F;<span class="hljs-number">1</span>){
+ &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">1</span>;
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(&#x8868;&#x8FBE;&#x5F0F;<span class="hljs-number">2</span>){
+ &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">2</span>;
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(&#x8868;&#x8FBE;&#x5F0F;<span class="hljs-number">3</span>){
+ &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">3</span>;
+ .
+ .
+ .
+
+}<span class="hljs-keyword">else</span>{
+&#x8BED;&#x53E5;&#x4F53;n;
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x8BA1;&#x7B97;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;1&#x7684;&#x503C;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x4E3A;true&#x5C31;&#x6267;&#x884C;&#x8BED;&#x53E5;&#x4F53;1</p>
+</li>
+<li>&#x5982;&#x679C;&#x5173;&#x7CFB;&#x8868;&#x8FBE;&#x5F0F;1&#x7684;&#x503C;&#x4E3A;false&#x5C31;&#x6267;&#x884C;&#x8868;&#x8FBE;&#x5F0F;2</li>
+<li>&#x5982;&#x679C;&#x8868;&#x8FBE;&#x5F0F;2&#x7684;&#x503C;&#x4E3A;true&#xFF0C;&#x5219;&#x6267;&#x884C;&#x8BED;&#x53E5;&#x4F53;2</li>
+<li>&#x5982;&#x679C;&#x8868;&#x8FBE;&#x5F0F;2&#x7684;&#x503C;&#x4E3A;false&#xFF0C;&#x5C31;&#x6267;&#x884C;&#x8868;&#x8FBE;&#x5F0F;3</li>
+<li>&#x8FD9;&#x6837;&#x4E00;&#x76F4;&#x5411;&#x4E0B;&#x6267;&#x884C;&#xFF0C;&#x5982;&#x679C;&#x6240;&#x6709;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x4E0D;&#x6EE1;&#x8DB3;&#xFF0C;&#x5219;&#x6267;&#x884C;&#x8868;&#x8FBE;&#x5F0F;n</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> a = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">if</span> (a &lt; b) {
+            System.out.println(<span class="hljs-string">&quot;a&#x5C0F;&#x4E8E;b&quot;</span>);
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(a&gt;b){
+            System.out.println(<span class="hljs-string">&quot;a&#x5927;&#x4E8E;b&quot;</span>);
+        }<span class="hljs-keyword">else</span>{
+            System.out.println(<span class="hljs-string">&quot;a&#x7B49;&#x4E8E;b&quot;</span>);
+        }
+    }
+}
+</code></pre>
+<p>if&#x2026;else-if &#x6848;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Scanner;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        System.out.print(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x4F60;&#x7684;&#x6210;&#x7EE9;&#xFF1A;&quot;</span>);
+        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+        <span class="hljs-keyword">int</span> score = sc.nextInt();
+        <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">90</span> &amp;&amp; score &lt;= <span class="hljs-number">100</span>) {
+            System.out.print(<span class="hljs-string">&quot;&#x592A;&#x68D2;&#x5566;&#xFF01;&quot;</span>);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">70</span> &amp;&amp; score &lt; <span class="hljs-number">90</span>) {
+            System.out.print(<span class="hljs-string">&quot;&#x5DF2;&#x7ECF;&#x5F88;&#x4E0D;&#x9519;&#x5566;&#xFF01;&#x4F46;&#x8FD8;&#x8981;&#x7EE7;&#x7EED;&#x52AA;&#x529B;&#x54E6;&#xFF01;&quot;</span>);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (score &gt;= <span class="hljs-number">60</span> &amp;&amp; score &lt; <span class="hljs-number">70</span>) {
+            System.out.print(<span class="hljs-string">&quot;&#x521A;&#x597D;&#x53CA;&#x683C;&#xFF0C;&#x9669;&#x8FC7;&#x5440;&#xFF01;&quot;</span>);
+        } <span class="hljs-keyword">else</span> {
+            System.out.print(<span class="hljs-string">&quot;&#x522B;&#x7070;&#x5FC3;&#xFF0C;&#x4E0B;&#x6B21;&#x52AA;&#x52AA;&#x529B;&#xFF0C;&#x4E00;&#x5B9A;&#x80FD;&#x53CA;&#x683C;&#x7684;&#xFF01;&quot;</span>);
+        }
+    }
+}
+</code></pre>
+<h3 id="922-switch&#x8BED;&#x53E5;">9.2.2 switch&#x8BED;&#x53E5;</h3>
+<p><strong>&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#xFF1A;</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">switch</span>(&#x8868;&#x8FBE;&#x5F0F;){
+<span class="hljs-keyword">case</span> &#x503C;<span class="hljs-number">1</span>:
+    &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> &#x503C;<span class="hljs-number">2</span>:
+    &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> &#x503C;<span class="hljs-number">3</span>:
+    &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">3</span>;
+    <span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> &#x503C;<span class="hljs-number">4</span>:
+    &#x8BED;&#x53E5;&#x4F53;<span class="hljs-number">4</span>;
+    <span class="hljs-keyword">break</span>;
+ <span class="hljs-keyword">default</span>:
+   &#x8BED;&#x53E5;&#x4F53;n;
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x5148;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x3002;</p>
+</li>
+<li><p>&#x4F9D;&#x6B21;&#x548C;case&#x540E;&#x9762;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#xFF0C;&#x5C31;&#x4F1A;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x9047;&#x5230;break&#x5C31;&#x4F1A;&#x7ED3;&#x675F;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6240;&#x6709;&#x7684;case&#x540E;&#x9762;&#x7684;&#x503C;&#x548C;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x90FD;&#x4E0D;&#x5339;&#x914D;&#xFF0C;&#x5C31;&#x4F1A;&#x6267;&#x884C;default&#x91CC;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x4F53;&#xFF0C;&#x7136;&#x540E;&#x7A0B;&#x5E8F;&#x7ED3;&#x675F;&#x6389;&#x3002;</p>
+</li>
+</ul>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.Scanner;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        System.out.print(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x4E00;&#x4E2A;1-5&#x7684;&#x6574;&#x6570;&#xFF1A;&quot;</span>);
+        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+        <span class="hljs-keyword">int</span> n=sc.nextInt();
+        <span class="hljs-keyword">switch</span> (n){
+            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+                System.out.print(<span class="hljs-string">&quot;&#x4F60;&#x8F93;&#x5165;&#x7684;&#x662F;1&quot;</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+                System.out.print(<span class="hljs-string">&quot;&#x4F60;&#x8F93;&#x5165;&#x7684;&#x662F;2&quot;</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+                System.out.print(<span class="hljs-string">&quot;&#x4F60;&#x8F93;&#x5165;&#x7684;&#x662F;3&quot;</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+                System.out.print(<span class="hljs-string">&quot;&#x4F60;&#x8F93;&#x5165;&#x7684;&#x662F;4&quot;</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+                System.out.print(<span class="hljs-string">&quot;&#x4F60;&#x8F93;&#x5165;&#x7684;&#x662F;5&quot;</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">default</span>:
+                System.out.print(<span class="hljs-string">&quot;&#x4F60;&#x8F93;&#x5165;&#x7684;&#x6570;&#x6709;&#x95EE;&#x9898;&quot;</span>);
+                <span class="hljs-keyword">break</span>;
+        }
+        }
+    }
+</code></pre>
+<p>&#x5982;&#x679C;&#x4E0D;&#x52A0;break&#xFF0C;&#x7A0B;&#x5E8F;&#x5C31;&#x4E0D;&#x4F1A;&#x8DF3;&#x51FA;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x5230;&#x4EE3;&#x7801;&#x7684;&#x6700;&#x5E95;&#x7AEF;&#x3002;</p>
+<h2 id="93-&#x5FAA;&#x73AF;&#x7ED3;&#x6784;">9.3 &#x5FAA;&#x73AF;&#x7ED3;&#x6784;</h2>
+<p>&#x5FAA;&#x73AF;&#x7ED3;&#x6784;&#x7684;&#x7EC4;&#x6210;&#xFF1A;</p>
+<ul>
+<li><p>&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;:&#x7528;&#x4E8E;&#x8868;&#x793A;&#x5FAA;&#x73AF;&#x5F00;&#x542F;&#x65F6;&#x7684;&#x8D77;&#x59CB;&#x72B6;&#x6001;&#xFF0C; &#x7B80;&#x5355;&#x8BF4;&#x5C31;&#x662F;&#x5FAA;&#x73AF;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#x4EC0;&#x4E48;&#x6837;</p>
+</li>
+<li><p>&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x8BED;&#x53E5;:&#x7528;&#x4E8E;&#x8868;&#x793A;&#x5FAA;&#x73AF;&#x53CD;&#x590D;&#x6267;&#x884C;&#x7684;&#x6761;&#x4EF6;,&#x7B80;&#x5355;&#x8BF4;&#x5C31;&#x662F;&#x5224;&#x65AD;&#x5FAA;&#x73AF;&#x662F;&#x5426;&#x80FD;-&#x76F4;&#x6267;&#x884C; &#x4E0B;&#x53BB;</p>
+</li>
+<li><p>&#x5FAA;&#x73AF;&#x4F53;&#x8BED;&#x53E5;:&#x7528;&#x4E8E;&#x8868;&#x793A;&#x5FAA;&#x73AF;&#x53CD;&#x590D;&#x6267;&#x884C;&#x7684;&#x5185;&#x5BB9;&#xFF0C; &#x7B80;&#x5355;&#x8BF4;&#x5C31;&#x662F;&#x5FAA;&#x73AF;&#x53CD;&#x590D;&#x6267;&#x884C;&#x7684;&#x4E8B;&#x60C5;</p>
+</li>
+<li><p>&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;:&#x7528;&#x4E8E;&#x8868;&#x793A;&#x5FAA;&#x73AF;&#x6267;&#x884C;&#x4E2D;&#x6BCF;&#x6B21;&#x53D8;&#x5316;&#x7684;&#x5185;&#x5BB9;,&#x7B80;&#x5355;&#x8BF4;&#x5C31;&#x662F;&#x63A7;&#x5236;&#x5FAA;&#x73AF;&#x662F;&#x5426;&#x80FD;&#x6267;&#x884C;&#x4E0B;&#x53BB;</p>
+</li>
+</ul>
+<p>&#x5FAA;&#x73AF;&#x7ED3;&#x6784;&#x5BF9;&#x5E94;&#x7684;&#x8BED;&#x6CD5;:</p>
+<ul>
+<li><p>&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;:&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x662F;&#x4E00; &#x6761;&#x6216;&#x8005;&#x591A;&#x6761;&#x8BED;&#x53E5;,&#x8FD9;&#x4E9B;&#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;-&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;</p>
+</li>
+<li><p>&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x8BED;&#x53E5;:&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7ED3;&#x679C;&#x503C;&#x4E3A;boolean&#x7C7B;&#x578B;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x80FD;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x6267;&#x884C;&#x5FAA;&#x73AF;&#x4F53;&#x3002;&#x4F8B;&#x5982;: a&lt;3</p>
+</li>
+<li><p>&#x5FAA;&#x73AF;&#x4F53;&#x8BED;&#x53E5;: .&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x8BED;&#x53E5;,&#x8FD9;&#x4E9B;&#x8BED;&#x53E5;&#x5C06;&#x53CD;&#x590D;&#x6267;&#x884C;</p>
+</li>
+<li><p>&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;:&#x8FD9;&#x91CC;&#x901A;&#x5E38;&#x662F;&#x4F7F;&#x7528;&#x4E00;&#x6761;&#x8BED;&#x53E5;&#x6765;&#x6539;&#x53D8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C; &#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x63A7;&#x5236;&#x5FAA;&#x73AF;&#x662F;&#x5426;&#x7EE7;&#x7EED;&#x5411;&#x4E0B;&#x6267;&#x884C;&#x7684;&#x6548;&#x679C;&#x3002;&#x5E38;&#x89C1;<code>i+ +</code> ,<code>j--</code>&#x8FD9;&#x6837;&#x7684;&#x64CD;&#x4F5C;</p>
+</li>
+</ul>
+<h3 id="931-for&#x5FAA;&#x73AF;">9.3.1 for&#x5FAA;&#x73AF;</h3>
+<p>&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span>(&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x8BED;&#x53E5;;&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;){
+     &#x5FAA;&#x73AF;&#x4F53;;
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<p>1.&#x6267;&#x884C;&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;</p>
+<p>2.&#x6267;&#x884C;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#xFF0C;&#x770B;&#x5176;&#x7ED3;&#x679C;&#x662F;true&#x8FD8;&#x662F;false&#xFF0C;&#x5982;&#x679C;&#x662F;false,&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#xFF0C;&#x5982;&#x679C;&#x662F;true,&#x7EE7;&#x7EED;&#x6267;&#x884C;</p>
+<p>3.&#x6267;&#x884C;&#x5FAA;&#x73AF;&#x4F53;&#x8BED;&#x53E5;</p>
+<p>4.&#x6267;&#x884C;&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;</p>
+<p>5.&#x56DE;&#x5230;2&#x7EE7;&#x7EED;</p>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){
+System.out.println(i);
+}
+</code></pre>
+<h3 id="932-while&#x5FAA;&#x73AF;">9.3.2 while&#x5FAA;&#x73AF;</h3>
+<p>&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code>while(&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x8BED;&#x53E5;){
+&#x5FAA;&#x73AF;&#x4F53;&#x8BED;&#x53E5;;
+&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;;
+}
+</code></pre><p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<p>1.&#x6267;&#x884C;&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;</p>
+<p>2.&#x6267;&#x884C;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#xFF0C;&#x770B;&#x5176;&#x7ED3;&#x679C;&#x662F;true&#x8FD8;&#x662F;false&#xFF0C;&#x5982;&#x679C;&#x662F;false,&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#xFF0C;&#x5982;&#x679C;&#x662F;true,&#x7EE7;&#x7EED;&#x6267;&#x884C;</p>
+<p>3.&#x6267;&#x884C;&#x5FAA;&#x73AF;&#x4F53;&#x8BED;&#x53E5;</p>
+<p>4.&#x6267;&#x884C;&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;</p>
+<p>5.&#x56DE;&#x5230;2&#x7EE7;&#x7EED;</p>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;
+<span class="hljs-keyword">while</span>(i&lt;<span class="hljs-number">10</span>){
+System.out.print(i);
+i++
+}
+</code></pre>
+<h3 id="933-dowhile&#x5FAA;&#x73AF;">9.3.3 do&#x2026;while&#x5FAA;&#x73AF;</h3>
+<p>&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code class="lang-java">do{
+&#x5FAA;&#x574F;&#x4F53;;
+}<span class="hljs-keyword">while</span>(&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;)
+</code></pre>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<p>1.&#x6267;&#x884C;&#x521D;&#x59CB;&#x5316;&#x8BED;&#x53E5;</p>
+<p>2.&#x6267;&#x884C;&#x5FAA;&#x73AF;&#x4F53;&#x8BED;&#x53E5;</p>
+<p>3.&#x6267;&#x884C;&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;</p>
+<p>4.&#x6267;&#x884C;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#xFF0C;&#x770B;&#x5176;&#x7ED3;&#x679C;&#x662F;true&#x8FD8;&#x662F;false&#xFF0C;&#x5982;&#x679C;&#x662F;false,&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#xFF0C;&#x5982;&#x679C;&#x662F;true,&#x7EE7;&#x7EED;&#x6267;&#x884C;</p>
+<p>5.&#x56DE;&#x5230;2&#x7EE7;&#x7EED;</p>
+<pre><code class="lang-java">i=<span class="hljs-number">3</span>;
+do{
+System.out.println(<span class="hljs-string">&apos;&#x4F60;&#x597D;&apos;</span>);
+i++;
+}<span class="hljs-keyword">while</span>(i&lt;<span class="hljs-number">3</span>)
+</code></pre>
+<ul>
+<li><strong>&#x4E09;&#x79CD;&#x5FAA;&#x73AF;&#x7684;&#x533A;&#x522B;&#xFF1A;</strong></li>
+</ul>
+<p>for&#x5FAA;&#x73AF;&#x548C;while&#x5FAA;&#x73AF;&#x5148;&#x5224;&#x65AD;&#x6761;&#x4EF6;&#x662F;&#x5426;&#x6210;&#x7ACB;&#xFF0C;&#x7136;&#x540E;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x6267;&#x884C;&#x5FAA;&#x73AF;&#x4F53;(&#x5148;&#x5224;&#x65AD;&#x540E;&#x6267;&#x884C;)</p>
+<p>do..while&#x5FAA;&#x73AF;&#x5148;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x5FAA;&#x73AF;&#x4F53;, &#x7136;&#x540E;&#x5224;&#x65AD;&#x6761;&#x4EF6;&#x662F;&#x5426;&#x6210;&#x7ACB;&#xFF0C;&#x662F;&#x5426;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x5FAA;&#x73AF;&#x4F53;(&#x5148;&#x6267;&#x884C;&#x540E;&#x5224;&#x65AD;)</p>
+<ul>
+<li><strong>while&#x5FAA;&#x73AF;&#x4E0E;for&#x5FAA;&#x73AF;&#x7684;&#x533A;&#x522B;&#xFF1A;</strong></li>
+</ul>
+<p>&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;&#x6240;&#x63A7;&#x5236;&#x7684;&#x81EA;&#x589E;&#x53D8;&#x91CF;,&#x56E0;&#x4E3A;&#x5F52;&#x5C5E;for&#x5FAA;&#x73AF;&#x7684;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#x4E2D;,&#x5728;for&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x540E;&#xFF0C; &#x5C31;&#x4E0D;&#x80FD;&#x518D;&#x6B21;&#x88AB;&#x8BBF;&#x95EE;&#x5230;&#x4E86;</p>
+<p>&#x6761;&#x4EF6;&#x63A7;&#x5236;&#x8BED;&#x53E5;&#x6240;&#x63A7;&#x5236;&#x7684;&#x81EA;&#x589E;&#x53D8;&#x91CF;&#xFF0C;&#x5BF9;&#x4E8E;while&#x5FAA;&#x73AF;&#x6765;&#x8BF4;&#x4E0D;&#x5F52;&#x5C5E;&#x5176;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#x4E2D;&#xFF0C;&#x5728;while&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x540E;,&#x8BE5;&#x53D8;&#x91CF;&#x8FD8;&#x53EF;&#x4EE5;&#x7EED;</p>
+<p>&#x4F7F;&#x7528;</p>
+<h3 id="944-&#x8DF3;&#x8F6C;&#x63A7;&#x5236;&#x8BED;&#x53E5;">9.4.4 &#x8DF3;&#x8F6C;&#x63A7;&#x5236;&#x8BED;&#x53E5;</h3>
+<p>Java&#x4E2D;&#x7684;&#x5FAA;&#x73AF;&#x63A7;&#x5236;&#x8BED;&#x53E5;&#x6709;&#x4E24;&#x79CD;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;<strong>continue</strong>&#x4E0E;<strong>break</strong></p>
+<p><strong>continue&#x7528;&#x6CD5;&#xFF1A;</strong></p>
+<p>&#x7528;&#x5728;&#x5FAA;&#x73AF;&#x4E2D;&#xFF0C;&#x57FA;&#x4E8E;&#x6761;&#x4EF6;&#x63A7;&#x5236;&#xFF0C;&#x8DF3;&#x8FC7;&#x67D0;&#x6B21;&#x5FAA;&#x73AF;&#x4F53;&#x5185;&#x5BB9;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x7EE7;&#x7EED;&#x4E0B;&#x4E00;&#x6B21;&#x7684;&#x6267;&#x884C;</p>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;0&#xFF0C;1&#xFF0C;3&#xFF0C;4</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">2</span>) {
+                <span class="hljs-keyword">continue</span>;
+            }
+            System.out.println(i);
+        }
+    }
+}
+</code></pre>
+<p><strong>break</strong>&#xFF1A;</p>
+<p>&#x7528;&#x5728;&#x5FAA;&#x73AF;&#x4E2D;&#xFF0C;&#x57FA;&#x4E8E;&#x6761;&#x4EF6;&#x63A7;&#x5236;&#xFF0C;&#x7EC8;&#x6B62;&#x5FAA;&#x73AF;&#x4F53;&#x5185;&#x5BB9;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x7ED3;&#x675F;&#x5F53;&#x524D;&#x7684;&#x6574;&#x4E2A;&#x5FAA;&#x73AF;</p>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;0&#xFF0C;1,2</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">2</span>) {
+                <span class="hljs-keyword">break</span>;
+            }
+            System.out.println(i);
+        }
+    }
+}
+</code></pre>
+<h1 id="10&#x6570;&#x7EC4;">10.&#x6570;&#x7EC4;</h1>
+<p><strong>&#x6570;&#x7EC4;&#x6982;&#x8FF0;&#xFF1A;</strong></p>
+<ul>
+<li><p>&#x4E00;&#x6B21;&#x6027;&#x58F0;&#x660E;&#x5927;&#x91CF;&#x7684;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7684;&#x53D8;&#x91CF;&#x3002;</p>
+</li>
+<li><p>&#x8981;&#x5B58;&#x50A8;&#x5927;&#x7684;&#x6570;&#x636E;&#x901A;&#x5E38;&#x662F;&#x76F8;&#x540C;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x8003;&#x8BD5;&#x6210;&#x7EE9;</p>
+</li>
+</ul>
+<p><strong>&#x4EC0;&#x4E48;&#x662F;&#x6570;&#x7EC4;&#xFF1A;</strong></p>
+<p>&#x6570;&#x7EC4;&#xFF08;array&#xFF09;&#x662F;&#x4E00;&#x79CD;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x591A;&#x4E2A;&#x76F8;&#x540C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5B58;&#x50A8;&#x6A21;&#x578B;</p>
+<p><strong>&#x6570;&#x7EC4;&#x7684;&#x5B9A;&#x4E49;&#x683C;&#x5F0F;&#xFF1A;</strong></p>
+<p>&#x683C;&#x5F0F;&#x4E00;&#xFF08;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#xFF09;&#xFF1A;</p>
+<p>&#x6570;&#x636E;&#x7C7B;&#x578B; [] &#x53D8;&#x91CF;&#x540D;:int [] arr</p>
+<p>&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;int&#x7C7B;&#x578B;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x6570;&#x7EC4;&#x540D;&#x4E3A;arr</p>
+<p>&#x683C;&#x5F0F;&#x4E8C;&#xFF1A;</p>
+<p>&#x6570;&#x636E;&#x7C7B;&#x578B; &#x53D8;&#x91CF;&#x540D; []:int arr[]</p>
+<p>&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;int&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x53D8;&#x91CF;&#x540D;&#x4E3A;&#x6570;&#x7EC4;arr</p>
+<h2 id="101-&#x6570;&#x7EC4;&#x521D;&#x59CB;&#x5316;">10.1 &#x6570;&#x7EC4;&#x521D;&#x59CB;&#x5316;</h2>
+<p>&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x5FC5;&#x987B;&#x9700;&#x8981;&#x5148;&#x521D;&#x59CB;&#x5316;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x3002;-</p>
+<ul>
+<li><strong>&#x4EC0;&#x4E48;&#x662F;&#x521D;&#x59CB;&#x5316;</strong></li>
+</ul>
+<p>&#x521D;&#x59CB;&#x5316;&#x5C31;&#x662F;&#x4E3A;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x5206;&#x914D;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x5E76;&#x4E3A;&#x6BCF;&#x4E2A;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x8D4B;&#x503C;&#x3002;</p>
+<ul>
+<li><strong>&#x52A8;&#x6001;&#x521D;&#x59CB;&#x5316;</strong></li>
+</ul>
+<p>&#x52A8;&#x6001;&#x521D;&#x59CB;&#x5316;&#xFF1A;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x53EA;&#x6307;&#x5B9A;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x7531;&#x7CFB;&#x7EDF;&#x4E3A;&#x6570;&#x7EC4;&#x5206;&#x914D;&#x521D;&#x59CB;&#x503C;&#x3002;</p>
+<p>&#x683C;&#x5F0F;&#xFF1A;&#x6570;&#x636E;&#x7C7B;&#x578B; [] &#x53D8;&#x91CF;&#x540D;=new &#x6570;&#x636E;&#x7C7B;&#x578B;[&#x6570;&#x7EC4;&#x957F;&#x5EA6;]</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> [] arr=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">5</span>];
+    }
+}
+</code></pre>
+<blockquote>
+<p>int :&#x6570;&#x7EC4;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;String&#x3001;double&#x7B49;</p>
+<p>[]:&#x8BF4;&#x660E;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;</p>
+<p>arr:&#x6570;&#x7EC4;&#x7684;&#x540D;&#x79F0;</p>
+<p>new:&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x4E3A;&#x6570;&#x7EC4;&#x7533;&#x8BF7;&#x5185;&#x5B58;&#x7A7A;&#x95F4;</p>
+<p>5&#xFF1A;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#xFF0C;&#x5373;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x3002;</p>
+</blockquote>
+<ul>
+<li><strong>&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;</strong></li>
+</ul>
+<p>&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#xFF1A;&#x5373;&#x5728;&#x58F0;&#x660E;&#x6570;&#x7EC4;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x6307;&#x660E;&#x6570;&#x7EC4;&#x7684;&#x5143;&#x7D20;&#x3002;</p>
+<p>&#x683C;&#x5F0F;&#xFF1A;&#x6570;&#x636E;&#x7C7B;&#x578B; [] &#x53D8;&#x91CF;&#x540D;=new &#x6570;&#x636E;&#x7C7B;&#x578B;[&#x5143;&#x7D20;1&#xFF0C;&#x5143;&#x7D20;2&#xFF0C;&#x5143;&#x7D20;3]</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> [] arr={<span class="hljs-number">1</span>&#xFF0C;<span class="hljs-number">2</span>&#xFF0C;<span class="hljs-number">3</span>&#xFF0C;<span class="hljs-number">4</span>};
+    }
+}
+</code></pre>
+<h2 id="102-&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x8BBF;&#x95EE;&#x53CA;&#x904D;&#x5386;&#x6570;&#x7EC4;">10.2 &#x6570;&#x7EC4;&#x5143;&#x7D20;&#x8BBF;&#x95EE;&#x53CA;&#x904D;&#x5386;&#x6570;&#x7EC4;</h2>
+<p>&#x6570;&#x7EC4;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x8BBF;&#x95EE;&#x662F;&#x901A;&#x8FC7;&#x6570;&#x7EC4;&#x540D;[&#x7D22;&#x5F15;]&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6240;&#x8C13;&#x7D22;&#x5F15;&#x4E5F;&#x53EB;&#x4E0B;&#x6807;&#x5C31;&#x662F;&#x7ED9;&#x6BCF;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x4ECE;0&#x5F00;&#x59CB;&#x7684;&#x5E8F;&#x53F7;&#x3002;</p>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> [] arr=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">1</span>&#xFF0C;<span class="hljs-number">2</span>&#xFF0C;<span class="hljs-number">3</span>&#xFF0C;<span class="hljs-number">4</span>];<span class="hljs-comment">//&#x4E0B;&#x6807;&#x4ECE;0&#x5F00;&#x59CB;&#xFF0C;&#x6570;&#x7EC4;&#x4E2D;1&#x7684;&#x4E0B;&#x6807;&#x4E3A;0&#xFF0C;2&#x7684;&#x4E0B;&#x6807;&#x4E3A;1&#xFF0C;3&#x7684;&#x4E0B;&#x6807;&#x4E3A;2&#xFF0C;4&#x7684;&#x4E0B;&#x6807;&#x4E3A;3</span>
+        <span class="hljs-comment">//&#x76F4;&#x63A5;&#x8F93;&#x51FA;&#x6570;&#x7EC4;&#x540D;&#x5B57;&#x7684;&#x8BDD;&#x5F97;&#x5230;&#x7684;&#x662F;&#x6570;&#x7EC4;&#x5728;&#x5806;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;</span>
+        System.out.println(arr)
+        <span class="hljs-comment">//&#x8BBF;&#x95EE;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x65F6;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x4E0B;&#x6807;&#x6765;&#x8BBF;&#x95EE;&#xFF0C;&#x6BD4;&#x5982;&#x8BBF;&#x95EE;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;2&#xFF0C;&#x5143;&#x7D20;2&#x5BF9;&#x5E94;&#x7684;&#x4E0B;&#x6807;&#x4E3A;1&#xFF0C;&#x5219;</span>
+        System.out.println(arr[<span class="hljs-number">1</span>])<span class="hljs-comment">//&#x8F93;&#x51FA;&#x4E3A;2</span>
+    }
+}
+</code></pre>
+<p>&#x6570;&#x7EC4;&#x7684;&#x904D;&#x5386;</p>
+<p>&#x6570;&#x7EC4;&#x7684;&#x904D;&#x5386;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x5FAA;&#x73AF;&#xFF0C;&#x5C06;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x5168;&#x90E8;&#x6253;&#x5370;&#x51FA;&#x6765;&#xFF0C;&#x5176;&#x4E2D;&#x5FAA;&#x73AF;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x7528;for&#x5FAA;&#x73AF;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> [] arr=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">1</span>&#xFF0C;<span class="hljs-number">2</span>&#xFF0C;<span class="hljs-number">3</span>&#xFF0C;<span class="hljs-number">4</span>];
+        <span class="hljs-comment">//&#x6570;&#x7EC4;&#x7684;ength&#x5C5E;&#x6027;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;arr.length;i++){
+        System.out.println(arrp[i])
+}
+    }
+}
+</code></pre>
+<h2 id="103-&#x5185;&#x5B58;&#x5206;&#x914D;">10.3 &#x5185;&#x5B58;&#x5206;&#x914D;</h2>
+<p>Java&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;</p>
+<blockquote>
+<p>Java&#x7A0B;&#x5E8F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#x3002;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x8FD0;&#x7B97;&#x6548;&#x7387;,&#x5C31;&#x5BF9;&#x7A7A;&#x95F4;&#x8FDB;&#x884C;&#x4E86;&#x4E0D;&#x540C;&#x533A;&#x57DF;&#x7684;&#x5212;&#x5206;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x4E00;&#x7247;&#x533A;&#x57DF;&#x90FD;&#x6709;&#x7279;&#x5B9A;&#x7684;&#x5904;&#x7406;&#x6570;&#x636E;&#x65B9; &#x5F0F;&#x548C;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x65B9;&#x5F0F;&#x3002;</p>
+</blockquote>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210330195409.png" alt=""></p>
+<p>&#x5176;&#x4E2D;&#x7C89;&#x7EA2;&#x8272;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x4E3A;<strong>&#x6808;&#x5185;&#x5B58;</strong>&#xFF1A;&#x5B58;&#x50A8;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x5B9A;&#x4E49;&#x5728;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4F8B;&#x5982;: arr&#xFF0C;&#x53D8;&#x91CF;&#x4F7F;&#x7528;&#x5B8C;&#x6BD5;&#x540E;&#x7ACB;&#x5373;&#x6D88;&#x9664;</p>
+<p>&#x53F3;&#x4FA7;&#x84DD;&#x8272;&#x90E8;&#x5206;&#x4E3A;<strong>&#x5806;&#x5185;&#x5B58;</strong>&#xFF1A;&#x5B58;&#x50A8;new&#x51FA;&#x6765;&#x7684;&#x5185;&#x5BB9;(&#x5B9E;&#x4F53;,&#x5BF9;&#x8C61;)&#xFF0C;&#x6570;&#x7EC4;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x4F1A;&#x4E3A;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x6DFB;&#x52A0;&#x9ED8;&#x8BA4;&#x503C;</p>
+<p>&#x6574;&#x6570;: 0&#xFF1B;&#x6D6E;&#x70B9;&#x6570;: 0.0&#xFF1B;&#x5E03;&#x5C14;: false&#xFF1B;&#x5B57;&#x7B26;:&#x7A7A;&#x5B57;&#x7B26;&#xFF1B;&#x5F15;&#x7528;&#x6570;&#x636E;&#x7C7B;&#x578B;: null</p>
+<p>&#x6BCF;&#x4E00;&#x4E2A;new&#x51FA;&#x6765;&#x7684;&#x4E1C;&#x897F;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#x503C;&#x4F7F;&#x7528;&#x5B8C;&#x6BD5;&#xFF0C;&#x4F1A;&#x5728;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;<strong>&#x7A7A;&#x95F2;&#x65F6;</strong>&#x88AB;&#x56DE;&#x6536;</p>
+<h2 id="104-&#x6570;&#x7EC4;&#x5E38;&#x89C1;&#x4E24;&#x4E2A;&#x95EE;&#x9898;">10.4 &#x6570;&#x7EC4;&#x5E38;&#x89C1;&#x4E24;&#x4E2A;&#x95EE;&#x9898;</h2>
+<ul>
+<li>&#x7D22;&#x5F15;&#x8D8A;&#x754C;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;3&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5219;&#x5B83;&#x7684;&#x7D22;&#x5F15;&#x53EA;&#x80FD;&#x662F;0&#xFF0C;1&#xFF0C;2&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x65F6;&#x7D22;&#x5F15;&#x5927;&#x4E8E;2&#xFF0C;&#x5219;&#x4F1A;&#x8FD0;&#x884C;&#x65F6;&#x62A5;&#x9519;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> [] arr= {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>};
+        <span class="hljs-comment">//&#x7D22;&#x5F15;&#x8D8A;&#x754C;</span>
+        System.out.println(arr[<span class="hljs-number">4</span>]);
+    }
+}
+<span class="hljs-comment">//&#x4F1A;&#x62A5;&#x7D22;&#x5F15;&#x8D8A;&#x754C;&#x5F02;&#x5E38;</span>
+<span class="hljs-comment">/*
+Exception in thread &quot;main&quot; java.lang.ArrayIndexOutOfBoundsException: 4
+    at Test1.main(Test1.java:6)
+*/</span>
+</code></pre>
+<ul>
+<li>&#x7A7A;&#x6307;&#x9488;&#x5F02;&#x5E38;</li>
+</ul>
+<p>&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x7EC4;&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x6307;&#x5411;&#x5806;&#x5185;&#x5B58;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x9020;&#x6210;&#x7A7A;&#x6307;&#x9488;&#x5F02;&#x5E38;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> [] arr= {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>};
+        <span class="hljs-comment">//&#x5C06;&#x6570;&#x7EC4;&#x503C;&#x8BBE;&#x4E3A;&#x7A7A;</span>
+        arr=<span class="hljs-keyword">null</span>;
+        System.out.println(arr[<span class="hljs-number">1</span>]);
+    }
+}
+<span class="hljs-comment">//&#x4F1A;&#x62A5;&#x7A7A;&#x6307;&#x9488;&#x5F02;&#x5E38;</span>
+<span class="hljs-comment">/*
+Exception in thread &quot;main&quot; java.lang.NullPointerException
+    at Test1.main(Test1.java:7)
+    */</span>
+</code></pre>
+<h1 id="11-&#x65B9;&#x6CD5;">11. &#x65B9;&#x6CD5;</h1>
+<p>&#x65B9;&#x6CD5;&#xFF1A;&#x65B9;&#x6CD5;&#x662F;&#x5177;&#x6709;&#x72EC;&#x7ACB;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#x5757;&#x7EC4;&#x7EC7;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x6574;&#x4F53;&#xFF0C;&#x4F7F;&#x5176;&#x5177;&#x6709;&#x7279;&#x6B8A;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#x96C6;</p>
+<p>&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5148;&#x521B;&#x5EFA;&#x518D;&#x4F7F;&#x7528;&#xFF0C;&#x8BE5;&#x8FC7;&#x7A0B;&#x6210;&#x4E3A;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x521B;&#x5EFA;&#x5B8C;&#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x9700;&#x8981;&#x8C03;&#x7528;&#x624D;&#x80FD;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x3002;</p>
+<h2 id="111-&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#x4E0E;&#x8C03;&#x7528;">11.1 &#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#x4E0E;&#x8C03;&#x7528;</h2>
+<p>&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> &#x65B9;&#x6CD5;&#x540D;(){
+        <span class="hljs-comment">//&#x65B9;&#x6CD5;&#x4F53;</span>
+    }
+<span class="hljs-comment">//&#x5B9E;&#x4F8B;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
+    System.out.println(<span class="hljs-string">&quot;&#x8DD1;&#x6B65;&quot;</span>)
+}
+</code></pre>
+<p>&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#xFF1A;</p>
+<p>&#x5728;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x4E4B;&#x524D;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x88AB;&#x4E8B;&#x5148;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x800C;&#x8C03;&#x7528;&#xFF0C;&#x5219;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">//&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x8C03;&#x7528;run&#xFF08;&#xFF09;&#x65B9;&#x6CD5;</span>
+        run();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        System.out.print(<span class="hljs-string">&quot;&#x8DD1;&#x6B65;&quot;</span>);
+    }
+}
+</code></pre>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">//2.&#x8C03;&#x7528;&#x65B9;&#x6CD5;</span>
+        getMax();
+    }
+
+    <span class="hljs-comment">//1.&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getMax</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;
+        <span class="hljs-keyword">int</span> b = <span class="hljs-number">12</span>;
+        <span class="hljs-keyword">if</span> (a &gt; b) {
+            System.out.println(a);
+        } <span class="hljs-keyword">else</span> {
+            System.out.println(b);
+        }
+    }
+}
+</code></pre>
+<h2 id="112-&#x5E26;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x6CD5;">11.2 &#x5E26;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x6CD5;</h2>
+<p>&#x5F62;&#x53C2;&#x4E0E;&#x5B9E;&#x53C2;&#xFF1A;</p>
+<ul>
+<li>&#x5F62;&#x53C2;&#xFF1A;&#x5F62;&#x53C2;&#x662F;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x65F6;&#x5B9A;&#x4E49;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7B49;&#x540C;&#x4E8E;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x683C;&#x5F0F;</li>
+<li>&#x5B9E;&#x53C2;&#xFF1A;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x65F6;&#xFF0C;&#x5B9E;&#x9645;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7B49;&#x540C;&#x4E8E;&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x6216;&#x5E38;&#x91CF;</li>
+</ul>
+<p>&#x5E26;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> &#x65B9;&#x6CD5;&#x540D;(&#x6570;&#x636E;&#x7C7B;&#x578B; &#x53C2;&#x6570;<span class="hljs-number">1</span>,&#x6570;&#x636E;&#x7C7B;&#x578B; &#x53C2;&#x6570;<span class="hljs-number">2</span>,&#x6570;&#x636E;&#x7C7B;&#x578B; &#x53C2;&#x6570;<span class="hljs-number">3</span>&#x2026;){
+        <span class="hljs-comment">//&#x65B9;&#x6CD5;&#x4F53;</span>
+    }
+<span class="hljs-comment">//&#x5B9E;&#x4F8B;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">(String name)</span></span>{
+    System.out.println(name+<span class="hljs-string">&quot;&#x5728;&#x8DD1;&#x6B65;&quot;</span>)
+}
+</code></pre>
+<p>&#x5E26;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#xFF1A;</p>
+<p>&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x53C2;&#x6570;&#x7684;&#x6570;&#x91CF;&#x4E0E;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x4E0E;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x4E2D;&#x7684;&#x8BBE;&#x7F6E;&#x76F8;&#x5339;&#x914D;&#xFF0C;&#x5426;&#x5219;&#x7A0B;&#x5E8F;&#x5C06;&#x62A5;&#x9519;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">//&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x8C03;&#x7528;run&#xFF08;&#xFF09;&#x65B9;&#x6CD5;</span>
+        run(<span class="hljs-string">&quot;&#x5357;&#x96E8;&quot;</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">(String name)</span> </span>{
+        System.out.print(<span class="hljs-string">&quot;&#x8DD1;&#x6B65;&quot;</span>);
+    }
+}
+</code></pre>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">//&#x5411;getSum&#x4E2D;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5FC5;&#x987B;&#x4E0E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x65F6;&#x8BBE;&#x7F6E;&#x7684;&#x53C2;&#x6570;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x548C;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</span>
+        <span class="hljs-comment">//1&#xFF0C;2&#xFF0C;3&#x4E3A;&#x5B9E;&#x53C2;</span>
+        getSum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+    }
+<span class="hljs-comment">//a,b,c&#x4E3A;&#x5F62;&#x53C2;</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c)</span> </span>{
+        System.out.print(a + b + c);
+    }
+}
+</code></pre>
+<h2 id="113-&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#x4E0E;&#x8C03;&#x7528;">11.3 &#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#x4E0E;&#x8C03;&#x7528;</h2>
+<p>&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<p>&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x65F6;return&#x540E;&#x9762;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4E0E;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8981;&#x5339;&#x914D;&#xFF0C;&#x5426;&#x5219;&#x7A0B;&#x5E8F;&#x5C06;&#x62A5;&#x9519;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &#x6570;&#x636E;&#x7C7B;&#x578B; &#x65B9;&#x6CD5;&#x540D;(&#x53C2;&#x6570;){
+reutrn &#x6570;&#x636E;&#x7C7B;&#x578B;;
+}
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getInt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>{
+<span class="hljs-keyword">return</span> a;
+}
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">getString</span><span class="hljs-params">(String str)</span></span>{
+<span class="hljs-keyword">return</span> <span class="hljs-number">100</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getInt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>{
+<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x5357;&#x96E8;&quot;</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">getBoolean</span><span class="hljs-params">(<span class="hljs-keyword">int</span> b)</span></span>{
+<span class="hljs-keyword">return</span> True;
+}
+</code></pre>
+<p>&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;</p>
+<p>&#x683C;&#x5F0F;&#x4E00;&#xFF1A;</p>
+<pre><code class="lang-java">&#x65B9;&#x6CD5;&#x540D;&#xFF08;&#x53C2;&#x6570;&#xFF09;;
+getboolean(<span class="hljs-number">0</span>);
+</code></pre>
+<p>&#x683C;&#x5F0F;&#x4E8C;&#xFF1A;</p>
+<pre><code class="lang-java">&#x6570;&#x636E;&#x7C7B;&#x578B; &#x53D8;&#x91CF;&#x540D;=&#x65B9;&#x6CD5;&#x540D;&#xFF08;&#x53C2;&#x6570;&#xFF09;;
+Boolean flag=getBoolean(<span class="hljs-number">0</span>);
+</code></pre>
+<p>&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x901A;&#x5E38;&#x4F1A;&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x63A5;&#x6536;,&#x5426;&#x5219;&#x8BE5;&#x8FD4;&#x56DE;&#x503C;&#x5C06;&#x65E0;&#x610F;&#x4E49;&#xFF0C;&#x6240;&#x4EE5;&#x66F4;&#x63A8;&#x8350;&#x7528;&#x683C;&#x5F0F;&#x4E8C;&#x6765;&#x8C03;&#x7528;&#x65B9;&#x6CD5;</p>
+<p>&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">//&#x5411;getSum&#x4E2D;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5FC5;&#x987B;&#x4E0E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x65F6;&#x8BBE;&#x7F6E;&#x7684;&#x53C2;&#x6570;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x548C;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</span>
+        <span class="hljs-keyword">int</span> sum=-getSum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+        System.out.print(sum);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c)</span> </span>{
+        <span class="hljs-keyword">int</span> n=a+b+c;
+        <span class="hljs-keyword">return</span> n;
+    }
+}
+</code></pre>
+<h2 id="114-&#x6709;&#x5173;&#x65B9;&#x6CD5;&#x6CE8;&#x610F;&#x4E8B;&#x9879;">11.4 &#x6709;&#x5173;&#x65B9;&#x6CD5;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h2>
+<ul>
+<li><p>&#x65B9;&#x6CD5;&#x4E0E;&#x65B9;&#x6CD5;&#x4E4B;&#x95F4;&#x4E0D;&#x80FD;&#x5D4C;&#x5957;&#x5B9A;&#x4E49;&#xFF0C;&#x53EA;&#x80FD;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+<li><p>void&#x5173;&#x952E;&#x5B57;&#x8868;&#x793A;&#x65E0;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x8BFE;&#x7701;&#x7565;return&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x5199;return&#xFF0C;&#x4F46;return&#x540E;&#x9762;&#x4E0D;&#x52A0;&#x6570;&#x636E;&#x3002;</p>
+</li>
+</ul>
+<h2 id="115-&#x65B9;&#x6CD5;&#x91CD;&#x8F7D;">11.5 &#x65B9;&#x6CD5;&#x91CD;&#x8F7D;</h2>
+<p><strong>&#x91CD;&#x8F7D;&#x6982;&#x8FF0;&#xFF1A;</strong></p>
+<p>&#x65B9;&#x6CD5;&#x91CD;&#x8F7D;&#x6307;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x591A;&#x4E2A;&#x65B9;&#x6CD5;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x6EE1;&#x8DB3;&#x4E0B;&#x5217;&#x6761;&#x4EF6;&#x7684;&#x591A;&#x4E2A;&#x65B9;&#x6CD5;&#x76F8;&#x4E92;&#x6784;&#x6210;&#x91CD;&#x8F7D;</p>
+<ul>
+<li><p>&#x591A;&#x4E2A;&#x65B9;&#x6CD5;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;</p>
+</li>
+<li><p>&#x591A;&#x4E2A;&#x65B9;&#x6CD5;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x540D;</p>
+</li>
+<li><p>&#x591A;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#x6216;&#x8005;&#x6570;&#x91CF;&#x4E0D;&#x540C;</p>
+</li>
+</ul>
+<p><strong>&#x91CD;&#x8F7D;&#x7279;&#x70B9;&#xFF1A;</strong></p>
+<ul>
+<li><p>&#x91CD;&#x8F7D;&#x4EC5;&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x4E0E;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x65E0;&#x5173;&#xFF0C;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x53C2;&#x7167;&#x6807;&#x51C6;&#x683C;&#x5F0F;</p>
+</li>
+<li><p>&#x91CD;&#x8F7D;&#x4EC5;&#x9488;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;&#x65B9;&#x6CD5;&#x7684;&#x540D;&#x79F0;&#x4E0E;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x8BC6;&#x522B;&#xFF0C;&#x4E0E;&#x8FD4;&#x56DE;&#x503C;&#x65E0;&#x5173;&#xFF0C;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;&#x8FD4;&#x56DE;&#x503C;&#x6765;&#x5224;&#x5B9A;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x76F8;&#x4E92;&#x6784;&#x6210;&#x91CD;&#x8F7D;</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test1</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">//&#x5411;getSum&#x4E2D;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5FC5;&#x987B;&#x4E0E;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x65F6;&#x8BBE;&#x7F6E;&#x7684;&#x53C2;&#x6570;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x548C;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</span>
+        <span class="hljs-keyword">int</span> sum=-getSum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+        <span class="hljs-keyword">int</span> sum2=-getSum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+        <span class="hljs-keyword">double</span> sum1=getSum(<span class="hljs-number">1.7</span>,<span class="hljs-number">1.9</span>);
+        System.out.println(sum);
+        System.out.println(sum1);
+        System.out.println(sum2);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c)</span> </span>{
+        <span class="hljs-keyword">int</span> n=a+b+c;
+        <span class="hljs-keyword">return</span> n;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>{
+        <span class="hljs-keyword">int</span> n=a+b;
+        <span class="hljs-keyword">return</span> n;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSum</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a, <span class="hljs-keyword">double</span> b)</span> </span>{
+        <span class="hljs-keyword">double</span> n=a+b;
+        <span class="hljs-keyword">return</span> n;
+    }
+}
+</code></pre>
+<h1 id="12-debug">12. DeBug</h1>
+<p><strong><font color="red">debug&#xFF1A;</font></strong></p>
+<p>&#x662F;&#x4F9B;&#x7A0B;&#x5E8F;&#x5458;&#x4F7F;&#x7528;&#x7684;&#x7A0B;&#x5E8F;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;<strong>&#x67E5;&#x770B;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;</strong>&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;<strong>&#x7528;&#x4E8E;&#x8FFD;&#x8E2A;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x6765;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x3002;</strong></p>
+<p><strong>debug&#x64CD;&#x4F5C;&#x6D41;&#x7A0B;&#xFF1A;</strong></p>
+<p>Debug&#x8C03;&#x8BD5;&#xFF0C;&#x53C8;&#x88AB;&#x79F0;&#x4E3A;&#x65AD;&#x70B9;&#x8C03;&#x8BD5;&#xFF0C;&#x65AD;&#x70B9;&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x4E2A;&#x6807;&#x8BB0;&#xFF0C;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#x4ECE;&#x54EA;&#x91CC;&#x5F00;&#x59CB;&#x67E5;&#x770B;&#x3002;&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x6D41;&#x7A0B;&#xFF1A;&#x5982;&#x4F55;&#x52A0;&#x65AD;&#x70B9;&#x3001;&#x5982;&#x4F55;&#x8FD0;&#x884C;&#x52A0;&#x4E86;&#x65AD;&#x70B9;&#x7684;&#x7A0B;&#x5E8F;&#x3001;&#x770B;&#x54EA;&#x91CC;&#x3001;&#x70B9;&#x54EA;&#x91CC;&#x3001;&#x5982;&#x4F55;&#x5220;&#x9664;&#x65AD;&#x70B9;</p>
+<ul>
+<li>&#x52A0;&#x65AD;&#x70B9;</li>
+</ul>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210330232934.png" alt=""></p>
+<ul>
+<li>&#x8FD0;&#x884C;&#x52A0;&#x4E86;&#x65AD;&#x70B9;&#x7684;&#x7A0B;&#x5E8F;</li>
+</ul>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/Snipaste_2021-03-30_23-36-27.png" style="zoom: 67%;"></p>
+<ul>
+<li>&#x89C2;&#x5BDF;debug&#x7A97;&#x53E3;</li>
+</ul>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210330233826.png" alt=""></p>
+<ul>
+<li>&#x89C2;&#x5BDF;console&#x7A97;&#x53E3;&#xFF0C;&#x89C2;&#x5BDF;&#x8FD0;&#x884C;&#x7ED3;&#x679C;</li>
+</ul>
+<p><img src="https://gitee.com/nanyu99/picgo/raw/master/image/QQ%E6%88%AA%E5%9B%BE20210330233941.png" alt=""></p>
+<ul>
+<li>&#x70B9;F7&#x952E;&#x53EF;&#x5411;&#x4E0B;&#x6267;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x518D;&#x6B21;&#x70B9;&#x51FB;&#x65AD;&#x70B9;&#x5904;&#x53EF;&#x5220;&#x9664;&#x65AD;&#x70B9;&#x3002;</li>
+</ul>
+ 
+          </section>
+          
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+ 
+          <div class="book-footer">
+            
+            <div class="donate">
+              <div>『 赠人玫瑰 🌹 手有余香 』</div>
+              <button class="donate-btn" onclick="showModal()">赞赏</button>
+            </div>
+             
+            <div class="copyright"></div>
+            
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+
+      
+    <a
+      href="2-Java学习笔记二-面向对象.html"
+      class="
+        navigation navigation-next
+        navigation-unique
+      "
+      aria-label="Next page: 2. Java学习笔记二 面向对象"
+    >
+      <i class="fa fa-angle-right"></i>
+    </a>
+      
+  </div>
+  <script>
+    function showModal() {
+      document.getElementsByClassName("mask")[0].style.display = "block";
+      document.getElementsByClassName("donate-modal")[0].style.display =
+        "block";
+    }
+    // 切换赞赏码
+    function showDonateImg(num) {
+      let alipay = "";
+      let wxpay = ""
+      if(num){
+        wxpay = "hidden"
+      }else{
+        alipay = "hidden"
+      }
+      document.getElementById("wxpay-code").hidden = wxpay;
+      document.getElementById("alipay-code").hidden = alipay;
+      document.getElementsByName("pay-way")[num].checked = "checked";
+    }
+
+    // 关闭赞赏框
+    function closeDonateModal() {
+      document.getElementsByClassName("mask")[0].style.display = "none";
+      document.getElementsByClassName("donate-modal")[0].style.display = "none";
+    }
+
+    var gitbook = gitbook || [];
+    gitbook.push(function () {
+      gitbook.page.hasChanged({"page":{"title":"1. Java学习笔记一 基础语法","level":"1.2.1","depth":2,"next":{"title":"2. Java学习笔记二 面向对象","level":"1.2.2","depth":2,"path":"1-Java/2-Java学习笔记二-面向对象.md","ref":"1-Java/2-Java学习笔记二-面向对象.md","articles":[]},"previous":{"title":"Java","level":"1.2","depth":1,"ref":"","articles":[{"title":"1. Java学习笔记一 基础语法","level":"1.2.1","depth":2,"path":"1-Java/1-Java学习笔记一-基础语法.md","ref":"1-Java/1-Java学习笔记一-基础语法.md","articles":[]},{"title":"2. Java学习笔记二 面向对象","level":"1.2.2","depth":2,"path":"1-Java/2-Java学习笔记二-面向对象.md","ref":"1-Java/2-Java学习笔记二-面向对象.md","articles":[]},{"title":"3. Java学习笔记三 API的使用(一)","level":"1.2.3","depth":2,"path":"1-Java/3-Java学习笔记三-API的使用(一","ref":"1-Java/3-Java学习笔记三-API的使用(一","articles":[]},{"title":"4. Java学习笔记四 继承、多态","level":"1.2.4","depth":2,"path":"1-Java/4-Java学习笔记四-继承、多态.md","ref":"1-Java/4-Java学习笔记四-继承、多态.md","articles":[]},{"title":"5. Java学习笔记五 API的使用(二)","level":"1.2.5","depth":2,"path":"1-Java/5-Java学习笔记五-API的使用(二","ref":"1-Java/5-Java学习笔记五-API的使用(二","articles":[]},{"title":"6. Java学习笔记六 异常与集合","level":"1.2.6","depth":2,"path":"1-Java/6-Java学习笔记六-异常与集合.md","ref":"1-Java/6-Java学习笔记六-异常与集合.md","articles":[]},{"title":"7. Java学习笔记七 File类及IO流","level":"1.2.7","depth":2,"path":"1-Java/7-Java学习笔记七-File类及IO流.md","ref":"1-Java/7-Java学习笔记七-File类及IO流.md","articles":[]},{"title":"8. Java学习笔记八 多线程及网络","level":"1.2.8","depth":2,"path":"1-Java/8-Java学习笔记八-多线程及网络.md","ref":"1-Java/8-Java学习笔记八-多线程及网络.md","articles":[]},{"title":"9. Java反射","level":"1.2.9","depth":2,"path":"1-Java/9-Java反射.md","ref":"1-Java/9-Java反射.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-summary","search-pro","expandable-chapters","back-to-top-button","code","theme-lou"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-lou":{"hide-elements":[".summary .gitbook-link",".summary .divider",".font-settings",".book-summary-title"],"color":"#6443f2","book-anchor-title":"本章目录","copyright":{"author":"南雨"},"forbidCopy":false,"logo":"static/logo.png","book-summary-title":"目录","search-placeholder":"输入搜索文本","copyrightLogo":"assets/copyright.png","favicon":"static/favicon.ico","appleTouchIconPrecomposed152":"static/logo.png"},"search-pro":{},"expandable-chapters":{},"back-to-top-button":{},"code":{"copyButtons":true},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"南雨","lang":"zh-hans","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"图书编号","variables":{"themeLou":{"nav":[{"target":"_blank","url":"https://dingzijun.top","name":"南雨"}],"footer":{"donate":{"button":"捐赠","avatar":"static/logo.png","nickname":"南雨","message":"随意打赏，但不要超过一顿早餐钱！","text":"『 赠人玫瑰 🌹 手有余香 』","wxpay":"static/wechatpay.jpg","alipay":"static/alipay.jpg"},"copyright":true}}},"title":"知识星球","gitbook":"*","description":"个人电子书"},"file":{"path":"1-Java/1-Java学习笔记一-基础语法.md","mtime":"2022-02-22T09:12:40.758Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-05T03:41:41.872Z"},"basePath":"..","book":{"language":""}});
+    });
+  </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-lou/lou.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1814 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>7. Scala · 知识星球</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="南雨">
+        <meta name="identifier" content="图书编号" scheme="ISBN">
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-lou/lou.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../8-Hive/3-Hive基本命令.html" />
+    
+
+    </head>
+    <body>
+         
+<div class="donate-modal modal">
+  <div class="modal-header">
+    <div>
+      <span>
+        <img
+          id="modal-avatar"
+          class="modal-avatar"
+          src="static/logo.png"
+        />
+      </span>
+      <span id="nickname"> 南雨 </span>
+      <p class="modal-close close" onclick="closeDonateModal()">×</p>
+    </div>
+    <div class="message">
+      <div class="tip">
+        <i></i>
+        <span>随意打赏，但不要超过一顿早餐钱！</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-content">
+    <div class="modal-pay-way">
+      <div id="wxpay" onclick="showDonateImg(0)">
+        <input
+          type="radio"
+          name="pay-way"
+          value="wxpay"
+          class="zs-type"
+          checked="checked"
+        />
+        <span>
+          <img
+            id="wxpay-logo"
+            src="data:image/png;base64,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"
+          />
+        </span>
+      </div>
+      <div id="alipay" onclick="showDonateImg(1)">
+        <input type="radio" name="pay-way" value="alipay" class="zs-type" />
+        <span>
+          <img
+            id="alipay-logo"
+            src="data:image/png;base64,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"
+          />
+        </span>
+      </div>
+    </div>
+    <div class="modal-pay-qrcode">
+      <img id="wxpay-code" src="static/wechatpay.jpg" />
+      <img
+        id="alipay-code"
+        src="static/alipay.jpg"
+        hidden
+      />
+    </div>
+  </div>
+</div>
+<div class="mask"></div>
+
+
+<div class="book">
+  <div class="header-inner">
+    <!-- LOGO -->
+    <div class="logo"></div>
+    <span class="title"></span>
+
+    <!-- Search -->
+    
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+
+    <!-- Nav -->
+    <ul class="header-nav">
+      <li>
+        <a href="https://dingzijun.top" target="_blank">南雨</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="book-summary">
+    <div class="book-summary-title">文档目录</div>
+     
+    <nav role="navigation">
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Java
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../1-Java/1-Java学习笔记一-基础语法.html">
+            
+                <a href="../1-Java/1-Java学习笔记一-基础语法.html">
+            
+                    
+                    1. Java学习笔记一 基础语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../1-Java/2-Java学习笔记二-面向对象.html">
+            
+                <a href="../1-Java/2-Java学习笔记二-面向对象.html">
+            
+                    
+                    2. Java学习笔记二 面向对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../1-Java/3-Java学习笔记三-API的使用(一">
+            
+                <span>
+            
+                    
+                    3. Java学习笔记三 API的使用(一)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../1-Java/4-Java学习笔记四-继承、多态.html">
+            
+                <a href="../1-Java/4-Java学习笔记四-继承、多态.html">
+            
+                    
+                    4. Java学习笔记四 继承、多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../1-Java/5-Java学习笔记五-API的使用(二">
+            
+                <span>
+            
+                    
+                    5. Java学习笔记五 API的使用(二)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../1-Java/6-Java学习笔记六-异常与集合.html">
+            
+                <a href="../1-Java/6-Java学习笔记六-异常与集合.html">
+            
+                    
+                    6. Java学习笔记六 异常与集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../1-Java/7-Java学习笔记七-File类及IO流.html">
+            
+                <a href="../1-Java/7-Java学习笔记七-File类及IO流.html">
+            
+                    
+                    7. Java学习笔记七 File类及IO流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../1-Java/8-Java学习笔记八-多线程及网络.html">
+            
+                <a href="../1-Java/8-Java学习笔记八-多线程及网络.html">
+            
+                    
+                    8. Java学习笔记八 多线程及网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../1-Java/9-Java反射.html">
+            
+                <a href="../1-Java/9-Java反射.html">
+            
+                    
+                    9. Java反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Spark
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../10-Spark/1-Spark.html">
+            
+                <a href="../10-Spark/1-Spark.html">
+            
+                    
+                    1. Spark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../10-Spark/2-ElasticSearch.html">
+            
+                <a href="../10-Spark/2-ElasticSearch.html">
+            
+                    
+                    2. ElasticSearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../10-Spark/KafKa安装配置.html">
+            
+                <a href="../10-Spark/KafKa安装配置.html">
+            
+                    
+                    3. KafKa安装配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    Java后端
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../2-JavaWeb/1-BootStrap.html">
+            
+                <a href="../2-JavaWeb/1-BootStrap.html">
+            
+                    
+                    1. BootStrap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../5-JavaScript/1-JS学习.html">
+            
+                <a href="../5-JavaScript/1-JS学习.html">
+            
+                    
+                    2. JS学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../3-MySql/1-Mysql基本语句.html">
+            
+                <a href="../3-MySql/1-Mysql基本语句.html">
+            
+                    
+                    3. Mysql基本语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../2-JavaWeb/2-JavaWeb.html">
+            
+                <a href="../2-JavaWeb/2-JavaWeb.html">
+            
+                    
+                    4. JavaWeb
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../4-Spring/1-Spring.html">
+            
+                <a href="../4-Spring/1-Spring.html">
+            
+                    
+                    5. Spring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../12-Redis/1-Redis简介.html">
+            
+                <a href="../12-Redis/1-Redis简介.html">
+            
+                    
+                    6. Redis简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    Python
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../6-Python/1-Python数据分析.html">
+            
+                <a href="../6-Python/1-Python数据分析.html">
+            
+                    
+                    1. Python数据分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../6-Python/2-初识Python.html">
+            
+                <a href="../6-Python/2-初识Python.html">
+            
+                    
+                    2. 初识Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <span>
+            
+                    
+                    Hadoop生态
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../7-Hadoop/1-Centos7安装.html">
+            
+                <a href="../7-Hadoop/1-Centos7安装.html">
+            
+                    
+                    1. Centos7安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../7-Hadoop/2-Hadoop环境搭建.html">
+            
+                <a href="../7-Hadoop/2-Hadoop环境搭建.html">
+            
+                    
+                    2. Hadoop环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../9-Flume/1-Flume.html">
+            
+                <a href="../9-Flume/1-Flume.html">
+            
+                    
+                    3. Flume
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../8-Hive/1-Hive入门.html">
+            
+                <a href="../8-Hive/1-Hive入门.html">
+            
+                    
+                    4. Hive入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../8-Hive/2-Hive环境配置.html">
+            
+                <a href="../8-Hive/2-Hive环境配置.html">
+            
+                    
+                    5. Hive环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../8-Hive/3-Hive基本命令.html">
+            
+                <a href="../8-Hive/3-Hive基本命令.html">
+            
+                    
+                    6. Hive基本命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.7" data-path="1-Scala.html">
+            
+                <a href="1-Scala.html">
+            
+                    
+                    7. Scala
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    Blog
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../13-Blog/1-CSS之postion属性.html">
+            
+                <a href="../13-Blog/1-CSS之postion属性.html">
+            
+                    
+                    1. CSS之Postion属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../13-Blog/2-CSS之浮动.html">
+            
+                <a href="../13-Blog/2-CSS之浮动.html">
+            
+                    
+                    2. CSS之浮动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../13-Blog/3-flask_migrate数据库迁移.html">
+            
+                <a href="../13-Blog/3-flask_migrate数据库迁移.html">
+            
+                    
+                    3. Flask Migrate数据库迁移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../13-Blog/4-HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备 .html">
+            
+                <a href="../13-Blog/4-HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备 .html">
+            
+                    
+                    4. HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../13-Blog/5-Hexo搭建个人博客.html">
+            
+                <a href="../13-Blog/5-Hexo搭建个人博客.html">
+            
+                    
+                    5. Hexo搭建个人博客
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../13-Blog/6-MySQL查询乱码.html">
+            
+                <a href="../13-Blog/6-MySQL查询乱码.html">
+            
+                    
+                    6. MySQL查询乱码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../13-Blog/7-计算APP评分.html">
+            
+                <a href="../13-Blog/7-计算APP评分.html">
+            
+                    
+                    7. 计算APP评分
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../13-Blog/8-动态规划解决最大子数组问题.html">
+            
+                <a href="../13-Blog/8-动态规划解决最大子数组问题.html">
+            
+                    
+                    8. 动态规划解决最大子数组问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" >
+            
+                <span>
+            
+                    
+                    408
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="../14-408/1-操作系统/1-操作系统.html">
+            
+                <a href="../14-408/1-操作系统/1-操作系统.html">
+            
+                    
+                    1. 操作系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2.2" data-path="../14-408/2-数据结构/1-数据结构.html">
+            
+                <a href="../14-408/2-数据结构/1-数据结构.html">
+            
+                    
+                    2. 数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    Project
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../15-Project/1-小程序开发流程.html">
+            
+                <a href="../15-Project/1-小程序开发流程.html">
+            
+                    
+                    1. 小程序开发流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../15-Project/2-项目管理系统.html">
+            
+                <a href="../15-Project/2-项目管理系统.html">
+            
+                    
+                    2. 项目管理系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../15-Project/3-接口文档.html">
+            
+                <a href="../15-Project/3-接口文档.html">
+            
+                    
+                    3. 接口文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+</nav>
+     
+  </div>
+
+  <!-- Content nav -->
+  <div class="book-anchor">
+    <div class="book-anchor-title"></div>
+
+    <div class="book-anchor-body"></div>
+  </div>
+
+  <div class="book-body">
+    
+    <div class="body-inner">
+       
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >7. Scala</a>
+    </h1>
+</div>
+
+
+
+      <div class="page-wrapper" tabindex="-1" role="main">
+        <div class="page-inner">
+          
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+          <section class="normal markdown-section">
+             <h2 id="scala&#x57FA;&#x7840;&#x77E5;&#x8BC6;">Scala&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h2>
+<h4 id="11-&#x4EC0;&#x4E48;&#x662F;scala">1.1 &#x4EC0;&#x4E48;&#x662F;Scala</h4>
+<blockquote>
+<p>Scala&#x662F;&#x4E00;&#x95E8;<strong>&#x591A;&#x8303;&#x5F0F;</strong>&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#xFF0C;&#x4E00;&#x79CD;&#x7C7B;&#x4F3C;java&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00; &#xFF0C;&#x8BBE;&#x8BA1;&#x521D;&#x8877;&#x662F;&#x5B9E;&#x73B0;&#x53EF;&#x4F38;&#x7F29;&#x7684;&#x8BED;&#x8A00;&#x3001;&#x5E76;&#x96C6;&#x6210;<strong>&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;</strong>&#x548C;<strong>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</strong>&#x7684;&#x5404;&#x79CD;&#x7279;&#x6027;&#x3002;</p>
+</blockquote>
+<p><strong><font color="red">&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</font></strong>&#x66F4;&#x9002;&#x5408;&#x7528;&#x4E8E;Map/Reduce&#x548C;&#x5927;&#x6570;&#x636E;&#x8BA1;&#x7B97;&#xFF0C;&#x6BD4;java&#x66F4;&#x9002;&#x5408;&#x7528;&#x4E8E;&#x5927;&#x6570;&#x636E;&#x8BA1;&#x7B97;&#x3002;</p>
+<p>Scala&#x4F5C;&#x8005;&#x662F;JVM&#x7684;&#x5F00;&#x53D1;&#x8005;&#x4E4B;&#x4E00;&#xFF0C;&#x5B83;&#x80FD;&#x8FD0;&#x884C;&#x5728;java&#x865A;&#x62DF;&#x673A;&#x4E4B;&#x4E0A;&#xFF0C;&#x5E76;&#x517C;&#x5BB9;&#x73B0;&#x6709;&#x7684;java&#x7A0B;&#x5E8F;&#xFF0C;&#x4ED6;&#x5F00;&#x53D1;Scala&#x7684;&#x76EE;&#x7684;&#x5373;&#x89E3;&#x51B3;&#x7F16;&#x5199;Java&#x65F6;&#x7684;&#x7E41;&#x7410;&#x7684;&#x89C4;&#x8303;&#x3002;</p>
+<p>Spark&#x3001;Flink&#x7B49;&#x90FD;&#x662F;&#x91C7;&#x7528;Scala&#x5F00;&#x53D1;&#x548C;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5B66;&#x597D;Scala&#x662F;&#x5B66;&#x597D;&#x5927;&#x6570;&#x636E;&#x7684;&#x5173;&#x952E;&#x3002;</p>
+<p><strong>Scala&#x5B98;&#x7F51;&#xFF1A;</strong><u><a href="https://scala-lang.org/" target="_blank">&#x70B9;&#x6211;&#x8FDB;&#x5165;</a></u></p>
+<h4 id="12-scala&#x7279;&#x70B9;">1.2 Scala&#x7279;&#x70B9;</h4>
+<p>Scala&#x662F;&#x4E00;&#x79CD;&#x6709;&#x8DA3;&#x7684;&#x8BED;&#x8A00;&#x3002;&#x5B83;&#x4E00;&#x65B9;&#x9762;&#x5438;&#x6536;&#x7EE7;&#x627F;&#x4E86;&#x591A;&#x79CD;&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x4F18;&#x79C0;&#x7279;&#x6027;&#xFF0C;&#x4E00; &#x65B9;&#x9762;&#x53C8;&#x6CA1;&#x6709;&#x62CB;&#x5F03;Java&#x8FD9;&#x4E2A;&#x5F3A;&#x5927;&#x7684;&#x5E73;&#x53F0;&#xFF0C;&#x5B83;&#x8FD0;&#x884C;&#x5728;Java&#x865A;&#x62DF;&#x673A;(Java Virtual Machine)&#x4E4B;&#x4E0A;&#xFF0C;&#x8F7B;&#x677E;&#x5B9E;&#x73B0;&#x548C;&#x4E30;&#x5BCC;&#x7684;Java&#x7C7B;&#x5E93;&#x4E92;&#x8054;&#x4E92;&#x901A;&#x5B83;&#x65E2;&#x652F;&#x6301;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#xFF0C;&#x53C8;&#x652F;&#x6301;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x3002;&#x5B83;&#x5199;&#x51FA;&#x7684;&#x7A0B;&#x5E8F;&#x50CF;&#x52A8;&#x6001;&#x8BED;&#x8A00;&#x4E00;&#x6837;&#x7B80;&#x6D01;&#xFF0C;&#x4F46;&#x4E8B;&#x5B9E;&#x4E0A;&#x5B83;&#x786E;&#x662F;&#x4E25;&#x683C;&#x610F;&#x4E49;&#x4E0A;&#x7684;<strong><font color="red">&#x9759;&#x6001;&#x8BED;&#x8A00;</font></strong>&#x3002;</p>
+<p><strong><font color="red">&#x9759;&#x6001;&#x8BED;&#x8A00;:</font></strong>&#x9700;&#x8981;&#x5148;&#x7F16;&#x8BD1;&#x518D;&#x6267;&#x884C;&#xFF0C;&#x6BD4;&#x5982;java&#x3001;C++</p>
+<p><strong><font color="red">&#x52A8;&#x6001;&#x8BED;&#x8A00;:</font></strong>&#x4E0D;&#x9700;&#x8981;&#x7ECF;&#x8FC7;&#x7F16;&#x8BD1;&#x76F4;&#x63A5;&#x6765;&#x8FD0;&#x884C;&#xFF0C;&#x6BD4;&#x5982;Html&#x3001;JS&#x3002;</p>
+<p>Scala&#x6709;&#x4EE5;&#x4E0B;&#x56DB;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x5373;&#x5305;&#x542B;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#xFF0C;&#x53C8;&#x5305;&#x542B;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</li>
+<li>&#x5C5E;&#x4E8E;&#x9759;&#x6001;&#x7C7B;&#x578B;</li>
+<li>&#x53EF;&#x6269;&#x5C55;&#x6027;</li>
+<li>&#x5E76;&#x53D1;&#x6027;</li>
+</ul>
+</blockquote>
+<h4 id="13-scala&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;">1.3 Scala&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</h4>
+<p>&#x7EAF;&#x7CB9;&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x53D8;&#x91CF;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x8981;&#x8F93;&#x5165;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x8F93;&#x51FA;&#x5C31;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x8FD9;&#x79CD;&#x7EAF;&#x51FD;&#x6570;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;&#x6CA1;&#x6709;&#x526F;&#x4F5C;&#x7528;&#x3002;&#x800C;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x7684;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;&#xFF0C;&#x7531;&#x4E8E;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x7684;&#x53D8;&#x91CF;&#x72B6;&#x6001;&#x4E0D;&#x786E;&#x5B9A;&#xFF0C;&#x540C;&#x6837;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x53EF;&#x80FD;&#x5F97;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x8FD9;&#x79CD;&#x51FD;&#x6570;&#x662F;&#x6709;&#x526F;&#x4F5C;&#x7528;&#x7684;&#x3002;</p>
+<p>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x7279;&#x70B9;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x51FD;&#x6570;&#x662F;&#x4E00;&#x7B49;&#x516C;&#x6C11;</li>
+<li>&#x4EE5;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;&#x4E2D;&#x5FC3;</li>
+<li>&#x65E0;&#x526F;&#x4F5C;&#x7528;</li>
+<li>&#x4E0D;&#x4FEE;&#x6539;&#x72B6;&#x6001;</li>
+<li>&#x5F15;&#x7528;&#x900F;&#x660E;</li>
+</ul>
+</blockquote>
+<p>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x4F18;&#x52BF;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x4EE3;&#x7801;&#x7B80;&#x6D01;&#xFF0C;&#x5F00;&#x53D1;&#x901F;&#x5EA6;&#x5FEB;</li>
+<li>&#x63A5;&#x8FD1;&#x81EA;&#x7136;&#x8BED;&#x8A00;&#xFF0C;&#x6613;&#x7406;&#x89E3;</li>
+<li>&#x6613;&#x4E8E;&#x4EE3;&#x7801;&#x7BA1;&#x7406;</li>
+<li>&#x9002;&#x5408;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;</li>
+<li>&#x9002;&#x7528;&#x4E8E;&#x70ED;&#x5347;&#x7EA7;</li>
+</ul>
+</blockquote>
+<h4 id="14-scala&#x7684;&#x4F18;&#x70B9;">1.4 Scala&#x7684;&#x4F18;&#x70B9;</h4>
+<p><strong>&#x4F18;&#x96C5;</strong>:&#x8FD9;&#x662F;&#x6846;&#x67B6;&#x8BBE;&#x8BA1;&#x5E08;&#x7B2C;&#x4E00;&#x4E2A;&#x8981;&#x8003;&#x8651;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6846;&#x67B6;&#x7684;&#x7528;&#x6237;&#x662F;&#x5E94;&#x7528;&#x5F00;&#x53D1;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;API&#x662F;&#x5426;&#x4F18;&#x96C5;&#x76F4;&#x63A5;&#x5F71;&#x54CD;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x3002;</p>
+<p><strong>&#x901F;&#x5EA6;&#x5FEB;</strong>: <u>Scala&#x8BED;&#x8A00;&#x8868;&#x8FBE;&#x80FD;&#x529B;&#x5F3A;&#xFF0C;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x62B5;&#x5F97;&#x4E0A;Java&#x591A;&#x884C;&#xFF0C;&#x5F00;&#x53D1;&#x901F;&#x5EA6;&#x5FEB;  Scala&#x662F;&#x9759;&#x6001;&#x7F16;&#x8BD1;&#x7684;</u>;&#xFF0C;&#x6240;&#x4EE5;&#x548C;JRuby, Groovy&#x6BD4;&#x8D77;&#x6765;&#x901F;&#x5EA6;&#x4F1A;&#x5FEB;&#x5F88;&#x591A;(&#x4F53;&#x9A8C;&#x5EA6;&#x6BD4;java&#x7B49;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x597D;)&#x3002;</p>
+<p><strong>&#x80FD;&#x878D;&#x5408;&#x5230;Hadoop&#x751F;&#x6001;&#x5708;</strong>: Hadoop&#x73B0;&#x5728; &#x662F;&#x5927;&#x6570;&#x636E;&#x4E8B;&#x5B9E;&#x6807;&#x51C6;&#xFF0C;Spark&#x5E76;&#x4E0D;&#x662F;&#x8981;&#x53D6;&#x4EE3;Hadoop&#xFF0C;&#x800C;&#x662F;&#x8981;&#x5B8C;&#x5584;Hadoop&#x751F;&#x6001;&#x3002;JVM&#x8BED;&#x8A00; &#x5927;&#x90E8;&#x5206;&#x53EF;&#x80FD;&#x4F1A;&#x60F3;&#x5230;Java&#xFF0C;&#x4F46;Java&#x505A;&#x51FA;&#x6765;&#x7684;API&#x592A;&#x4E11;&#xFF0C;&#x6216;&#x8005;&#x60F3;&#x5B9E;&#x73B0;-&#x4E00;&#x4E2A;&#x4F18;&#x96C5;&#x7684;API&#x592A;&#x8D39;&#x52B2;&#x3002;</p>
+<h4 id="15-jdkscala&#x7684;&#x5B89;&#x88C5;&#x53CA;&#x73AF;&#x5883;&#x914D;&#x7F6E;">1.5 JDK\Scala&#x7684;&#x5B89;&#x88C5;&#x53CA;&#x73AF;&#x5883;&#x914D;&#x7F6E;</h4>
+<p>&#x56E0;&#x4E3A;Scala&#x662F;&#x8FD0;&#x884C;&#x5728;JVM&#x4E4B;&#x4E0A; , &#x56E0;&#x6B64;&#x9700;&#x8981;&#x5148;&#x5B89;&#x88C5;<strong>JDK1.8 </strong>&#x5E76;&#x4E14;&#x914D;&#x7F6E;java&#x73AF;&#x5883;&#x53D8;&#x91CF; ,&#x6700;&#x540E;&#x5B89;&#x88C5;&#x548C;&#x914D;&#x7F6E;Scala SDK</p>
+<h5 id="151-jdk18&#x5B89;&#x88C5;">1.5.1 JDK1.8&#x5B89;&#x88C5;</h5>
+<p>&#x53CC;&#x51FB;JDK1.8&#x5B89;&#x88C5;&#x5305; ,&#x5F00;&#x59CB;&#x5B89;&#x88C5;</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201013220138.png" style="zoom:33%;"></p>
+<p>&#x5C3D;&#x91CF;&#x653E;&#x5230;C&#x76D8;&#x4EE5;&#x5916;&#x7684;&#x76D8; ,&#x4FEE;&#x6539;&#x597D;&#x540E;&#x70B9;&#x51FB;&#x786E;&#x5B9A;.</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201013220248.png" style="zoom:33%;"></p>
+<p>&#x7B49;&#x5F85;&#x5B89;&#x88C5;&#x6210;&#x529F;.</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201013220300.png" style="zoom:33%;"></p>
+<p>&#x66F4;&#x6539;java&#x5B89;&#x88C5;&#x4F4D;&#x7F6E;</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201013220323.png" style="zoom:33%;"></p>
+<p>&#x4FEE;&#x6539;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x70B9;&#x51FB;&#x4E0B;&#x4E00;&#x6B65;,&#x7B49;&#x5F85;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x5373;&#x53EF;.</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201013220502.png" style="zoom:33%;"></p>
+<h5 id="152-&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;">1.5.2 &#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;</h5>
+<p>&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x5668; , &#x627E;&#x5230;&#x6B64;&#x7535;&#x8111; , &#x9F20;&#x6807;&#x53F3;&#x51FB; , &#x9009;&#x62E9;&#x5C5E;&#x6027;.</p>
+<p><img src="Scala.assets/Snipaste_2020-10-13_22-06-09.png" style="zoom:33%;"></p>
+<p>&#x70B9;&#x51FB;&#x6700;&#x5DE6;&#x4FA7;&#x7684;&#x9AD8;&#x7EA7;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E; , &#x968F;&#x540E;&#x70B9;&#x51FB;&#x73AF;&#x5883;&#x53D8;&#x91CF;.</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013220653.png" style="zoom:33%;"></p>
+<p>&#x5728;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#x4E2D;&#x70B9;&#x51FB;&#x65B0;&#x5EFA; , &#x8F93;&#x5165;&#x5982;&#x4E0B;&#x53D8;&#x91CF;.</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013220858.png" style="zoom:33%;"></p>
+<p>&#x968F;&#x540E;&#x5728;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#x4E2D;&#x627E;&#x5230;Path , &#x9009;&#x62E9;&#x540E;&#x70B9;&#x51FB;&#x7F16;&#x8F91;.</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013220958.png" style="zoom:33%;"></p>
+<p>&#x5728;Path&#x4E2D;&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013221041.png" style="zoom:33%;"></p>
+<p>java&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;&#x5B8C;&#x6210; , &#x4F7F;&#x7528;&#x547D;&#x4EE4;<code>Java -version</code>&#x68C0;&#x9A8C;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x914D;&#x7F6E;&#x6210;&#x529F;</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013221135.png" style="zoom:33%;"></p>
+<h5 id="153-scala&#x4E0B;&#x8F7D;">1.5.3 Scala&#x4E0B;&#x8F7D;</h5>
+<p>&#x5230;Scala&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;&#x5305; , &#x9009;&#x62E9;&#x6240;&#x6709;&#x7248;&#x672C;.</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013223335.png" style="zoom:33%;"></p>
+<p>&#x627E;&#x5230;Scala2.11.8&#x7248;&#x672C; , &#x70B9;&#x51FB;&#x8FDB;&#x53BB;.</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013223411.png" style="zoom: 67%;"></p>
+<p>&#x5982;&#x4E0B;&#x56FE; , &#x5982;&#x679C;&#x662F;Linux&#x548C;Windows&#x4E0B;&#x8F7D;&#x8FD9;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x5C31;&#x884C;.</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013223441.png" style="zoom:50%;"></p>
+<p>&#x5982;&#x679C;&#x662F;Windows&#x7CFB;&#x7EDF;,&#x53CC;&#x51FB;&#x4E0B;&#x8F7D;&#x597D;&#x7684;.msi&#x6587;&#x4EF6;&#x5373;&#x53EF;&#x5B89;&#x88C5;,&#x5B89;&#x88C5;&#x6B65;&#x9AA4;&#x8F83;&#x4E3A;&#x7B80;&#x5355; , &#x50BB;&#x74DC;&#x5F0F;&#x64CD;&#x4F5C;&#x5373;&#x53EF;.</p>
+<h5 id="154-scala&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;">1.5.4 Scala&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;</h5>
+<p>Scala&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;&#x4E0E;JDK&#x7C7B;&#x4F3C; , &#x4E0E;&#x4E0A;&#x56FE;&#x4E2D;JDK&#x4E00;&#x6837;,&#x5148;&#x6253;&#x5F00;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x8BBE;&#x7F6E;&#x7A97;&#x53E3; , &#x5C06;&#x53D8;&#x91CF;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;&#x81EA;&#x5DF1;Scala&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013220858-1602600183867.png" style="zoom:33%;"></p>
+<p>&#x627E;&#x5230;Path&#x5E76;&#x9009;&#x62E9; , &#x70B9;&#x51FB;&#x7F16;&#x8F91;.</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013220958-1602600264237.png" style="zoom:33%;"></p>
+<p>&#x6DFB;&#x52A0;&#x4E00;&#x884C;&#x5982;&#x4E0B;&#x56FE;&#x7684;&#x5185;&#x5BB9;&#x5373;&#x53EF;.</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013224459.png" style="zoom: 33%;"></p>
+<p>&#x6700;&#x540E;&#x6D4B;&#x8BD5;Scala&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x914D;&#x7F6E;&#x5B8C;&#x6210;</p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013224638.png" style="zoom:33%;"></p>
+<p>&#x81F3;&#x6B64; , JDK&#x4E0E;Scala&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x5168;&#x90E8;&#x914D;&#x7F6E;&#x5B8C;&#x6210;!</p>
+<h2 id="scala&#x7B80;&#x5355;&#x4EE3;&#x7801;">Scala&#x7B80;&#x5355;&#x4EE3;&#x7801;</h2>
+<blockquote>
+<p>&#x9009;&#x62E9;<strong><font color="red">IDE</font></strong>&#x4F5C;&#x4E3A;&#x5F00;&#x53D1;Scala&#x7A0B;&#x5E8F;&#x7684;&#x5DE5;&#x5177;</p>
+</blockquote>
+<h4 id="21-scala&#x7F16;&#x5199;&#x7684;helloword">2.1 Scala&#x7F16;&#x5199;&#x7684;HelloWord</h4>
+<p>&#x7B2C;&#x4E00;&#x4E2A;Scala&#x7F16;&#x5199;&#x7684;HelloWord&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
+<p><code>object HelloWord{</code></p>
+<p><code>def main(Args:Array[String]):Unit={</code> </p>
+<p> <code>println(&quot;HelloWorld&quot;)</code></p>
+<p> <code>} }</code></p>
+<p><img src="../../Project/QQ&#x622A;&#x56FE;20201013231029.png" style="zoom:33%;"></p>
+<h4 id="22-scala&#x89E3;&#x91CA;&#x5668;">2.2 Scala&#x89E3;&#x91CA;&#x5668;</h4>
+<p>&#x4F7F;&#x7528;Win+R&#x547D;&#x4EE4;&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;&#x5728;&#x7EC8;&#x7AEF;&#x4E2D;&#x8F93;&#x5165;<strong>Scala</strong>&#xFF0C;&#x7EC8;&#x7AEF;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x89E3;&#x91CA;&#x6240;&#x8F93;&#x5165;&#x7684;&#x4EE3;&#x7801;(&#x524D;&#x63D0;&#x662F;&#x5148;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;)</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201019165631.png" style="zoom:33%;"></p>
+<blockquote>
+<p> Scala&#x89E3;&#x91CA;&#x5668;&#x8BFB;&#x5230;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x6C42;&#x503C;&#xFF0C;&#x5C06;&#x5B83;&#x6253;&#x5370;&#x51FA;&#x6765;&#xFF0C;&#x63A5;&#x7740;&#x518D;&#x7EE7;&#x7EED;&#x8BFB;&#x4E0B;&#x4E00;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x88AB;&#x79F0;&#x505A;&#x8BFB;&#x53D6;--&#x6C42;&#x503C;&#x4E00;&#x6253;&#x5370;-&#x5FAA;&#x73AF;&#xFF0C;&#x5373;: REPL&#x3002;
+&#x4ECE;&#x6280;&#x672F;&#x4E0A;&#x8BB2;&#xFF0C;scala&#x7A0B;&#x5E8F;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x89E3;&#x91CA;&#x5668;&#x3002;&#x5B9E;&#x9645;&#x53D1;&#x751F;&#x7684;&#x662F;&#xFF0C;&#x4F60;&#x8F93;&#x5165;&#x7684;&#x5185;&#x5BB9;&#x88AB;&#x5FEB;&#x901F;&#x5730;&#x7F16;&#x8BD1;&#x6210;&#x5B57;&#x8282;&#x7801;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x6BB5;&#x5B57;&#x8282;&#x7801;&#x4EA4;&#x7531;Java&#x865B;&#x62DF;&#x673A;&#x6267;&#x884C;&#x3002;&#x6B63;&#x56E0;&#x4E3A;&#x5982;&#x6B64;&#xFF0C;&#x5927;&#x591A;&#x6570;scala&#x7A0B;&#x5E8F;&#x5458;&#x66F4;&#x503E;&#x5411;&#x4E8E;&#x5C06;&#x5B83;&#x79F0;&#x505A;&#x201C;REPL&#x201D;</p>
+</blockquote>
+<pre><code class="lang-scala">`scala
+scala&gt;&quot; Hello&apos;
+resl: String = Hello
+scala&gt; 1+2
+res5: Int = 3
+scala&gt; &quot;Hello&quot;. filter(line=&gt;(line!=&apos; I&apos;))
+res2: String = Heo`
+</code></pre>
+<h4 id="23-scala&#x53D8;&#x91CF;">2.3 Scala&#x53D8;&#x91CF;</h4>
+<p>&#x5B57;&#x6BB5;/&#x53D8;&#x91CF;&#x7684;&#x5B9A;&#x4E49;Scala&#x4E2D;&#x4F7F;&#x7528;var/val &#x53D8;&#x91CF;/&#x4E0D;&#x53D8;&#x91CF;&#x540D;&#x79F0;:&#x7C7B;&#x578B;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5B9A;&#x4E49;&#xFF0C;&#x4F8B;&#x5982;:
+<code>var index1 : Int=1</code>
+<code>val index2 : Int = 1</code></p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201019173146.png" style="zoom: 33%;"></p>
+<p>&#x5176;&#x4E2D;var&#x4E0E;va1&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;var&#x662F;&#x53D8;&#x91CF;&#xFF0C;&#x4EE5;&#x540E;&#x7684;&#x503C;&#x8FD8;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#xFF0C;va1&#x7684;&#x503C;&#x53EA;&#x80FD;&#x5728;&#x58F0;&#x660E;&#x7684;&#x65F6;&#x5019;&#x8D4B;&#x503C;&#xFF0C;&#x4F46;&#x662F;val&#x4E0D;&#x662F;
+&#x5E38;&#x91CF;&#xFF0C;&#x53EA;&#x80FD;&#x8BF4;&#x662F;&#x4E0D;&#x53D8;&#x91CF;&#x6216;&#x53EA;&#x8BFB;&#x53D8;&#x91CF;&#x3002;</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201019173550.png" style="zoom:33%;"></p>
+<p>&#x7C7B;&#x578B;&#x63A8;&#x65AD;:
+<code>var index1 = 1</code>
+<code>val index2 = 1</code></p>
+<p>&#x7C7B;&#x578B;&#x63A8;&#x65AD;(type inference) &#x7684;&#x80FD;&#x529B;&#xFF0C;&#x5B83;&#x80FD;&#x8BA9;scala&#x81EA;&#x52A8;&#x7406;&#x89E3;&#x4F60;&#x7701;&#x7565;&#x4E86;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x4F60;&#x7528;int&#x5B57;&#x9762;&#x91CF;&#x521D;&#x59CB;&#x5316;
+index1,&#x56E0;&#x6B64;scala&#x63A8;&#x65AD;index1&#x7684;&#x7C7B;&#x578B;&#x662F;Int&#x3002;&#x5BF9;&#x4E8E;&#x53EF;&#x4EE5;&#x7531;Scala&#x89E3;&#x91CA;&#x5668;(&#x6216;&#x7F16;&#x8BD1;&#x5668;)&#x81EA;&#x52A8;&#x63A8;&#x65AD;&#x7C7B;&#x578B;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5C31;&#x6CA1;&#x6709;&#x5FC5;
+&#x8981;&#x975E;&#x5F97;&#x5199;&#x51FA;&#x7C7B;&#x578B;&#x6807;&#x6CE8;&#x4E0D;&#x53EF;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#x6839;&#x636E;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x601D;&#x60F3;&#x4E2D;&#xFF0C;var&#x53D8;&#x91CF;&#x662F;&#x4E2A;&#x4E0D;&#x597D;&#x7684;&#x5B58;&#x5728;&#xFF0C;Scala&#x4E2D; &#x63A8;&#x8350;&#x5927;&#x5BB6;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x91C7;&#x7528;val&#x7684;&#x4E0D;&#x53D8;&#x91CF;&#xFF0C;
+&#x4E3B;&#x8981;&#x539F;&#x56E0;&#x662F;:</p>
+<blockquote>
+<ul>
+<li><p>vaI&#x7684;&#x4E0D;&#x53EF;&#x53D8;&#x6709;&#x52A9;&#x4E8E;&#x7406;&#x6E05;&#x5934;&#x7EEA;&#xFF0C;&#x4F46;&#x662F;&#x76F8;&#x5BF9;&#x7684;&#x4F1A;&#x4ED8;&#x51FA;&#x4E00;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x4EE3;&#x4EF7;&#x3002;</p>
+</li>
+<li><p>&#x53E6;&#x5916;&#x4E00;&#x70B9;&#x5C31;&#x662F;&#x5982;&#x679C;&#x4F7F;&#x7528;var&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x62C5;&#x5FC3;&#x503C;&#x88AB;&#x9519;&#x8BEF;&#x7684;&#x66F4;&#x6539;&#x3002;</p>
+</li>
+<li><p>&#x4F7F;&#x7528;val&#x800C;&#x4E0D;&#x662F;var&#x7684;&#x7B2C;&#x4E8C;&#x70B9;&#x597D;&#x5904;&#x662F;&#x4ED6;&#x80FD;&#x66F4;&#x597D;&#x5730;&#x652F;&#x6301;&#x7B49;&#x6548;&#x63A8;&#x8BBA;</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="24-scala&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;">2.4 Scala&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;</h4>
+<blockquote>
+<p> scala&#x62E5;&#x6709;&#x548C;java-&#x6837;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x548C;java&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#x5B8C;&#x5168;&#x4E00;&#x81F4;$ &#x7CBE;&#x5EA6;&#x4E5F;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x3002;&#x4E0B;&#x9762;&#x8868;&#x683C;&#x4E2D;&#x662F;scala&#x652F;&#x6301;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;:</p>
+</blockquote>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201019174145.png" style="zoom:50%;"></p>
+<h4 id="25-scala&#x6570;&#x5B66;&#x8FD0;&#x7B97;">2.5 Scala&#x6570;&#x5B66;&#x8FD0;&#x7B97;</h4>
+<p>Scala&#x91CC;&#xFF0C;&#x53EF;&#x4EE5;&#x820D;&#x5F03;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x7684;&#x7A7A;&#x62EC;&#x53F7;&#x3002;&#x4F8B;&#x5916;&#x5C31;&#x662F;&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x5E26;&#x6709;&#x526F;&#x4F5C;&#x7528;&#x5C31;&#x52A0;&#x4E0A;&#x62EC;&#x53F7;&#xFF0C;&#x5982;println(),&#x4E0D;&#x8FC7;&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x526F;&#x4F5C;&#x7528;&#x5C31;&#x53EF;&#x4EE5;&#x53BB;&#x6389;&#x62EC;&#x53F7;&#xFF0C;&#x5982;String.&#x4E0A;&#x8C03;&#x7528;&#x7684;toLowerCase&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E2D;&#x7F00;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x52A0;&#x53F7;(+)&#xFF0C;&#x51CF;&#x53F7;(-)&#xFF0C;&#x4E58;&#x53F7;(*)&#xFF0C;&#x9664;&#x53F7;(/)&#x548C;&#x4F59;&#x6570;(%)&#xFF0C;&#x5728;&#x4EFB;&#x4F55;&#x6570;&#x7C7B;&#x578B;&#x4E0A;&#x8C03;&#x7528;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#xFF0C;scala&#x4E2D;&#x7684;&#x57FA;&#x7840;&#x8FD0;&#x7B97;&#x4E0E;java-&#x81F4;&#x3002;</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201019185414.png" style="zoom:33%;"></p>
+<h4 id="26-scala&#x8868;&#x8FBE;&#x5F0F;">2.6 Scala&#x8868;&#x8FBE;&#x5F0F;</h4>
+<p>Scala&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x5177;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;Scala&#x4E2D;&#x7684;Unit&#xFF08;&#xFF09;&#x4E0E;java&#x4E2D;&#x7684;void&#xFF08;&#xFF09;&#x76F8;&#x540C;&#xFF0C;&#x4EE3;&#x8868;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+<h5 id="261-&#x4EC0;&#x4E48;&#x662F;&#x8868;&#x8FBE;&#x5F0F;">2.6.1 &#x4EC0;&#x4E48;&#x662F;&#x8868;&#x8FBE;&#x5F0F;</h5>
+<blockquote>
+<p> &#x4E00;&#x4E2A;&#x5177;&#x6709;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x7684;&#x4EE3;&#x7801;&#x5757;&#xFF0C;&#x7ED3;&#x679C;&#x662F;&#x5177;&#x4F53;&#x7684;&#x503C;&#x6216;&#x6CA1;&#x6709;&#x503C;&#xFF08;&#xFF09;</p>
+</blockquote>
+<h5 id="261-&#x8868;&#x8FBE;&#x5F0F;&#x4E0E;&#x8BED;&#x53E5;&#x7684;&#x533A;&#x522B;">2.6.1 &#x8868;&#x8FBE;&#x5F0F;&#x4E0E;&#x8BED;&#x53E5;&#x7684;&#x533A;&#x522B;</h5>
+<ul>
+<li><p>&#x8868;&#x8FBE;&#x5F0F;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x8BED;&#x53E5;&#x88AB;&#x6267;&#x884C;&#x3002;&#x8868;&#x8FBE;&#x5F0F;&#x4E00;&#x822C;&#x662F;&#x4E00;&#x4E2A;&#x8BED;&#x53E5;&#x5757;&#xFF0C;&#x6267;&#x884C;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;&#x3002;</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201019200345.png" alt=""></p>
+</li>
+<li><p>&#x4E0D;&#x4F7F;&#x7528;return&#x8BED;&#x53E5;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x5373;&#x662F;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+</li>
+</ul>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201019200751-1603109314401.png" style="zoom: 50%;"></p>
+<h4 id="27scala-if&#x5FAA;&#x73AF;&#x8868;&#x8FBE;&#x5F0F;">2.7Scala-if&#x5FAA;&#x73AF;&#x8868;&#x8FBE;&#x5F0F;</h4>
+<blockquote>
+<p>if/else&#x8868;&#x8FBE;&#x5F0F;&#x6709;&#x503C;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x5C31;&#x662F;&#x8DDF;&#x5728;if&#x6216;&#x8005;else&#x4E4B;&#x540E;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#xFF1B;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x6709;&#x503C;&#xFF1B;&#x6DF7;&#x5408;&#x578B;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x7ED3;&#x679C;&#x662F;Any&#x6216;AnyVal&#xFF1B;<strong><font color="red">Scala&#x4E2D;&#x6CA1;&#x6709;switch&#x8BED;&#x53E5;</font></strong></p>
+</blockquote>
+<ul>
+<li>&#x5355;&#x5206;&#x652F;
+&#x57FA;&#x672C;&#x8BED;&#x6CD5;: if (&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;) {&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;}
+&#x8BF4;&#x660E;:&#x5F53;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;ture&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x6267;&#x884C;{ }&#x7684;&#x4EE3;&#x7801;&#x3002;</li>
+<li>&#x53CC;&#x5206;&#x652F;
+&#x57FA;&#x672C;&#x8BED;&#x6CD5;: if (&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;) {&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;1 } else {&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;2 }
+&#x8BF4;&#x660E;:&#x5F53;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x6210;&#x7ACB;&#xFF0C;&#x5373;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;1&#xFF0C;&#x5426;&#x5219;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;2&#x3002;</li>
+<li>&#x591A;&#x5206;&#x652F;
+&#x57FA;&#x672C;&#x8BED;&#x6CD5;: if (&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;1) {&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;1}
+else if (&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;2) {&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;2 }
+else {&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;n }</li>
+</ul>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201019202904.png" style="zoom: 25%;"></p>
+<h4 id="28-scala&#x5757;&#x8868;&#x8FBE;&#x5F0F;">2.8 Scala&#x5757;&#x8868;&#x8FBE;&#x5F0F;</h4>
+<p>&#x5728;Java&#x6216;C++&#x4E2D;&#xFF0C;&#x5757;&#x8BED;&#x53E5;&#x662F;- -&#x4E2A;&#x5305;&#x542B;&#x4E8E;I[{}&#x4E2D;&#x7684;&#x8BED;&#x53E5;&#x5E8F;&#x5217;&#x3002;&#x6BCF;&#x5F53;&#x9700;&#x8981;&#x5728;&#x903B;&#x8F91;&#x5206;&#x652F;&#x6216;&#x5FAA;&#x73AF;&#x4E2D;&#x6267;&#x884C;&#x591A;&#x4E2A;&#x52A8;&#x4F5C;&#x65F6;&#xFF0C;
+&#x4F60;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5757;&#x8BED;&#x53E5;&#x3002;
+&#x5728;Scala&#x4E2D;&#xFF0C;{}&#x5757;&#x5305;&#x542B;&#x4E00; &#x4E9B;&#x5217;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5176;&#x7ED3;&#x679C;&#x4E5F;&#x662F;- -&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x5757;&#x4E2D;&#x6700;&#x540E;- -&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x5F0F;&#x7684;&#x503C;&#x5C31;&#x662F;&#x5757;&#x7684;&#x503C;&#x3002;</p>
+<pre><code>var f=3
+varn=10
+varm= 1
+val d = if(n &lt; 18){f=f+n;m=m+n; f+m}
+==&gt; d=24
+</code></pre><p>&#x6CE8;&#x610F;:&#x524D;&#x9762;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;scala&#x4E2D;&#x7684;&#x8BED;&#x53E5;&#x7EC8;&#x6B62;&#x5C31;&#x662F;&#x6362;&#x884C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E00;&#x884C;&#x4E00;&#x4E2A;&#x8BED;&#x53E5;&#xFF0C;&#x6B64;&#x65F6;&#x4FBF;&#x53EF;&#x4EE5;&#x7701;&#x7565; &#x201D;;&#x201D;&#xFF0C;&#x4F46;&#x662F;&#x5F53;
+&#x4E00;&#x884C;&#x6709;&#x591A;&#x6761;&#x8BED;&#x53E5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x201D;;&#x201D;&#x5206;&#x9694;&#x3002;&#x5728;&#x8868;&#x8FBE;&#x5F0F;&#x5757;&#x4E2D;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6362;&#x884C;&#x4F5C;&#x4E3A;&#x4E00;&#x6761;&#x8BED;&#x53E5;&#x7684;&#x5206;&#x9694;&#x3002;</p>
+<h4 id="29-scala&#x5FAA;&#x73AF;&#x7B80;&#x4ECB;">2.9 Scala&#x5FAA;&#x73AF;&#x7B80;&#x4ECB;</h4>
+<p><strong>&#x6982;&#x8FF0;</strong>
+&#x5728;scala&#x4E2D;&#x6709;for&#x5FAA;&#x73AF;&#x548C;while&#x5FAA;&#x73AF;&#xFF0C;&#x7528;for&#x5FAA;&#x73AF;&#x6BD4;&#x8F83;&#x591A;&#x3002;&#x5176;&#x4E2D;while&#x5FAA;&#x73AF;&#x548C;do. .. while&#x5FAA;&#x73AF;&#x548C;java&#x4E2D;&#x5F97;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#x4E00;&#x81F4;&#xFF0C;for&#x5FAA;&#x73AF;&#x7A0D;&#x6709;&#x5DEE;&#x5F02;&#x3002;</p>
+<p><strong>to&#x548C;until</strong>
+to&#x548C;until&#x4E3B;&#x8981;&#x662F;&#x7528;&#x4E8E;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x6216;&#x8005;&#x8303;&#x56F4;&#x3002;
+i to j (&#x5305;&#x542B;i&#x548C;j)
+i until j (&#x5305;&#x542B;i,&#x4F46;&#x4E0D;&#x5305;&#x542B;j)</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201022230051.png" style="zoom:67%;"></p>
+<h4 id="210-idea&#x6574;&#x5408;scala&#x63D2;&#x4EF6;">2.10 IDEA&#x6574;&#x5408;Scala&#x63D2;&#x4EF6;</h4>
+<h5 id="2101-idea&#x4E0B;&#x8F7D;scala&#x63D2;&#x4EF6;">2.10.1 IDEA&#x4E0B;&#x8F7D;Scala&#x63D2;&#x4EF6;</h5>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201022231752.png" style="zoom: 33%;"></p>
+<h5 id="2102-&#x521B;&#x5EFA;scala&#x9879;&#x76EE;">2.10.2 &#x521B;&#x5EFA;Scala&#x9879;&#x76EE;</h5>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;IDEA&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Scala&#x9879;&#x76EE;</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201022232218.png" style="zoom:33%;">![)</p>
+<h4 id="211-&#x57FA;&#x4E8E;maven&#x6765;&#x521B;&#x5EFA;&#x9879;&#x76EE;">2.11 &#x57FA;&#x4E8E;Maven&#x6765;&#x521B;&#x5EFA;&#x9879;&#x76EE;</h4>
+<blockquote>
+<p>&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x66F4;&#x591A;&#x7684;&#x65F6;&#x57FA;&#x4E8E;<b><font color="red">Maven</font></b>&#x6765;&#x6784;&#x5EFA;Scala&#x9879;&#x76EE;</p>
+</blockquote>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201022232743.png" style="zoom:33%;"></p>
+<p>&#x65B0;&#x5EFA;&#x9879;&#x76EE;&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x5148;&#x8BBE;&#x7F6E;Scala&#x6A21;&#x5757;&#xFF0C;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1B;</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201022234317.png" style="zoom:33%;"></p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201022234533.png" style="zoom:33%;"></p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201022234628.png" style="zoom:33%;"></p>
+<p>&#x6B64;&#x65F6;&#x70B9;&#x51FB;New&#x53EF;&#x4EE5;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Scala&#x9879;&#x76EE;&#x3002;</p>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201022234833.png" style="zoom:33%;"></p>
+<p>&#x6A21;&#x5757;&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x5728;&#x65B0;&#x9879;&#x76EE;&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x5728;pom.xml&#x4E2D;&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;&#x3002;</p>
+<pre><code class="lang-scala">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.scala-lang&lt;/groupId&gt;
+        &lt;artifactId&gt;scala-library&lt;/artifactId&gt;
+        &lt;version&gt;<span class="hljs-number">2.11</span><span class="hljs-number">.8</span>&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201028163724.png" style="zoom: 50%;"></p>
+<h5 id="2111-&#x7F16;&#x5199;&#x7B2C;&#x4E00;&#x4E2A;helloworld">2.11.1 &#x7F16;&#x5199;&#x7B2C;&#x4E00;&#x4E2A;HelloWorld</h5>
+<p>&#x4F7F;&#x7528;Scala&#x5199;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;Scala&#x4EE3;&#x7801;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.zut.nanyu.scala
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">one</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    println(<span class="hljs-string">&quot;HelloWorld&quot;</span>)
+  }
+}
+</code></pre>
+<p><img src="Scala.assets/QQ&#x622A;&#x56FE;20201028165633.png" style="zoom:50%;"></p>
+<h2 id="scala&#x4E2D;&#x7684;&#x6D41;&#x7A0B;&#x63A7;&#x5236;-&#x5FAA;&#x73AF;">Scala&#x4E2D;&#x7684;&#x6D41;&#x7A0B;&#x63A7;&#x5236;-&#x5FAA;&#x73AF;</h2>
+<h4 id="31-scala&#x4E2D;&#x7684;while&#x5FAA;&#x73AF;">3.1 Scala&#x4E2D;&#x7684;while&#x5FAA;&#x73AF;</h4>
+<blockquote>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;Scala&#x4E2D; ; &#x53EF;&#x52A0;&#x53EF;&#x4E0D;&#x52A0;&#xFF0C;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x5F71;&#x54CD;&#x3002; <b><font color="red">Scala&#x4E2D;&#x4E0D;&#x80FD;&#x7528;++&#x6216;--&#x6765;&#x4EE3;&#x66FF; &#x81EA;&#x589E;&#x6216;&#x81EA;&#x51CF;&#xFF0C;</font></b>&#x56E0;&#x4E3A;++/&#x2014;-&#x662F;Scala&#x4E2D;&#x96C6;&#x5408;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</p>
+</blockquote>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.zut.nanyu.scala
+
+<span class="hljs-comment">/**
+ * While&#x5FAA;&#x73AF;
+ * java&#x8BED;&#x8A00;&#x5B9E;&#x73B0;
+  int sum=0;
+  int n=1;
+  while(n&lt;10){
+  sum=sum+n;
+ n++
+ }
+  System.out.println(&quot;sum=&quot;+sum);
+ */</span>
+
+<span class="hljs-comment">/*
+Scala&#x8BED;&#x8A00;&#x5B9E;&#x73B0;While&#x5FAA;&#x73AF;
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">WhileDemo</span> </span>{
+  <span class="hljs-comment">//Scala&#x4E2D;&#x7684; ; &#x53EF;&#x52A0;&#x53EF;&#x4E0D;&#x52A0;</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">var</span> sum=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">var</span> n=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span>(n&lt;<span class="hljs-number">10</span>){
+      sum=sum+n;
+      <span class="hljs-comment">//n++; Scala&#x4E2D;&#x4E0D;&#x80FD;&#x7528;++&#x6216;--&#x6765;&#x4EE3;&#x66FF; &#x81EA;&#x589E;&#x6216;&#x81EA;&#x51CF;&#xFF0C;&#x56E0;&#x4E3A;++/&#x2014;-&#x662F;Scala&#x4E2D;&#x96C6;&#x5408;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</span>
+      n=n+<span class="hljs-number">1</span>;
+    }
+    println(sum);
+  }
+}
+</code></pre>
+<h4 id="32-scala&#x4E2D;&#x7684;do-while&#x5FAA;&#x73AF;">3.2 Scala&#x4E2D;&#x7684;do-while&#x5FAA;&#x73AF;</h4>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.zut.nanyu.scala
+<span class="hljs-comment">/**do-While&#x5FAA;&#x73AF;
+ *java&#x8BED;&#x8A00;&#x5B9E;&#x73B0;
+   int sum=0;
+   int n=1;
+   do{
+  sum=sum+n;
+   n++;
+  }while(n&lt;10)
+   System.out.println(&quot;sum=&quot;+sum);
+ */</span>
+
+<span class="hljs-comment">/*
+Scala&#x8BED;&#x8A00;&#x5B9E;&#x73B0;&#x5FAA;&#x73AF;
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">DoWhileDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">var</span> sum=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">var</span> n=<span class="hljs-number">0</span>;
+    do {
+      sum =sum+n;
+      n=n+<span class="hljs-number">1</span>;
+    }<span class="hljs-keyword">while</span>(n&lt;<span class="hljs-number">10</span>)
+    println(sum)
+  }
+}
+</code></pre>
+<h4 id="33-while-if&#x5FAA;&#x73AF;&#x63A7;&#x5236;&#x7EC3;&#x4E60;">3.3 while-if&#x5FAA;&#x73AF;&#x63A7;&#x5236;&#x7EC3;&#x4E60;</h4>
+<blockquote>
+<p><strong>&#x9898;&#x76EE;&#x8981;&#x6C42;&#xFF1A;</strong>&#x767B;&#x5F55;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x7684;&#x6E38;&#x620F;:&#x4E09;&#x6B21;&#x673A;&#x4F1A;&#xFF0C;&#x4ECE;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#xFF0C;&#x5982;&#x679C;&#x6210;&#x529F;&#x767B;&#x5F55;&#xFF0C;&#x8FD4;&#x56DE;&#x767B;&#x5F55;&#x6210;&#x529F;&#xFF0C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x53CD;&#x9988;&#x9519;&#x8BEF;&#x4FE1;&#x606F;!</p>
+</blockquote>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.zut.nanyu.scala
+<span class="hljs-keyword">import</span> scala.io.<span class="hljs-type">StdIn</span>
+<span class="hljs-comment">/*
+&#x4F7F;&#x7528;Scala&#x7B80;&#x5355;&#x5B9E;&#x4F8B;
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">WhileIfDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Username</span>=<span class="hljs-string">&quot;&#x9489;&#x5B50;&#x541B;&quot;</span>
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Passwd</span>=<span class="hljs-string">&quot;123456&quot;</span>
+    <span class="hljs-keyword">var</span> n=<span class="hljs-number">3</span>;
+    <span class="hljs-comment">//Scala&#x4E2D;&#x4ECE;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x5165;&#x7684;api&#x662F;StdIn.Line/StdIn.Int/StdIn.next&#x7B49;&#x7B49;&#xFF0C;&#x4E0E;Java&#x4E0D;&#x540C;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;</span>
+    <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">var</span> user=<span class="hljs-type">StdIn</span>.readLine(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&#xFF1A;&quot;</span>);
+      <span class="hljs-keyword">var</span> pw=<span class="hljs-type">StdIn</span>.readLine(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF1A;&quot;</span>);
+      <span class="hljs-keyword">if</span> (<span class="hljs-type">Username</span>==user&amp;&amp;<span class="hljs-type">Passwd</span>==pw){
+      println(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x6210;&#x529F;&#xFF01;&quot;</span>);
+        n=<span class="hljs-number">0</span>;
+    }<span class="hljs-keyword">else</span>{
+      println(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF01;&#x8BF7;&#x91CD;&#x65B0;&#x8F93;&#x5165;&quot;</span>);
+        n=n<span class="hljs-number">-1</span>;
+    }
+    }
+  }
+  }
+</code></pre>
+<h4 id="34-for&#x5FAA;&#x73AF;">3.4 for&#x5FAA;&#x73AF;</h4>
+<p>&#x5728;java&#x4E2D;&#x6709;2&#x4E2D;&#x5199;&#x6CD5;&#xFF0C;&#x666E;&#x901A;&#x7684;for&#x5FAA;&#x73AF;for (&#x53D8;&#x91CF;;&#x6761;&#x4EF6;;&#x81EA;&#x589E;&#x6216;&#x81EA;&#x51CF;) {&#x5FAA;&#x73AF;&#x4F53;} or for(&#x7C7B;&#x578B; &#x53D8;&#x91CF;:&#x96C6;&#x5408;) {}&#x3002;</p>
+<p>scala&#x4E2D;&#x7684;for&#x5FAA;&#x73AF;&#x8BE5;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x5462;?scala&#x4E2D;&#x5E76;&#x6CA1;&#x6709;&#x50CF;java&#x4E2D;&#x666E;&#x901A;for&#x5FAA;&#x73AF;&#x7684;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#xFF0C;&#x66F4;&#x50CF;&#x662F;&#x9AD8;&#x7EA7;for&#x5FAA;&#x73AF;&#x3002;</p>
+<blockquote>
+<p> &#x8BED;&#x6CD5;&#x683C;&#x5F0F;: 
+for (&#x53D8;&#x91CF;&lt;-&#x96C6;&#x5408;) {
+}</p>
+</blockquote>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.zut.nanyu.scala
+<span class="hljs-comment">/*
+Java&#x4E2D;&#x7684;for&#x5FAA;&#x73AF;
+int sum=10;
+for(int i=0;i&lt;=sum;i++){
+system.out.println(i);
+}
+Scala&#x4E2D;&#x7684;For&#x5FAA;&#x73AF;
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ForDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">var</span> sum=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(n&lt;<span class="hljs-number">-1</span> to <span class="hljs-number">10</span>){
+      sum =sum+n;
+    }
+    println(sum);
+  }
+}
+</code></pre>
+<h4 id="35-for&#x5FAA;&#x73AF;&#x7684;&#x5D4C;&#x5957;">3.5 for&#x5FAA;&#x73AF;&#x7684;&#x5D4C;&#x5957;</h4>
+<p>&#x9664;&#x4E86;for&#x5FAA;&#x73AF;&#x7684;&#x57FA;&#x672C;&#x5F62;&#x6001;&#x4E4B;&#x5916;&#xFF0C;Scala&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x5176;&#x5B83;&#x4E30;&#x5BCC;&#x7684;&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#x3002;&#x6BD4;&#x5982;&#x53EF;&#x4EE5;&#x5728;for&#x5FAA;&#x73AF;&#x62EC;&#x53F7;&#x91CC;&#x540C;&#x65F6;&#x5305;&#x542B;&#x591A;&#x7EC4;&#x201D;&#x53D8;&#x91CF;&lt;- &#x8868;&#x8FBE;&#x5F0F;&#x201D;&#x7ED3;&#x6784;&#xFF0C;&#x7EC4;&#x4E4B;&#x95F4;&#x7528;&#x5206;&#x53F7;&#x5206;&#x9694;
+<code>for (i &lt;- 1 to 3; j &lt;-1 to 3) print ((10*i+j) +&#x201D;&quot;)</code>for&#x5FAA;&#x73AF;&#x7684;&#x8FD9;&#x79CD;&#x7ED3;&#x6784;&#x7C7B;&#x4F3C;Java&#x4E2D;&#x7684;&#x5D4C;&#x5957;&#x5FAA;&#x73AF;&#x7ED3;&#x6784;&#x3002;</p>
+<p>if&#x5FAA;&#x73AF;&#x5B88;&#x536B;&#x53EF;&#x4EE5;&#x4E3A;&#x5D4C;&#x5957;&#x5FAA;&#x73AF;&#x901A;&#x8FC7;if&#x8868;&#x8FBE;&#x5F0F;&#x6DFB;&#x52A0;&#x6761;&#x4EF6;
+<code>for(i&lt;-1to3;j&lt;-1to3ifi!=j)print((10*i+j)+&quot;&quot;)</code>
+if&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x5426;&#x6DFB;&#x52A0;&#x62EC;&#x53F7;&#xFF0C;&#x7ED3;&#x679C;&#x65E0;&#x53D8;&#x5316;&#x3002;
+<code>for(i&lt;-1to3;j&lt;-1to3if(i!=j))print((10*i+j)+&quot;&quot;)</code>
+&#x6CE8;&#x610F;:&#x6CE8;&#x610F;&#x5728;if&#x4E4B;&#x524D;&#x5E76;&#x6CA1;&#x6709;&#x5206;&#x53F7;&#x3002;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.zut.nanyu.scala
+<span class="hljs-comment">/*
+&#x6253;&#x5370;&#x4E00;&#x4E2A;&#x4E94;&#x884C;&#x4E94;&#x5217;&#x7684;&#x77E9;&#x9635;
+*****
+*****
+*****
+*****
+*****
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ForDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    println(<span class="hljs-string">&quot;---------------------&#x6253;&#x5370;&#x77E9;&#x5F62;---------------------&quot;</span>);
+<span class="hljs-keyword">for</span>(n&lt;<span class="hljs-number">-0</span> until <span class="hljs-number">5</span>){
+<span class="hljs-keyword">for</span> (m&lt;<span class="hljs-number">-1</span> to <span class="hljs-number">5</span>){
+  print(<span class="hljs-string">&quot;*&quot;</span>);
+}
+  println;
+}
+    println(<span class="hljs-string">&quot;---------------------&#x6253;&#x5370;&#x4E0B;&#x4E09;&#x89D2;---------------------&quot;</span>);
+    <span class="hljs-keyword">for</span>(n&lt;<span class="hljs-number">-1</span> to <span class="hljs-number">5</span>){
+      <span class="hljs-keyword">for</span> (m&lt;<span class="hljs-number">-1</span> to n){
+        print(<span class="hljs-string">&quot;*&quot;</span>);
+      }
+      println;
+    }
+    println(<span class="hljs-string">&quot;---------------------&#x6253;&#x5370;&#x4E0A;&#x4E09;&#x89D2;---------------------&quot;</span>);
+    <span class="hljs-keyword">for</span>(n&lt;<span class="hljs-number">-1</span> to <span class="hljs-number">5</span>){
+      <span class="hljs-keyword">for</span> (m&lt;<span class="hljs-number">-1</span> to <span class="hljs-number">5</span>){
+      <span class="hljs-keyword">if</span>(m&gt;=n){
+        print(<span class="hljs-string">&quot;*&quot;</span>);
+      }<span class="hljs-keyword">else</span>{
+        print(<span class="hljs-string">&quot; &quot;</span>);
+      }
+      }
+      println;
+    }
+    println(<span class="hljs-string">&quot;---------------------&#x6253;&#x5370;&#x4E5D;&#x4E5D;&#x4E58;&#x6CD5;&#x8868;---------------------&quot;</span>);
+  <span class="hljs-keyword">for</span>(n&lt;<span class="hljs-number">-1</span> to <span class="hljs-number">9</span>){
+    <span class="hljs-keyword">for</span>(m&lt;<span class="hljs-number">-1</span> to n){
+      print(m+<span class="hljs-string">&quot;*&quot;</span>+n+<span class="hljs-string">&quot;=&quot;</span>+(m*n)+<span class="hljs-string">&quot;\t&quot;</span>);
+    }
+    println();
+  }
+    println(<span class="hljs-string">&quot;---------------------for&#x5FAA;&#x73AF;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x5199;&#x6CD5;---------------------&quot;</span>);
+    <span class="hljs-keyword">for</span>(n&lt;<span class="hljs-number">-1</span> to <span class="hljs-number">9</span>;m&lt;<span class="hljs-number">-1</span> to n){
+        print(m+<span class="hljs-string">&quot;*&quot;</span>+n+<span class="hljs-string">&quot;=&quot;</span>+(m*n)+<span class="hljs-string">&quot;\t&quot;</span>);
+      <span class="hljs-keyword">if</span>(n==m){
+        println();
+      }
+    }
+}
+}
+</code></pre>
+<h4 id="36-&#x5FAA;&#x73AF;&#x7EC8;&#x6B62;&#x7684;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;">3.6 &#x5FAA;&#x73AF;&#x7EC8;&#x6B62;&#x7684;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;</h4>
+<p>&#x5728;java&#x4E2D;&#x7EC8;&#x6B62;&#x5FAA;&#x73AF;&#x6709;&#x5173;&#x952E;&#x5B57;&#xFF0C;continue, bHreak, return,&#x4F46;&#x662F;&#x5728;scala&#x4E2D;&#x6CA1;&#x6709;&#x524D;&#x4E24;&#x8005;continue&#x548C;break&#x3002;&#x5728;scala&#x4E2D;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;:</p>
+<blockquote>
+<ul>
+<li><p><strong>&#x4F7F;&#x7528;return&#x8BED; &#x53E5;&#x6765;&#x63A7;&#x5236;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;</strong></p>
+</li>
+<li><p><strong>&#x4F7F;&#x7528;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x7684;&#x6761;&#x4EF6;&#x6765;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#xFF0C;&#x6BD4;&#x5982;&#x4E0A;&#x4F8B;&#x4E2D;&#x7684;count &gt;= 0</strong></p>
+</li>
+<li><p><strong>&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;breakable&#x51FD;&#x6570;&#x4F53;&#x6765;&#x8FDB;&#x884C;&#x63A7;&#x5236;</strong></p>
+</li>
+</ul>
+</blockquote>
+<h5 id="361-&#x4F7F;&#x7528;return&#x6765;&#x7EC8;&#x6B62;&#x5FAA;&#x73AF;">3.6.1 &#x4F7F;&#x7528;return&#x6765;&#x7EC8;&#x6B62;&#x5FAA;&#x73AF;</h5>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">WhileIfDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Username</span>=<span class="hljs-string">&quot;&#x9489;&#x5B50;&#x541B;&quot;</span>
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Passwd</span>=<span class="hljs-string">&quot;123456&quot;</span>
+    <span class="hljs-keyword">var</span> n=<span class="hljs-number">3</span>;
+    <span class="hljs-comment">//Scala&#x4E2D;&#x4ECE;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x5165;&#x7684;api&#x662F;StdIn.Line/StdIn.Int/StdIn.next&#x7B49;&#x7B49;&#xFF0C;&#x4E0E;Java&#x4E0D;&#x540C;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;</span>
+    <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">var</span> user=<span class="hljs-type">StdIn</span>.readLine(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&#xFF1A;&quot;</span>);
+      <span class="hljs-keyword">var</span> pw=<span class="hljs-type">StdIn</span>.readLine(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF1A;&quot;</span>);
+      <span class="hljs-keyword">if</span> (<span class="hljs-type">Username</span>==user&amp;&amp;<span class="hljs-type">Passwd</span>==pw){
+      println(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x6210;&#x529F;&#xFF01;&quot;</span>);
+        <span class="hljs-comment">//n=0;</span>
+        <span class="hljs-comment">//&#x4F7F;&#x7528;return&#x6765;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;</span>
+        <span class="hljs-keyword">return</span>;
+    }<span class="hljs-keyword">else</span>{
+      println(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF01;&#x8BF7;&#x91CD;&#x65B0;&#x8F93;&#x5165;&quot;</span>);
+        n=n<span class="hljs-number">-1</span>;
+    }
+    }
+  }
+  }
+</code></pre>
+<h5 id="362&#x4F7F;&#x7528;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x6761;&#x4EF6;&#x6765;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;">3.6.2&#x4F7F;&#x7528;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x6761;&#x4EF6;&#x6765;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;</h5>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">WhileIfDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Username</span>=<span class="hljs-string">&quot;&#x9489;&#x5B50;&#x541B;&quot;</span>
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Passwd</span>=<span class="hljs-string">&quot;123456&quot;</span>
+    <span class="hljs-keyword">var</span> n=<span class="hljs-number">3</span>;
+    <span class="hljs-comment">//Scala&#x4E2D;&#x4ECE;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x5165;&#x7684;api&#x662F;StdIn.Line/StdIn.Int/StdIn.next&#x7B49;&#x7B49;&#xFF0C;&#x4E0E;Java&#x4E0D;&#x540C;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;</span>
+    <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">var</span> user=<span class="hljs-type">StdIn</span>.readLine(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&#xFF1A;&quot;</span>);
+      <span class="hljs-keyword">var</span> pw=<span class="hljs-type">StdIn</span>.readLine(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF1A;&quot;</span>);
+      <span class="hljs-keyword">if</span> (<span class="hljs-type">Username</span>==user&amp;&amp;<span class="hljs-type">Passwd</span>==pw){
+      println(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x6210;&#x529F;&#xFF01;&quot;</span>);
+        <span class="hljs-comment">//&#x4F7F;&#x7528;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x6761;&#x4EF6;&#x6765;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;&#xFF0C;&#x6BD4;&#x5982;n&#x4F5C;&#x4E3A;&#x8BA1;&#x6570;&#x5668;&#xFF0C;&#x4F5C;&#x4E3A;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x6761;&#x4EF6;</span>
+        n=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span>;
+    }<span class="hljs-keyword">else</span>{
+      println(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF01;&#x8BF7;&#x91CD;&#x65B0;&#x8F93;&#x5165;&quot;</span>);
+        n=n<span class="hljs-number">-1</span>;
+    }
+    }
+  }
+  }
+</code></pre>
+<h5 id="363&#x4F7F;&#x7528;breakable&#x51FD;&#x6570;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;">3.6.3&#x4F7F;&#x7528;breakable&#x51FD;&#x6570;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;</h5>
+<pre><code class="lang-scala"><span class="hljs-comment">//&#x5BFC;&#x5165;Breaks&#x4E0B;&#x9762;&#x7684;&#x6240;&#x6709;&#x5305;</span>
+<span class="hljs-keyword">import</span> scala.util.control.<span class="hljs-type">Breaks</span>._
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">WhileIfDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Username</span>=<span class="hljs-string">&quot;&#x9489;&#x5B50;&#x541B;&quot;</span>
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Passwd</span>=<span class="hljs-string">&quot;123456&quot;</span>
+    breakable{<span class="hljs-comment">//&#x4F7F;&#x7528;breakable&#x4F5C;&#x4E3A;&#x5916;&#x58F3;&#xFF0C;&#x5957;&#x5728;&#x5FAA;&#x73AF;&#x5916;</span>
+      <span class="hljs-keyword">var</span> n=<span class="hljs-number">3</span>;
+      <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">var</span> user=<span class="hljs-type">StdIn</span>.readLine(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&#xFF1A;&quot;</span>);
+      <span class="hljs-keyword">var</span> pw=<span class="hljs-type">StdIn</span>.readLine(<span class="hljs-string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF1A;&quot;</span>);
+      <span class="hljs-keyword">if</span> (<span class="hljs-type">Username</span>==user&amp;&amp;<span class="hljs-type">Passwd</span>==pw){
+        println(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x6210;&#x529F;&#xFF01;&quot;</span>);
+<span class="hljs-comment">//        n=0;</span>
+<span class="hljs-comment">//        return;</span>
+        <span class="hljs-keyword">break</span>();<span class="hljs-comment">//&#x6B64;&#x65F6;&#x4FBF;&#x80FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;break&#xFF08;&#xFF09;&#x51FD;&#x6570;&#x6765;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;</span>
+      }<span class="hljs-keyword">else</span>{
+        println(<span class="hljs-string">&quot;&#x767B;&#x5F55;&#x5931;&#x8D25;&#xFF01;&#x8BF7;&#x91CD;&#x65B0;&#x8F93;&#x5165;&quot;</span>);
+        n=n<span class="hljs-number">-1</span>;
+      }
+    }
+    }
+
+  }
+  }
+</code></pre>
+<h3 id="37-scala&#x5F02;&#x5E38;&#x63A7;&#x5236;&#x548C;&#x61D2;&#x52A0;&#x8F7D;">3.7 Scala&#x5F02;&#x5E38;&#x63A7;&#x5236;&#x548C;&#x61D2;&#x52A0;&#x8F7D;</h3>
+<h5 id="371-&#x5F02;&#x5E38;&#x63A7;&#x5236;">3.7.1 &#x5F02;&#x5E38;&#x63A7;&#x5236;</h5>
+<p>Scala&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x548C;&#x5176;&#x5B83;&#x8BED;&#x8A00;&#x6BD4;&#x5982;Java&#x7C7B;&#x4F3C;&#xFF0C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x4E0D;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x7EC8;&#x6B62;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#x7684;&#x8FD0;&#x884C;&#x3002;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x6355;&#x83B7;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x4F5C;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x5904;&#x7406;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x9000;&#x51FA;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F02;&#x5E38;&#x4F1A;&#x4F20;&#x9012;&#x7ED9;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x8005;&#xFF0C;&#x4F9D;&#x6B21;&#x5411;&#x4E0A;&#x4F20;&#x9012;&#xFF0C;&#x76F4;&#x5230;&#x6709;&#x65B9;&#x6CD5;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x3002;</p>
+<pre><code class="lang-scala">try {
+//vari=1 / 0
+lazy val num = Integer. valueOf (&#x201D;abcd&apos; &quot;)
+val file = new FileInputStream(&quot;abedefg&quot;)
+} catch {
+case e: ArithmeticException =&gt; println(e. getMessage)
+case el: NumberFormatException =&gt; el. printStackTrace ()
+case_ :Exception =&gt; {//_&#x4E0B;&#x5212;&#x7EBF;&#x4EE3;&#x8868;&#x4E0A;&#x8FF0;&#x6CA1;&#x6709;&#x5339;&#x914D;&#x5230;&#x7684;&#x5176;&#x4ED6;&#x7684;&#x5F02;&#x5E38;
+println(&quot;&#x6587;&#x4EF6;&#x627E;&#x4E0D;&#x5230;&quot;)
+}
+</code></pre>
+<p>Scala&#x4E2D;&#x6587;&#x4EF6;&#x4ECE;&#x78C1;&#x76D8;&#x4E2D;&#x8BFB;&#x53D6;&#xFF08;&#x5373;Scala&#x4E2D;&#x7684;IO&#x6D41;&#xFF09;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.zut.nanyu.scala
+<span class="hljs-keyword">import</span> scala.io.<span class="hljs-type">Source</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ExceptionsDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-comment">//Source&#x4E3A;Scala&#x4E2D;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5373;Scala&#x4E2D;&#x7684;IO.&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x4E2D;&#x7684;Hello.txt&#x6587;&#x4EF6;</span>
+    <span class="hljs-keyword">val</span> lines = <span class="hljs-type">Source</span>.fromFile(<span class="hljs-string">&quot;D:\\AppInstall\\IDEA\\IDEAScala\\Scalo0\\data\\Hello.txt&quot;</span>);
+    <span class="hljs-comment">//&#x5F97;&#x5230;&#x4ECE;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x5F97;&#x5230;&#x7684;&#x5185;&#x5BB9;</span>
+    <span class="hljs-keyword">val</span> cont = lines.mkString
+    println(cont)
+  }
+}
+</code></pre>
+<blockquote>
+<p>&#x7ED3;&#x679C;&#xFF1A;D:\AppInstall\JDK\bin\java.exe 
+Hellojava!
+HelloScala!
+HelloWeb!</p>
+</blockquote>
+<p>&#x5F53;Source&#x627E;&#x4E0D;&#x5230;&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;FileNotFoundException&#x9519;&#x8BEF;&#xFF0C;Scala&#x4E2D;&#x9700;&#x8981;&#x7528;try{}catch{}&#x505A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.zut.nanyu.scala
+<span class="hljs-keyword">import</span> java.io.<span class="hljs-type">FileNotFoundException</span>
+<span class="hljs-keyword">import</span> scala.io.<span class="hljs-type">Source</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ExceptionsDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-comment">//Source&#x4E3A;Scala&#x4E2D;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5373;Scala&#x4E2D;&#x7684;IO.&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x4E2D;&#x7684;Hello.txt&#x6587;&#x4EF6;</span>
+      <span class="hljs-keyword">val</span> lines = <span class="hljs-type">Source</span>.fromFile(<span class="hljs-string">&quot;D:\\AppInstall\\IDEA\\IDEAScala\\Scalo0\\data\\Hello1.txt&quot;</span>); <span class="hljs-comment">//Hello1&#x6587;&#x4EF6;&#x5E76;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x6709;&#x5F02;&#x5E38;</span>
+      <span class="hljs-comment">//&#x5F97;&#x5230;&#x4ECE;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x5F97;&#x5230;&#x7684;&#x5185;&#x5BB9;</span>
+      <span class="hljs-keyword">val</span> cont = lines.mkString
+      println(cont)
+    } <span class="hljs-keyword">catch</span> {
+      <span class="hljs-keyword">case</span> fnfe: <span class="hljs-type">FileNotFoundException</span> =&gt; {
+        println(fnfe.getMessage)
+      }
+    }
+  }
+}
+</code></pre>
+<blockquote>
+<p>j&#x7ED3;&#x679C;&#xFF1A;D:\AppInstall\IDEA\IDEAScala\Scalo0\data\Hello1.txt (&#x7CFB;&#x7EDF;&#x627E;&#x4E0D;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x3002;)</p>
+</blockquote>
+<p>Scala&#x4E2D;&#x5982;&#x679C;&#x4EE3;&#x7801;&#x4E2D;&#x6709;&#x591A;&#x4E2A;&#x5F02;&#x5E38;&#x9700;&#x8981;&#x629B;&#xFF0C;&#x53EF;&#x4EE5;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x7528;case&#xFF08;<strong>&#x4E0D;&#x63A8;&#x8350;</strong>&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x901A;&#x7528;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x7528;&#x5199;&#x4E00;&#x4E2A;case&#x5373;&#x53EF;</p>
+<p>&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x7528;case&#x629B;&#x7684;&#x6848;&#x4F8B;&#xFF08;&#x5982;&#x679C;&#x5F02;&#x5E38;&#x8FC7;&#x591A;&#xFF0C;&#x4F1A;&#x5F88;&#x9EBB;&#x70E6;&#xFF09;</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ExceptionsDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+        <span class="hljs-comment">//Source&#x4E3A;Scala&#x4E2D;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5373;Scala&#x4E2D;&#x7684;IO.&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x4E2D;&#x7684;Hello.txt&#x6587;&#x4EF6;</span>
+        <span class="hljs-keyword">val</span> cont = <span class="hljs-type">Source</span>.fromFile(<span class="hljs-string">&quot;D:\\AppInstall\\IDEA\\IDEAScala\\Scalo0\\data\\Hello.txt&quot;</span>).mkString; <span class="hljs-comment">//Hello1&#x6587;&#x4EF6;&#x5E76;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x6709;&#x5F02;&#x5E38;</span>
+        <span class="hljs-comment">//&#x5F97;&#x5230;&#x4ECE;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x5F97;&#x5230;&#x7684;&#x5185;&#x5BB9;</span>
+        println(cont)
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span> / <span class="hljs-number">0</span>;
+    } <span class="hljs-keyword">catch</span> {
+      <span class="hljs-keyword">case</span> fnfe: <span class="hljs-type">FileNotFoundException</span> =&gt; {
+        println(fnfe.getMessage)}<span class="hljs-comment">//&#x7528;&#x4E8E;&#x5904;&#x7406;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x5F02;&#x5E38;</span>
+      <span class="hljs-keyword">case</span> am:<span class="hljs-type">ArithmeticException</span> =&gt;{
+        println(am.getMessage)}<span class="hljs-comment">//&#x7528;&#x4E8E;&#x5904;&#x7406;&#x6570;&#x5B57;&#x8FD0;&#x7B97;&#x5F02;&#x5E38;</span>
+    }
+  }
+}
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x901A;&#x7528;&#x629B;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;case&#x5C31;&#x80FD;&#x89E3;&#x51B3;</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ExceptionsDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+        <span class="hljs-comment">//Source&#x4E3A;Scala&#x4E2D;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5373;Scala&#x4E2D;&#x7684;IO.&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x4E2D;&#x7684;Hello.txt&#x6587;&#x4EF6;</span>
+        <span class="hljs-keyword">val</span> cont = <span class="hljs-type">Source</span>.fromFile(<span class="hljs-string">&quot;D:\\AppInstall\\IDEA\\IDEAScala\\Scalo0\\data\\Hello.txt&quot;</span>).mkString; <span class="hljs-comment">//Hello1&#x6587;&#x4EF6;&#x5E76;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x6709;&#x5F02;&#x5E38;</span>
+        <span class="hljs-comment">//&#x5F97;&#x5230;&#x4ECE;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x5F97;&#x5230;&#x7684;&#x5185;&#x5BB9;</span>
+        println(cont)
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span> / <span class="hljs-number">0</span>;
+    } <span class="hljs-keyword">catch</span> {
+      <span class="hljs-keyword">case</span> _ =&gt; {<span class="hljs-comment">// &#x2014; &#x5728;Scala&#x4E2D;&#x8868;&#x793A;&#x5168;&#x90E8;&#x7684;&#x610F;&#x601D;</span>
+          println(<span class="hljs-string">&quot;&#x901A;&#x7528;&#x5F02;&#x5E38;&#x5904;&#x7406;&quot;</span>)
+        }
+    }
+  }
+}
+</code></pre>
+<h5 id="372-&#x61D2;&#x52A0;&#x8F7D;">3.7.2 &#x61D2;&#x52A0;&#x8F7D;</h5>
+<blockquote>
+<p>lazy : &#x61D2;&#x52A0;&#x8F7D;&#xFF0C;&#x88AB;lazy&#x6240;&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4E4B;&#x540E;&#x5F53;&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4E4B;&#x524D;&#x53EA;&#x662F;&#x505A;&#x4E86;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;&#x7684;&#x6B63;&#x786E;&#x6027;&#x5224;&#x65AD;&#x3002;</p>
+</blockquote>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ExceptionsDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">//Source&#x4E3A;Scala&#x4E2D;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5373;Scala&#x4E2D;&#x7684;IO.&#x8BFB;&#x53D6;&#x78C1;&#x76D8;&#x4E2D;&#x7684;Hello.txt&#x6587;&#x4EF6;</span>
+        <span class="hljs-keyword">lazy</span> <span class="hljs-keyword">val</span> cont = <span class="hljs-type">Source</span>.fromFile(<span class="hljs-string">&quot;D:\\AppInstall\\IDEA\\IDEAScala\\Scalo0\\data\\Hello1.txt&quot;</span>).mkString; <span class="hljs-comment">//Hello1&#x6587;&#x4EF6;&#x5E76;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x6709;&#x5F02;&#x5E38;</span>
+        <span class="hljs-comment">//&#x5F97;&#x5230;&#x4ECE;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x5F97;&#x5230;&#x7684;&#x5185;&#x5BB9;</span>
+        <span class="hljs-comment">//println(cont)</span>
+    } <span class="hljs-keyword">catch</span> {
+      <span class="hljs-keyword">case</span> _ =&gt; {
+          println(<span class="hljs-string">&quot;&#x901A;&#x7528;&#x5F02;&#x5E38;&#x5904;&#x7406;&quot;</span>)
+        }
+    }
+  }
+}
+</code></pre>
+<p>&#x5728;cont&#x524D;&#x52A0;&#x4E0A;lazy&#x4E4B;&#x540E;&#xFF0C;cont&#x5C31;&#x5EF6;&#x8FDF;&#x88AB;&#x52A0;&#x8F7D;&#x4E00;&#x6B21;&#xFF0C;&#x5373;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#x8FD9;&#x6761;&#x547D;&#x4EE4;&#xFF0C;<strong>&#x53EA;&#x6709;&#x5F53;cont&#x88AB;&#x8C03;&#x7528;&#x65F6;&#x624D;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#xFF08;&#x5373;&#x628A;Println&#xFF08;cont&#xFF09;&#x53D6;&#x6D88;&#x6CE8;&#x91CA;&#x4E4B;&#x540E;&#x5C31;&#x4F1A;&#x6267;&#x884C;lazy&#xFF09;</strong></p>
+<p>&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x6253;&#x5F00;&#x535A;&#x5BA2;&#x7F51;&#x7AD9;&#x65F6;&#xFF0C;&#x9875;&#x9762;&#x4F1A;&#x51FA;&#x73B0;&#x4E00;&#x4E9B;&#x6587;&#x7AE0;&#xFF0C;&#x800C;&#x5F53;&#x70B9;&#x51FB;&#x5E95;&#x90E8;&#x7684;<strong>&#x66F4;&#x591A;&#x6587;&#x7AE0;</strong>&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x66F4;&#x591A;&#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x8FD9;&#x4E9B;&#x6587;&#x7AE0;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x61D2;&#x52A0;&#x8F7D;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x88AB;&#x70B9;&#x51FB;&#x8C03;&#x7528;&#x65F6;&#x624D;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#xFF0C;&#x5448;&#x73B0;&#x51FA;&#x6765;&#x3002;</p>
+<h3 id="38-scala&#x51FD;&#x6570;&#x4E0E;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;">3.8 Scala&#x51FD;&#x6570;&#x4E0E;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;</h3>
+<p>Scala&#x9664;&#x4E86;&#x65B9;&#x6CD5;&#x5916;&#x8FD8;&#x652F;&#x6301;&#x51FD;&#x6570;&#x3002;&#x65B9;&#x6CD5;&#x5BF9;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x51FD;&#x6570;&#x4E0D;&#x662F;&#x3002;&#x8981;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x7ED9;&#x51FA;&#x51FD;&#x6570;&#x7684;&#x540D;&#x79F0;&#x3001;&#x53C2;
+&#x6570;&#x548C;&#x51FD;&#x6570;&#x4F53;&#xFF0C;&#x5C31;&#x50CF;&#x8FD9;&#x6837;:</p>
+<p><img src="Scala.assets/image-20201104193718796.png" alt="image-20201104193718796" style="zoom:50%;"></p>
+<blockquote>
+<p>def:&#x76F8;&#x5F53;&#x4E8E;Java&#x4E2D;private&#x3001;public&#x3001;protect</p>
+<p>welcome&#xFF1A;&#x76F8;&#x5F53;&#x4E8E;Java&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x540D;</p>
+<p>name&#xFF1A;String&#xFF1A;&#x76F8;&#x5F53;&#x4E8E;Java&#x4E2D;&#x7684;&#x53C2;&#x6570;</p>
+<p>String&#xFF1A;&#x76F8;&#x5F53;&#x4E8E;Java&#x4E2D;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;</p>
+</blockquote>
+<p>1&#x3001;&#x4F60;&#x5FC5;&#x987B;&#x7ED9;&#x51FA;&#x6240;&#x6709;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x53EA;&#x8981;&#x51FD;&#x6570;&#x4E0D;&#x662F;&#x9012;&#x5F52;&#x7684;&#xFF0C;&#x4F60;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x3002;Scala&#x7F16;&#x8BD1;&#x5668; &#x53EF;&#x4EE5;&#x901A;&#x8FC7;=&#x7B26;&#x53F7;&#x53F3;&#x4FA7;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x63A8;&#x65AD;&#x51FA;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x3002;
+2&#x3001;&#x201C;=&#x201D;&#x5E76;&#x4E0D;&#x53EA;&#x662F;&#x7528;&#x6765;&#x5206;&#x5272;&#x51FD;&#x6570;&#x7B7E;&#x540D;&#x548C;&#x51FD;&#x6570;&#x4F53;&#x7684;&#xFF0C;&#x5B83;&#x7684;&#x53E6;-&#x4E2A;&#x4F5C;&#x7528;&#x662F;&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#x662F;&#x5426;&#x5BF9;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8FDB;&#x884C;&#x7C7B;&#x578B;&#x63A8;&#x65AD;!
+&#x5982;&#x679C;&#x7701;&#x53BB;=,&#x5219;&#x8BA4;&#x4E3A;&#x51FD;&#x6570;&#x662F;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7684;!</p>
+<p>Scala&#x4E2D;&#x51FD;&#x6570;&#x7684;&#x5B9A;&#x4E49;</p>
+<pre><code class="lang-scala"><span class="hljs-comment">/*
+Scala&#x4E2D;&#x51FD;&#x6570;&#x7684;&#x5B9A;&#x4E49;
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">FunctionDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> <span class="hljs-type">Str</span> = <span class="hljs-type">PrintDemo</span>(<span class="hljs-string">&quot;&#x9489;&#x5B50;&#x541B;&quot;</span>);
+    println(<span class="hljs-type">Str</span>)
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo</span></span>(name: <span class="hljs-type">String</span>): <span class="hljs-type">String</span> = {
+    <span class="hljs-string">&quot;Hello&quot;</span> + name;
+  }
+}
+</code></pre>
+<blockquote>
+<p> &#x5982;&#x679C;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;&#x5199;&#x4E86;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x8981;&#x52A0;&quot;=&quot;,&#x4E0D;&#x7136;&#x7F16;&#x8BD1;&#x5668;&#x901A;&#x4E0D;&#x8FC7;</p>
+</blockquote>
+<pre><code class="lang-scala"><span class="hljs-comment">//&#x5F53;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E14;&#x8FD4;&#x56DE;&#x503C;&#x540E;&#x4E0D;&#x52A0; &#x201C;=&#x201D; &#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x62A5;&#x9519;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo1</span></span>(name: <span class="hljs-type">String</span>): <span class="hljs-type">String</span>{
+  <span class="hljs-string">&quot;Hello&quot;</span> + name;
+}
+</code></pre>
+<blockquote>
+<p>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5199;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#xFF0C; &#x4F46;&#x662F;&#x52A0;&#x4E86;&quot;=&quot;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x7684;&#x8FDB;&#x884C;&#x7C7B;&#x578B;&#x63A8;&#x65AD;</p>
+</blockquote>
+<pre><code class="lang-scala"><span class="hljs-comment">//&#x5F53;&#x65E0;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E14;&#x52A0; &#x201C;=&#x201D; &#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x8BC6;&#x522B;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo1</span></span>(name: <span class="hljs-type">String</span>)={
+  <span class="hljs-string">&quot;Hello&quot;</span> + name;
+}
+</code></pre>
+<blockquote>
+<p> &#x5982;&#x679C;&#x6CA1;&#x6709;&#x5199;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x52A0;&quot;=&#x201D;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x8BA4;&#x4E3A;&#x4F60;&#x8BE5;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#xFF0C; &#x6216;&#x8005;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;unit</p>
+</blockquote>
+<pre><code class="lang-scala"><span class="hljs-comment">//&#x5F53;&#x65E0;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E14;&#x4E0D;&#x52A0; &#x201C;=&#x201D; &#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x6216;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x4E3A;unit</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo1</span></span>(name: <span class="hljs-type">String</span>){
+  <span class="hljs-string">&quot;Hello&quot;</span> + name;
+}
+</code></pre>
+<h3 id="39-scala&#x57FA;&#x672C;&#x51FD;&#x6570;">3.9 Scala&#x57FA;&#x672C;&#x51FD;&#x6570;</h3>
+<p>Scala&#x7684;&#x51E0;&#x4E2A;&#x57FA;&#x672C;&#x51FD;&#x6570;:</p>
+<ul>
+<li><p>&#x65E0;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;</p>
+<pre><code class="lang-scala"><span class="hljs-comment">//&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo1</span></span>(name: <span class="hljs-type">String</span>){
+  println(<span class="hljs-string">&quot;Hello&quot;</span> + name)
+}
+</code></pre>
+</li>
+<li><p>&#x7A7A;&#x53C2;&#x51FD;&#x6570;: <b><font color="red"> &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x5B9A;&#x4E49;&#x7684;&#x65F6;&#x5019;&#x6CA1;&#x6709;&#x53C2;&#x6570;,&#x5728;&#x8C03;&#x7528;&#x65F6;,&#x53EF;&#x4EE5;&#x7701;&#x7565;&#x6389;() ,&#x5982;&#x679C;&#x5728;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7A7A;&#x53C2;&#x51FD;&#x6570;&#x65F6;,&#x7701;&#x7565;&#x4E86;(),&#x5219;&#x5728;&#x8C03;&#x7528;&#x65F6;&#x4E5F;&#x8981;&#x7701;&#x7565;&#x6389;()</font></b></p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">FunctionDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-type">PrintDemo1</span>(<span class="hljs-string">&quot;&#x4E8E;&#x58EB;&#x8C6A;&quot;</span>);
+    <span class="hljs-type">PrintDemo2</span>();
+    <span class="hljs-type">PrintDemo2</span>;<span class="hljs-comment">//&#x53EF;&#x4EE5;&#x7701;&#x7565;&#x6389;()</span>
+    <span class="hljs-type">PrintDemo3</span>;<span class="hljs-comment">//&#x5FC5;&#x987B;&#x7701;&#x7565;()</span>
+  }
+  <span class="hljs-comment">//&#x7A7A;&#x53C2;&#x51FD;&#x6570;</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo2</span></span>(){
+    println(<span class="hljs-type">System</span>.currentTimeMillis())
+  }
+   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo3</span></span>{
+    println(<span class="hljs-type">System</span>.currentTimeMillis())
+  }
+</code></pre>
+</li>
+<li><p>&#x5355;&#x884C;&#x51FD;&#x6570;:&#x5FC5;&#x987B;&#x8981;&#x4F7F;&#x7528;&quot; =&quot;&#x5C06;&#x51FD;&#x6570;&#x4E0E;&#x51FD;&#x6570;&#x4F53;&#x8FDE;&#x63A5;</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">FunctionDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-type">PrintDemo1</span>(<span class="hljs-string">&quot;&#x4E8E;&#x58EB;&#x8C6A;&quot;</span>);
+    <span class="hljs-type">PrintDemo2</span>();
+    <span class="hljs-type">PrintDemo2</span>;
+    <span class="hljs-type">PrintDemo3</span>(<span class="hljs-string">&quot;&#x4E2D;&#x56FD;&quot;</span>);
+  }
+  <span class="hljs-comment">//&#x5355;&#x884C;&#x51FD;&#x6570;</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo3</span></span>(name: <span class="hljs-type">String</span>) = println(name + <span class="hljs-string">&quot;&#x52A0;&#x6CB9;&#xFF01;&quot;</span>);
+</code></pre>
+</li>
+<li><p>&#x9012;&#x5F52;&#x51FD;&#x6570;</p>
+</li>
+</ul>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">FunctionDemo</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-type">PrintDemo1</span>(<span class="hljs-string">&quot;&#x4E8E;&#x58EB;&#x8C6A;&quot;</span>);
+    <span class="hljs-type">PrintDemo2</span>();
+    <span class="hljs-type">PrintDemo2</span>
+    <span class="hljs-type">PrintDemo3</span>(<span class="hljs-string">&quot;&#x4E2D;&#x56FD;&quot;</span>)
+    <span class="hljs-keyword">var</span> sum=<span class="hljs-type">PrintDemo4</span>(<span class="hljs-number">5</span>)
+    println(sum);
+  }
+  <span class="hljs-comment">//&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">PrintDemo4</span></span>(n: <span class="hljs-type">Int</span>):<span class="hljs-type">Int</span>= {
+ <span class="hljs-keyword">if</span>(n&lt;=<span class="hljs-number">1</span>){
+   <span class="hljs-number">1</span>
+ }<span class="hljs-keyword">else</span>{
+   n*<span class="hljs-type">PrintDemo4</span>(n<span class="hljs-number">-1</span>);
+ }
+  }
+</code></pre>
+<h3 id="40-scala&#x4E2D;&#x7684;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x548C;&#x5E26;&#x540D;&#x53C2;&#x6570;">4.0 Scala&#x4E2D;&#x7684;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x548C;&#x5E26;&#x540D;&#x53C2;&#x6570;</h3>
+<p>1&#x3001;<strong>&#x6211;&#x4EEC;&#x5728;&#x8C03;&#x7528;&#x67D0;&#x4E9B;&#x51FD;&#x6570;&#x65F6;&#x5E76;&#x4E0D;&#x663E;&#x5F0F;&#x5730;&#x7ED9;&#x51FA;&#x6240;&#x6709;&#x53C2;&#x6570;&#x503C;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x3002;</strong>
+def sayDefaul tFunc (name: String, address: String = &quot;Beijing&quot;&#xFF0C; tellphone: String = <em>13<strong><em>*</em></strong></em>) ={
+println (name +&quot; address=&gt;&quot; + address +&quot;\t teIlphone=&gt;&quot; + tellphone)</p>
+<p>2&#x3001;<strong>&#x4E0D;&#x6307;&#x5B9A;&#x5177;&#x4F53;&#x53C2;&#x6570;&#x65F6;:&#x7ED9;&#x51FA;&#x9ED8;&#x8BA4;&#x503C;</strong>
+sayDefaultFunc(&quot;Garry&#x201D;)</p>
+<p>3&#x3001;<strong>&#x5982;&#x679C;&#x76F8;&#x5BF9;&#x53C2;&#x6570;&#x7684;&#x6570;&#x91CF;,&#x4F60;&#x7ED9;&#x51FA;&#x7684;&#x503C;&#x4E0D;&#x591F;&#xFF0C;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x4F1A;&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x9010;&#x4E2A;&#x5E94;&#x7528;&#x8FDB;&#x6765;&#x3002;</strong></p>
+<p>sayDefaultFunc (&quot;Garry &quot;, &quot;Shanhai &#x201D;)</p>
+<p>4.<strong>&#x7ED9;&#x51FA;&#x5168;&#x90E8;&#x7684;&#x53C2;&#x6570;&#x503C;</strong></p>
+<p>sayDefaultFunc(&quot;Garry &quot;, &quot;Shanhai &#x201D;,&#x201D;13709872335*)</p>
+<p>5&#x3001;<strong>&#x5E36;&#x540D;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x8BA9;&#x51FD;&#x6570;&#x66F4;&#x52A0;&#x53EF;&#x8BFB;&#x3002;&#x5B83;&#x4EEC;&#x5BF9;&#x4E8E;&#x90A3;&#x4E9B;&#x6709;&#x5F88;&#x591A;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x7684;&#x51FD;&#x6570;&#x6765;&#x8BF4;&#x4E5F;&#x5F88;&#x6709;&#x7528;&#x3002;</strong>
+sayDefaul tFunc (address =&#x201D; &#x4E0A;&#x6D77;&#x201D;&#xFF0C;tellphone=&apos; &quot;12109876543 &quot;, name= &quot;Tom&#x201D;)</p>
+<p>6&#x3001;<strong>&#x4F60;&#x53EF;&#x4EE5;&#x6DF7;&#x7528;&#x672A;&#x547D;&#x540D;&#x53C2;&#x6570;&#x548C;&#x5E26;&#x540D;&#x53C2;&#x6570;,&#x53EA;&#x8981;&#x90A3;&#x4E9B;&#x672A;&#x547D;&#x540D;&#x7684;&#x53C2;&#x6570;&#x662F;&#x6392;&#x5728;&#x524D;&#x9762;&#x7684;&#x5373;&#x53EF;:</strong>
+sayDefaultFunc(&quot;Tom&quot; tellphone= &#x201D;12109876543 , address = &quot;&#x4E0A;&#x6D77;&#x201D;)</p>
+<p>class word{</p>
+<p>}</p>
+<p>//&#x5355;&#x4F8B;&#x5BF9;&#x8C61;&#xFF0C;&#x5199;&#x5165;&#x4E3B;&#x65B9;&#x6CD5;mian</p>
+<p>object word{</p>
+<p>}</p>
+ 
+          </section>
+          
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+ 
+          <div class="book-footer">
+            
+            <div class="donate">
+              <div>『 赠人玫瑰 🌹 手有余香 』</div>
+              <button class="donate-btn" onclick="showModal()">赞赏</button>
+            </div>
+             
+            <div class="copyright"></div>
+            
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+
+     
+    <a
+      href="../8-Hive/3-Hive基本命令.html"
+      class="
+        navigation navigation-prev
+        navigation-unique
+      "
+      aria-label="Previous page: 6. Hive基本命令"
+    >
+      <i class="fa fa-angle-left"></i>
+    </a>
+       
+  </div>
+  <script>
+    function showModal() {
+      document.getElementsByClassName("mask")[0].style.display = "block";
+      document.getElementsByClassName("donate-modal")[0].style.display =
+        "block";
+    }
+    // 切换赞赏码
+    function showDonateImg(num) {
+      let alipay = "";
+      let wxpay = ""
+      if(num){
+        wxpay = "hidden"
+      }else{
+        alipay = "hidden"
+      }
+      document.getElementById("wxpay-code").hidden = wxpay;
+      document.getElementById("alipay-code").hidden = alipay;
+      document.getElementsByName("pay-way")[num].checked = "checked";
+    }
+
+    // 关闭赞赏框
+    function closeDonateModal() {
+      document.getElementsByClassName("mask")[0].style.display = "none";
+      document.getElementsByClassName("donate-modal")[0].style.display = "none";
+    }
+
+    var gitbook = gitbook || [];
+    gitbook.push(function () {
+      gitbook.page.hasChanged({"page":{"title":"7. Scala","level":"4.1.7","depth":2,"next":{"title":"Blog","level":"5.1","depth":1,"ref":"","articles":[{"title":"1. CSS之Postion属性","level":"5.1.1","depth":2,"path":"13-Blog/1-CSS之postion属性.md","ref":"13-Blog/1-CSS之postion属性.md","articles":[]},{"title":"2. CSS之浮动","level":"5.1.2","depth":2,"path":"13-Blog/2-CSS之浮动.md","ref":"13-Blog/2-CSS之浮动.md","articles":[]},{"title":"3. Flask Migrate数据库迁移","level":"5.1.3","depth":2,"path":"13-Blog/3-flask_migrate数据库迁移.md","ref":"13-Blog/3-flask_migrate数据库迁移.md","articles":[]},{"title":"4. HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备","level":"5.1.4","depth":2,"path":"13-Blog/4-HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备 .md","ref":"13-Blog/4-HEU KMS ActivatorHEU KMS Activator重装系统激活Office必备 .md","articles":[]},{"title":"5. Hexo搭建个人博客","level":"5.1.5","depth":2,"path":"13-Blog/5-Hexo搭建个人博客.md","ref":"13-Blog/5-Hexo搭建个人博客.md","articles":[]},{"title":"6. MySQL查询乱码","level":"5.1.6","depth":2,"path":"13-Blog/6-MySQL查询乱码.md","ref":"13-Blog/6-MySQL查询乱码.md","articles":[]},{"title":"7. 计算APP评分","level":"5.1.7","depth":2,"path":"13-Blog/7-计算APP评分.md","ref":"13-Blog/7-计算APP评分.md","articles":[]},{"title":"8. 动态规划解决最大子数组问题","level":"5.1.8","depth":2,"path":"13-Blog/8-动态规划解决最大子数组问题.md","ref":"13-Blog/8-动态规划解决最大子数组问题.md","articles":[]}]},"previous":{"title":"6. Hive基本命令","level":"4.1.6","depth":2,"path":"8-Hive/3-Hive基本命令.md","ref":"8-Hive/3-Hive基本命令.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-summary","search-pro","expandable-chapters","back-to-top-button","code","theme-lou"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"theme-lou":{"hide-elements":[".summary .gitbook-link",".summary .divider",".font-settings",".book-summary-title"],"color":"#6443f2","book-anchor-title":"本章目录","copyright":{"author":"南雨"},"forbidCopy":false,"logo":"static/logo.png","book-summary-title":"目录","search-placeholder":"输入搜索文本","copyrightLogo":"assets/copyright.png","favicon":"static/favicon.ico","appleTouchIconPrecomposed152":"static/logo.png"},"search-pro":{},"expandable-chapters":{},"back-to-top-button":{},"code":{"copyButtons":true},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"南雨","lang":"zh-hans","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"图书编号","variables":{"themeLou":{"nav":[{"target":"_blank","url":"https://dingzijun.top","name":"南雨"}],"footer":{"donate":{"button":"捐赠","avatar":"static/logo.png","nickname":"南雨","message":"随意打赏，但不要超过一顿早餐钱！","text":"『 赠人玫瑰 🌹 手有余香 』","wxpay":"static/wechatpay.jpg","alipay":"static/alipay.jpg"},"copyright":true}}},"title":"知识星球","gitbook":"*","description":"个人电子书"},"file":{"path":"11-Scala/1-Scala.md","mtime":"2021-12-10T01:58:32.516Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-05T03:41:41.872Z"},"basePath":"..","book":{"language":""}});
+    });
+  </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-lou/lou.js"></script>
+        
+    
+
+    </body>
+</html>
+
